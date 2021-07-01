@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
 
 function Footer() {
   return (
     <div>
-      Footer
+      <hr/>
+      <h1>Footer입니다.</h1>
     </div>
   )
 }

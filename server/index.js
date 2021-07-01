@@ -16,18 +16,7 @@ mongoose.connect(config.mongoURI ,{ //config폴더의 key.js의 mongoURI 가져�
 }).then(()=>console.log('MongoDB Conneted...'))
   .catch(err=>console.log(err))
 
-
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
-
-
-app.get('/api/hello', (req, res)=>{
-  res.send("테스트입니다.")
-})
-
-
-app.post('api/users/register',(req,res)=>{
+app.post('/api/users/register',(req,res)=>{
 
   const user = new User(req.body)  //req.body로 json형식으로 파싱
 
@@ -91,20 +80,10 @@ app.get('/api/users/auth', auth , (req,res)=>{
 app.get('/api/users/logout', auth, (req, res)=>{
   
   User.findOneAndUpdate({ _id: req.user._id }, {token: ""}, (err,user)=>{
-    if(err) return res.json({ success : false, err})
-    return res.status(200).send({ success: true})
+    if(err) return res.json({ logoutSuccess : false, err});
+    return res.status(200).send({ logoutSuccess: true})
   })
 })
-
-
-
-
-
-
-
-
-
-
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
