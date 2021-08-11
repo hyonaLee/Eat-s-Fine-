@@ -28,6 +28,7 @@ function SearchBox() {
       />
       <input type="button" onClick={onclick} value="검색" />
       <p>{btnClicks}</p>
+      <p>깃 테스트</p>
     </div>
   );
 }
