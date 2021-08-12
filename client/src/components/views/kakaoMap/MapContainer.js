@@ -1,17 +1,27 @@
 import React, { useRef, useEffect, useState } from "react";
-import { useApplicationContext } from "../../../contexts/application_context";
+import { useApplicationContext } from "../../../contexts/weatherAndMap_context";
 import { useMapContext } from "../../../contexts/map_context";
 
 function MapContainer() {
   const container = useRef(null); //지도를 담을 영역의 DOM 레퍼런스
-  const { locationSearch, longitude, latitude, setLatlngValue } =
-    useApplicationContext();
+  const {
+    locationSearch,
+    longitude,
+    latitude,
+    setLatlngValue,
+    setLatitude,
+    setLongitude,
+  } = useApplicationContext();
   const { setMapSearchData } = useMapContext();
+
+  navigator.geolocation.getCurrentPosition((position) => {
+    setLatitude(position.coords.latitude);
+    setLongitude(position.coords.longitude);
+  });
 
   useEffect(() => {
     let markers = [];
     const options = {
-      //지도를 생성할 000 필요한 기본 옵션
       center: new window.kakao.maps.LatLng(latitude, longitude), //지도의 중심좌표.
       level: 3, //지도의 레벨(확대, 축소 정도)
     };
@@ -23,7 +33,6 @@ function MapContainer() {
       geolocation();
     }
 
-    //처음 내위치
     function geolocation() {
       navigator.geolocation.getCurrentPosition(function (position) {
         let locPosition = new window.kakao.maps.LatLng(latitude, longitude), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
@@ -43,7 +52,7 @@ function MapContainer() {
                 result[0].road_address.address_name +
                 "</div>"
               : "<div>지번 주소 : " + result[0].address.address_name + "</div>";
-            console.log("내위치", detailAddr);
+            // console.log("내위치", detailAddr);
 
             // 마커를 클릭한 위치에 표시합니다
             marker.setPosition(locPosition);

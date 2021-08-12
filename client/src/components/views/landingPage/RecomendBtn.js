@@ -5,22 +5,30 @@ import MapDetail from './MapDetail';
 
 function RecomendBtn() {
     return (
-        <div>
+        <BtnDiv>
             <Link to="/recomend">
             <RecomendBtnStyle>
             직접찾아보기
             </RecomendBtnStyle></Link>
             <Route path="/recomend" component={MapDetail} />
-        </div>
+        </BtnDiv>
     );
 }
 
 const RecomendBtnStyle = styled.button`
-  font-size: 25px;
+
+  font-size: 20px;
   font-weight: nomal;
-  color: black;
-  background-color: yellow;
-  
+  color: white;
+  background-color: #a5a0a0;
+  padding:10px;
+  border-radius: 8px;
+  height: 50px;
 `;
 
+const BtnDiv = styled.div`
+  position: relative;
+  top: 600px;
+
+`
 export default RecomendBtn;

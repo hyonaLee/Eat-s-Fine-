@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useApplicationContext } from "../../../contexts/application_context";
+import { useApplicationContext } from "../../../contexts/weatherAndMap_context";
 
 function Weather() {
   const [text, setText] = useState("현재위치");
@@ -15,7 +15,7 @@ function Weather() {
     latData = latlngValue.Ma;
     lonData = latlngValue.La;
   }
-  
+
   async function test() {
     await axios({
       method: "post",
@@ -32,8 +32,6 @@ function Weather() {
   useEffect(() => {
     test();
   }, [latData, lonData, locationSearch]);
-  
-
 
   let tmp = "";
   let sky = "";

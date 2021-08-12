@@ -21,12 +21,12 @@
     "axios": "^0.21.1",
     "bcrypt": "^5.0.1",
     "cheerio": "^1.0.0-rc.10",
-    "concurrently": "^6.2.0",
+    "concurrently": "^6.2.1",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "global": "^4.4.0",
-    "http-proxy-middleware": "^2.0.0",
+    "http-proxy-middleware": "^2.0.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.12",
     "nodemon": "^2.0.7",
@@ -39,6 +39,7 @@
     "redux-promise": "^0.6.0",
     "redux-thunk": "^2.3.0",
     "request": "^2.88.2",
+    "sass": "^1.37.5",
     "styled-component": "^2.8.0",
     "styled-components": "^4.4.1"
   }

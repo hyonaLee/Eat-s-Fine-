@@ -8,7 +8,7 @@ function SearchBox() {
 
   function onchange(e) {
     setText(e.target.value);
-    console.log(e.target.value);
+    console.log("1",e.target.value);
   }
   function onclick() {
     if (text === "") {
