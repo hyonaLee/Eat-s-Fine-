@@ -1,13 +1,15 @@
 import React, { useRef, useEffect, useState } from "react";
 import { useApplicationContext } from "../../../contexts/application_context";
+import { useMapContext } from "../../../contexts/map_context";
 
 function MapContainer() {
   const container = useRef(null); //지도를 담을 영역의 DOM 레퍼런스
-  const { locationSearch, longitude, latitude, latlngValue, setLatlngValue } =
+  const { locationSearch, longitude, latitude, setLatlngValue } =
     useApplicationContext();
+  const { setMapSearchData } = useMapContext();
 
   useEffect(() => {
-    var markers = [];
+    let markers = [];
     const options = {
       //지도를 생성할 000 필요한 기본 옵션
       center: new window.kakao.maps.LatLng(latitude, longitude), //지도의 중심좌표.
@@ -17,30 +19,56 @@ function MapContainer() {
 
     const map = new window.kakao.maps.Map(container.current, options); //지도 생성 및 객체 리턴
     const ps = new window.kakao.maps.services.Places(map);
-    mylocation();
+    if (locationSearch === "") {
+      geolocation();
+    }
 
-    function mylocation() {
-      var locPosition = new window.kakao.maps.LatLng(latitude, longitude), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
-        message = "<span>현위치</span>"; // 인포윈도우에 표시될 내용입니다
-      console.log(locPosition);
+    //처음 내위치
+    function geolocation() {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        let locPosition = new window.kakao.maps.LatLng(latitude, longitude), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
+          message = "<span>현위치</span>"; // 인포윈도우에 표시될 내용입니다
 
-      // 마커와 인포윈도우를 표시합니다
-      displayMarker(locPosition, message);
+        // 마커와 인포윈도우를 표시합니다
+        displayMarker(locPosition, message);
+        searchDetailAddrFromCoords(locPosition, function (result, status) {
+          // 마커를 생성합니다
+          let marker = new window.kakao.maps.Marker({
+            map: map,
+          });
+
+          if (status === window.kakao.maps.services.Status.OK) {
+            const detailAddr = !!result[0].road_address
+              ? "<div>도로명주소 : " +
+                result[0].road_address.address_name +
+                "</div>"
+              : "<div>지번 주소 : " + result[0].address.address_name + "</div>";
+            console.log("내위치", detailAddr);
+
+            // 마커를 클릭한 위치에 표시합니다
+            marker.setPosition(locPosition);
+            marker.setMap(map);
+            // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
+            infowindow.setContent(detailAddr);
+            infowindow.open(map, marker);
+          }
+        });
+      });
     }
 
     // 지도에 마커와 인포윈도우를 표시하는 함수입니다
     function displayMarker(locPosition, message) {
       // 마커를 생성합니다
-      var marker = new window.kakao.maps.Marker({
+      const marker = new window.kakao.maps.Marker({
         map: map,
         position: locPosition,
       });
 
-      var iwContent = message, // 인포윈도우에 표시할 내용
-        iwRemoveable = true;
+      const iwContent = message; // 인포윈도우에 표시할 내용
+      let iwRemoveable = true;
 
       // 인포윈도우를 생성합니다
-      var infowindow = new window.kakao.maps.InfoWindow({
+      const infowindow = new window.kakao.maps.InfoWindow({
         content: iwContent,
         removable: iwRemoveable,
       });
@@ -53,52 +81,25 @@ function MapContainer() {
     }
 
     // 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
-    var infowindow = new window.kakao.maps.InfoWindow({ zIndex: 1 });
+    const infowindow = new window.kakao.maps.InfoWindow({ zIndex: 1 });
     ps.keywordSearch(locationSearch, placesSearchCB);
     // 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
     function placesSearchCB(data, status, pagination) {
       if (status === window.kakao.maps.services.Status.OK) {
         //검색한 위도경도 구하기
-        var coords = new window.kakao.maps.LatLng(data[0].y, data[0].x);
+        const coords = new window.kakao.maps.LatLng(data[0].y, data[0].x);
         setLatlngValue(coords);
         // 정상적으로 검색이 완료됐으면
         // 검색 목록과 마커를 표출합니다
         displayPlaces(data);
-
+        setMapSearchData(data);
         // 페이지 번호를 표출합니다
         displayPagination(pagination);
       }
     }
 
     // 주소-좌표 변환 객체를 생성합니다
-    var geocoder = new window.kakao.maps.services.Geocoder();
-
-    // 지도를 클릭했을 때 클릭 위치 좌표에 대한 주소정보를 표시하도록 이벤트를 등록합니다
-    window.kakao.maps.event.addListener(map, "click", function (mouseEvent) {
-      searchDetailAddrFromCoords(mouseEvent.latLng, function (result, status) {
-        // 마커를 생성합니다
-        var marker = new window.kakao.maps.Marker({
-          map: map,
-        });
-        if (status === window.kakao.maps.services.Status.OK) {
-          var detailAddr = !!result[0].road_address
-            ? "<div>도로명주소 : " +
-              result[0].road_address.address_name +
-              "</div>"
-            : "<div>지번 주소 : " + result[0].address.address_name + "</div>";
-
-          var content = '<div class="bAddr">' + detailAddr + "</div>";
-
-          // 마커를 클릭한 위치에 표시합니다
-          marker.setPosition(mouseEvent.latLng);
-          marker.setMap(map);
-
-          // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
-          infowindow.setContent(content);
-          infowindow.open(map, marker);
-        }
-      });
-    });
+    const geocoder = new window.kakao.maps.services.Geocoder();
 
     function searchDetailAddrFromCoords(coords, callback) {
       // 좌표로 법정동 상세 주소 정보를 요청합니다
@@ -107,7 +108,7 @@ function MapContainer() {
 
     // 검색 결과 목록과 마커를 표출하는 함수입니다
     function displayPlaces(places) {
-      var listEl = document.getElementById("placesList"),
+      let listEl = document.getElementById("placesList"),
         menuEl = document.getElementById("menu_wrap"),
         fragment = document.createDocumentFragment(),
         bounds = new window.kakao.maps.LatLngBounds(),
@@ -119,9 +120,9 @@ function MapContainer() {
       // 지도에 표시되고 있는 마커를 제거합니다
       removeMarker();
 
-      for (var i = 0; i < places.length; i++) {
+      for (let i = 0; i < places.length; i++) {
         // 마커를 생성하고 지도에 표시합니다
-        var placePosition = new window.kakao.maps.LatLng(
+        let placePosition = new window.kakao.maps.LatLng(
             places[i].y,
             places[i].x
           ),
@@ -143,17 +144,7 @@ function MapContainer() {
           window.kakao.maps.event.addListener(marker, "mouseout", function () {
             infowindow.close();
           });
-
-          itemEl.onmouseover = function () {
-            displayInfowindow(marker, title);
-          };
-
-          itemEl.onmouseout = function () {
-            infowindow.close();
-          };
         })(marker, places[i].place_name);
-
-        fragment.appendChild(itemEl);
       }
 
       // 검색결과 항목들을 검색결과 목록 Elemnet에 추가합니다
@@ -166,7 +157,7 @@ function MapContainer() {
 
     // 검색결과 항목을 Element로 반환하는 함수입니다
     function getListItem(index, places) {
-      var el = document.createElement("li"),
+      let el = document.createElement("li"),
         itemStr =
           '<span class="markerbg marker_' +
           (index + 1) +
@@ -199,7 +190,7 @@ function MapContainer() {
 
     // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
     function addMarker(position, idx, title) {
-      var imageSrc =
+      let imageSrc =
           "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png", // 마커 이미지 url, 스프라이트 이미지를 씁니다
         imageSize = new window.kakao.maps.Size(36, 37), // 마커 이미지의 크기
         imgOptions = {
@@ -225,7 +216,7 @@ function MapContainer() {
 
     // 검색결과 목록 하단에 페이지번호를 표시는 함수입니다
     function displayPagination(pagination) {
-      var paginationEl = document.getElementById("pagination"),
+      let paginationEl = document.getElementById("pagination"),
         fragment = document.createDocumentFragment(),
         i;
 
@@ -251,13 +242,13 @@ function MapContainer() {
 
         fragment.appendChild(el);
       }
-      paginationEl.appendChild(fragment);
+      // paginationEl.appendChild(fragment); //1~3페이지
     }
 
     // 검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
     // 인포윈도우에 장소명을 표시합니다
     function displayInfowindow(marker, title) {
-      var content = '<div style="padding:5px;z-index:1;">' + title + "</div>";
+      const content = '<div style="padding:5px;z-index:1;">' + title + "</div>"; //지도 가게 호버했을때 상호명 뜨는것
 
       infowindow.setContent(content);
       infowindow.open(map, marker);
@@ -272,11 +263,12 @@ function MapContainer() {
 
     // 지도 위에 표시되고 있는 마커를 모두 제거합니다
     function removeMarker() {
-      for (var i = 0; i < markers.length; i++) {
+      for (let i = 0; i < markers.length; i++) {
         markers[i].setMap(null);
       }
       markers = [];
     }
+    //-------------------------------------------------------------------------------------
   }, [longitude, locationSearch]);
 
   return (

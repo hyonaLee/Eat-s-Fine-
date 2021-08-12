@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useApplicationContext } from "../contexts/application_context";
+import { useApplicationContext } from "../../../contexts/application_context";
 
 function SearchBox() {
   const [btnClicks, setBtnClicks] = useState(false);

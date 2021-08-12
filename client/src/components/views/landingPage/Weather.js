@@ -1,17 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useApplicationContext } from "../contexts/application_context";
+import { useApplicationContext } from "../../../contexts/application_context";
 
 function Weather() {
   const [text, setText] = useState("현재위치");
   const [weatherData, setWeatherData] = useState([]);
-  const {
-    locationSearch,
-    setLocationSearch,
-    longitude,
-    latitude,
-    latlngValue,
-  } = useApplicationContext();
+  const { locationSearch, longitude, latitude, latlngValue } =
+    useApplicationContext();
 
   let latData = latitude;
   let lonData = longitude;
@@ -20,9 +15,9 @@ function Weather() {
     latData = latlngValue.Ma;
     lonData = latlngValue.La;
   }
-
-  useEffect(() => {
-    axios({
+  
+  async function test() {
+    await axios({
       method: "post",
       url: "./api/weathers/today",
       data: {
@@ -33,14 +28,17 @@ function Weather() {
       console.log("서버에서 프론트로 돌려받음", response.data);
       setWeatherData(response.data);
     });
+  }
+  useEffect(() => {
+    test();
   }, [latData, lonData, locationSearch]);
+  
 
-  console.log(weatherData);
+
   let tmp = "";
   let sky = "";
 
   if (weatherData.length !== 0) {
-    console.log("날씨 정보", weatherData);
     tmp = weatherData[0].wea_val;
     sky = weatherData[5].wea_val;
 
