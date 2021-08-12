@@ -9,17 +9,15 @@ export function ApplicationContextProvider({ children }) {
   const [longitude, setLongitude] = useState(null);
   const [latlngValue, setLatlngValue] = useState({});
 
-
-
   const value = {
     locationSearch,
     setLocationSearch,
-    setLatitude,
-    setLongitude,
     latitude,
     longitude,
     latlngValue,
     setLatlngValue,
+    setLatitude,
+    setLongitude,
   };
 
   return <Context.Provider value={value}>{children}</Context.Provider>;

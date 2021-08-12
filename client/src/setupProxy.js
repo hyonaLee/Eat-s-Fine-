@@ -1,5 +1,5 @@
 //CORS 이슈, Proxy설정
-const  proxy  = require("http-proxy-middleware");
+const proxy = require("http-proxy-middleware");
 module.exports = function (app) {
   app.use(
     "/api",
