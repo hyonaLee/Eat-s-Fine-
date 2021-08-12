@@ -7,7 +7,6 @@ function Weather() {
   const [weatherData, setWeatherData] = useState([]);
   const {
     locationSearch,
-    setLocationSearch,
     longitude,
     latitude,
     latlngValue,

@@ -3,7 +3,7 @@ import { useApplicationContext } from "../../../contexts/application_context";
 
 function MapContainer() {
   const container = useRef(null); //지도를 담을 영역의 DOM 레퍼런스
-  const { locationSearch, longitude, latitude, latlngValue, setLatlngValue } =
+  const { locationSearch, longitude, latitude,  setLatlngValue } =
     useApplicationContext();
 
   useEffect(() => {
@@ -60,6 +60,7 @@ function MapContainer() {
       if (status === window.kakao.maps.services.Status.OK) {
         //검색한 위도경도 구하기
         var coords = new window.kakao.maps.LatLng(data[0].y, data[0].x);
+        console.log("3", coords)
         setLatlngValue(coords);
         // 정상적으로 검색이 완료됐으면
         // 검색 목록과 마커를 표출합니다

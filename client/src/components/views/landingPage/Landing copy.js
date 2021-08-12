@@ -1,23 +1,27 @@
 import React from "react";
 import styled from "styled-components";
-import SearchBox from "../../SearchBox";
+import CurrentLocation from "./CurrentLocation";
+import CurrentWeather from "./CurrentWeather";
+import HashTag from "./HashTag";
 import InfoToday from "./InfoToday";
 import RecomendBtn from "./RecomendBtn";
-import Cloud from './WeaterIMG/Cloud';
 const MainDivStyle = styled.div`
-  background-color: #a5a0a0;
+  background-color: #282c34;
   margin: auto;
-  width: 100%;
+  padding: 50px 20px;
+  width: 450px;
+  height: 800px;
+  border-radius: 40px;
 `;
 
 function Landing(props) {
   return (
     <MainDivStyle>
-      <Cloud />
+      <CurrentLocation />
+      <CurrentWeather />
       <InfoToday />
-      {/* <SearchBox/> */}
+      <HashTag />
       <RecomendBtn />
-
     </MainDivStyle>
   );
 }

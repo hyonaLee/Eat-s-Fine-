@@ -10,21 +10,20 @@ import { ApplicationContextProvider } from "../contexts/application_context";
 import Header from "./views/common/Header.js";
 import Footer from "./views/common/Footer.js";
 import SearchBox from "./SearchBox";
+import Geo from "../contexts/Geo.js";
 
 function App() {
   return (
     <div>
-      <ApplicationContextProvider>
+      
         <Header />
-        <Route exact path="/" component={Auth(Landing, null)} />
-        <Route exact path="/nabvar" component={Auth(Landing, null)} />
-        <Route exact path="/login" component={Auth(Login, false)} />
-        <Route exact path="/register" component={Auth(Register, false)} />
-        <SearchBox />
-        <Weather />
-        <MapContainer />
+        <Switch>
+          <Route exact path="/" component={Auth(Landing, null)} />
+          <Route exact path="/login" component={Auth(Login, false)} />
+          <Route exact path="/register" component={Auth(Register, false)} />
+        </Switch>
         <Footer />
-      </ApplicationContextProvider>
+      
     </div>
   );
 }
