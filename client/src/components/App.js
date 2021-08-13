@@ -4,12 +4,8 @@ import Auth from "../hoc/auth";
 import Landing from "./views/landingPage/Landing.js";
 import Login from "./views/loginPage/Login.js";
 import Register from "./views/registerPage/Register.js";
-
 import Header from "./views/common/Header.js";
 import Footer from "./views/common/Footer.js";
-
-// import SearchBox from "./SearchBox";
-// import Geo from "../contexts/Geo.js";
 
 function App() {
   return (

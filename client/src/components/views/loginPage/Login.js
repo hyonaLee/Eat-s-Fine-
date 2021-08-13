@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { MapContextProvider } from '../../../contexts/map_context';
+import { ApplicationContextProvider } from '../../../contexts/weatherAndMap_context';
 import { loginUser } from '../../../_actions/user_actions';
+import MapContainer from '../kakaoMap/MapContainer';
+import MapStoreList from '../kakaoMap/MapStoreList';
+import SearchBox from '../landingPage/SearchBox';
+import Weather from '../landingPage/Weather';
 
 function Login(props) {
   const dispatch = useDispatch();
@@ -51,6 +57,14 @@ function Login(props) {
         <br />
         <button>Login</button>
       </form>
+      <ApplicationContextProvider>
+        <MapContextProvider>
+          <MapStoreList />
+          <MapContainer />
+        </MapContextProvider>
+        <SearchBox />
+        <Weather />
+      </ApplicationContextProvider>
     </div>
   );
 }

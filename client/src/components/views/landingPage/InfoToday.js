@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 function InfoToday() {
+
     return (
         <InfoDiv>
             <InfoH1>오늘의 날씨는 <span>맑음</span>이에요.</InfoH1>
