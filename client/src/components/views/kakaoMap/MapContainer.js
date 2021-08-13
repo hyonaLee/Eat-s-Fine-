@@ -11,6 +11,7 @@ function MapContainer() {
     setLatlngValue,
     setLatitude,
     setLongitude,
+    setMyLocation,
   } = useApplicationContext();
   const { setMapSearchData } = useMapContext();
 
@@ -52,8 +53,8 @@ function MapContainer() {
                 result[0].road_address.address_name +
                 "</div>"
               : "<div>지번 주소 : " + result[0].address.address_name + "</div>";
-            // console.log("내위치", detailAddr);
-
+            console.log("내위치", detailAddr);
+            setMyLocation(result[0].address.address_name);
             // 마커를 클릭한 위치에 표시합니다
             marker.setPosition(locPosition);
             marker.setMap(map);
