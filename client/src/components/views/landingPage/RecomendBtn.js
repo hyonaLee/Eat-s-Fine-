@@ -8,7 +8,7 @@ function RecomendBtn() {
         <BtnDiv>
             <Link to="/recomend">
             <RecomendBtnStyle>
-            직접찾아보기
+              추천메뉴보기
             </RecomendBtnStyle></Link>
             <Route path="/recomend" component={MapDetail} />
         </BtnDiv>

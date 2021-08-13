@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useApplicationContext } from "../../../contexts/weatherAndMap_context";
+import styled from 'styled-components';
 
 function SearchBox() {
   const [btnClicks, setBtnClicks] = useState(false);
@@ -19,17 +20,36 @@ function SearchBox() {
   }
 
   return (
-    <div>
-      <input
+    <SearchDiv>
+      <Input
         type="text"
-        placeholder="지역 입력"
+        placeholder="메뉴입력"
         onChange={onchange}
         value={text}
       />
-      <input type="button" onClick={onclick} value="검색" />
+      <InputBtn type="button" onClick={onclick} value="검색" />
       <p>{btnClicks}</p>
-    </div>
+    </SearchDiv>
   );
 }
+
+const SearchDiv = styled.div`
+  position: relative;
+  top: 350px;
+`
+const Input = styled.input`
+  height: 70px;
+  width: 350px;
+  border-radius: 8px;
+  padding-left: 20px;
+  font-size: 20px;
+`
+const InputBtn = styled.input`
+  height: 70px;
+  width: 90px;
+  border-radius: 8px;
+  padding: 5px;
+  font-size: 20px;
+`
 
 export default SearchBox;

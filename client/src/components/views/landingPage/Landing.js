@@ -9,6 +9,7 @@ import InfoToday from "./InfoToday";
 import RecomendBtn from "./RecomendBtn";
 import Cloud from "./WeaterIMG/Cloud";
 import { ApplicationContextProvider } from "../../../contexts/weatherAndMap_context";
+import CurrentLocation from "./CurrentLocation";
 
 const MainDivStyle = styled.div`
   background-color: #a5a0a0;
@@ -18,19 +19,22 @@ const MainDivStyle = styled.div`
 function Landing(props) {
   return (
     <>
+     <ApplicationContextProvider>
       <MainDivStyle>
         <Cloud />
         <InfoToday />
         <RecomendBtn />
-      </MainDivStyle>
-
-      <ApplicationContextProvider>
-        <MapContextProvider>
-          <MapStoreList />
-          <MapContainer />
-        </MapContextProvider>
         <SearchBox />
-        <Weather />
+        <CurrentLocation />
+      </MainDivStyle>
+      
+{/*      
+        <MapContextProvider>
+          <MapContainer />
+          <MapStoreList />
+        </MapContextProvider>
+        <Weather /> */}
+
       </ApplicationContextProvider>
     </>
   );

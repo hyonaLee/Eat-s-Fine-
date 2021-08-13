@@ -20,6 +20,7 @@ export function ApplicationContextProvider({ children }) {
     setLatitude,
     setLongitude,
     setMyLocation,
+    myLocation
   };
 
   return <Context.Provider value={value}>{children}</Context.Provider>;

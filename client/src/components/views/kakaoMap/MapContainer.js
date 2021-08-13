@@ -53,7 +53,6 @@ function MapContainer() {
                 result[0].road_address.address_name +
                 "</div>"
               : "<div>지번 주소 : " + result[0].address.address_name + "</div>";
-            console.log("내위치", detailAddr);
             setMyLocation(result[0].address.address_name);
             // 마커를 클릭한 위치에 표시합니다
             marker.setPosition(locPosition);
@@ -219,7 +218,7 @@ function MapContainer() {
         });
 
       marker.setMap(map); // 지도 위에 마커를 표출합니다
-      markers.push(marker); // 배열에 생성된 마g커를 추가합니다
+      markers.push(marker); // 배열에 생성된 마커를 추가합니다
 
       return marker;
     }
