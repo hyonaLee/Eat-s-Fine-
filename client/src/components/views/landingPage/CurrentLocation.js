@@ -9,7 +9,7 @@ function CurrentLocation() {
 
 
         <LocationDiv>
-            <LocationH1>Location</LocationH1>
+            <LocationH1>{myLocation}</LocationH1>
         </LocationDiv>
 
 

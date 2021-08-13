@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useApplicationContext } from "../../../contexts/weatherAndMap_context";
 import styled from 'styled-components';
+import { Route,Link } from 'react-router-dom';
+import MapContainer from './../kakaoMap/MapContainer';
+
 
 function SearchBox() {
   const [btnClicks, setBtnClicks] = useState(false);
@@ -27,7 +30,10 @@ function SearchBox() {
         onChange={onchange}
         value={text}
       />
+      <Link to="/map">
       <InputBtn type="button" onClick={onclick} value="검색" />
+      </Link>
+      <Route path="/map" component={MapContainer} />
       <p>{btnClicks}</p>
     </SearchDiv>
   );

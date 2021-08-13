@@ -5,20 +5,23 @@ function HashTag() {
     
     return (
         <>
-            <HashH1>
-                <span>#햄버거 </span>
-                <span>#치킨 </span>
-                <span>#곱창 </span>
-                <span>#삼겹살 </span>
-            </HashH1>
+            <HashDiv>
+                <HashH1>#햄버거 </HashH1>
+                <HashH1>#치킨 </HashH1>
+                <HashH1>#곱창 </HashH1>
+                <HashH1>#삼겹살 </HashH1>
+            </HashDiv>
         </>
     );
 }
 
 
+const HashDiv = styled.div`
+position: relative;
+top: 300px;
+`;
 const HashH1 = styled.h1`
   font-size: 25px;
-  font-weight: nomal;
   color: white;
   line-height: 50px;
 `;

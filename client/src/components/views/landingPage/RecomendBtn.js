@@ -10,7 +10,6 @@ function RecomendBtn() {
             <RecomendBtnStyle>
               추천메뉴보기
             </RecomendBtnStyle></Link>
-            <Route path="/recomend" component={MapDetail} />
         </BtnDiv>
     );
 }
