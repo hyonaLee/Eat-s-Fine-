@@ -1,16 +1,17 @@
 import React from 'react';
 import { Route,Link } from 'react-router-dom';
 import styled from 'styled-components';
-import MapDetail from './MapDetail';
+import auth from '../../../hoc/auth';
+import ChangeLocation from '../changeLocation/ChangeLocation';
 
 function RecomendBtn() {
     return (
         <BtnDiv>
-            <Link to="/recomend">
+            <Link to="/changelocation">
             <RecomendBtnStyle>
             직접찾아보기
             </RecomendBtnStyle></Link>
-            <Route path="/recomend" component={MapDetail} />
+            {/* <Route exact path="/changelocation" component={auth(ChangeLocation, false)} /> */}
         </BtnDiv>
     );
 }

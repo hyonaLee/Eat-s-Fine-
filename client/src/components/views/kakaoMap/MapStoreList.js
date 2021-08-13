@@ -23,6 +23,7 @@ function MapList({ list }) {
       <ul>
         {list.map((item, index) => (
           <li
+            style={{ border: "1px solid black", cursor: "pointer" , color:"black"}}
             key={item.index}
             onClick={() =>
               window.open(`http://place.map.kakao.com/${item.id}`, "_blank")
