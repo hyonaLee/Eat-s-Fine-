@@ -6,10 +6,12 @@ function HashTag() {
     return (
         <>
             <HashDiv>
-                <HashH1>#햄버거 </HashH1>
-                <HashH1>#치킨 </HashH1>
-                <HashH1>#곱창 </HashH1>
-                <HashH1>#삼겹살 </HashH1>
+                <HashH1>
+                    <span>#햄버거 </span>
+                    <sapn>#치킨 </sapn>
+                    <span>#족발 </span>
+                    <span>#삼겹살 </span>
+                </HashH1>
             </HashDiv>
         </>
     );
@@ -18,7 +20,7 @@ function HashTag() {
 
 const HashDiv = styled.div`
 position: relative;
-top: 300px;
+top: 350px;
 `;
 const HashH1 = styled.h1`
   font-size: 25px;

@@ -7,10 +7,11 @@ import Cloud from "./WeaterIMG/Cloud";
 import { ApplicationContextProvider } from "../../../contexts/weatherAndMap_context";
 import CurrentLocation from "./CurrentLocation";
 import MyLocation from "../kakaoMap/MyLocation";
-import MapContainer from './../kakaoMap/MapContainer';
-import MapStoreList from './../kakaoMap/MapStoreList';
+import MapContainer from '../kakaoMap/MapContainer';
+import MapStoreList from '../kakaoMap/MapStoreList';
 import Weather from './Weather';
-import { MapContextProvider } from './../../../contexts/map_context';
+import { MapContextProvider } from '../../../contexts/map_context';
+import HashTag from "./HashTag";
 
 const MainDivStyle = styled.div`
   background-color: #a5a0a0;
@@ -20,22 +21,18 @@ const MainDivStyle = styled.div`
 function Landing(props) {
   return (
     <>
+
      <ApplicationContextProvider>
       <MainDivStyle>
         <Cloud />
         <InfoToday />
+        <HashTag/>
         <RecomendBtn />
         <SearchBox />
         <CurrentLocation />
         <MyLocation/>
         </MainDivStyle>
-      
-        <MapContextProvider>
-          <MapContainer />
-          <MapStoreList />
-        </MapContextProvider>
-        <Weather />
-
+        <Weather/>
       </ApplicationContextProvider>
     </>
   );

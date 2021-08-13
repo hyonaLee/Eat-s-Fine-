@@ -57,14 +57,7 @@ function Login(props) {
         <br />
         <button>Login</button>
       </form>
-      <ApplicationContextProvider>
-        <MapContextProvider>
-          <MapStoreList />
-          <MapContainer />
-        </MapContextProvider>
-        <SearchBox />
-        <Weather />
-      </ApplicationContextProvider>
+     
     </div>
   );
 }

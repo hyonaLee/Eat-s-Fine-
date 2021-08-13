@@ -5,10 +5,11 @@ import { Route,Link } from 'react-router-dom';
 import MapContainer from './../kakaoMap/MapContainer';
 
 
+
 function SearchBox() {
   const [btnClicks, setBtnClicks] = useState(false);
   const [text, setText] = useState("");
-  const { setLocationSearch } = useApplicationContext();
+  const { setLocationSearch, myLocation } = useApplicationContext();
 
   function onchange(e) {
     setText(e.target.value);
@@ -18,7 +19,7 @@ function SearchBox() {
     if (text === "") {
       setLocationSearch(text);
     } else {
-      setLocationSearch(text + "맛집");
+      setLocationSearch(myLocation+text + "맛집");
     }
   }
 
@@ -26,7 +27,7 @@ function SearchBox() {
     <SearchDiv>
       <Input
         type="text"
-        placeholder="메뉴입력"
+        placeholder="원하시는 메뉴가 있나요?"
         onChange={onchange}
         value={text}
       />

@@ -1,6 +1,8 @@
 import React, { useRef, useEffect, useState } from "react";
 import { useApplicationContext } from "../../../contexts/weatherAndMap_context";
 import { useMapContext } from "../../../contexts/map_context";
+import styled from 'styled-components';
+
 
 function MapContainer() {
   const container = useRef(null); //지도를 담을 영역의 DOM 레퍼런스
@@ -284,9 +286,9 @@ function MapContainer() {
 
   return (
     <>
-      <div
+      <MapDiv
         className="map"
-        style={{ width: "100%", height: "1000px" }}
+        style={{ width: "800px", height: "500px" }}
         ref={container}
       />
       <div>{locationSearch}</div>
@@ -297,4 +299,10 @@ function MapContainer() {
   );
 }
 
+const MapDiv = styled.div`
+  position: relative;
+  top: 120px;
+  width: 800px;
+  height: 500px;
+`
 export default MapContainer;
