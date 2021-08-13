@@ -22,8 +22,13 @@ function MapList({ list }) {
     <div>
       <ul>
         {list.map((item, index) => (
-          <li key={item.index}>
-            <span>{index+1} </span>
+          <li
+            key={item.index}
+            onClick={() =>
+              window.open(`http://place.map.kakao.com/${item.id}`, "_blank")
+            }
+          >
+            <span>{index + 1} </span>
             <span>주소: {item.address_name}</span>
             <span>도로명주소: {item.road_address_name}</span>
             <span>가게명: {item.place_name}</span>
