@@ -26,7 +26,13 @@ function Landing(props) {
           <InfoToday />
         </MainDivStyle>
         <MyLocation />
-          <RecomendBtn />
+        <RecomendBtn />
+        <MapContextProvider>
+          <MapStoreList />
+          <MapContainer />
+        </MapContextProvider>
+        <SearchBox />
+        <Weather />
       </ApplicationContextProvider>
     </>
   );
