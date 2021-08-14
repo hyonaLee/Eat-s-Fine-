@@ -9,12 +9,7 @@ import Weather from '../landingPage/Weather'
 function ChangeLocation() {
   return (
     <ApplicationContextProvider>
-    <MapContextProvider>
-      <MapStoreList />
-      <MapContainer />
-    </MapContextProvider>
-    <SearchBox />
-    <Weather />
+  
   </ApplicationContextProvider>
   )
 }

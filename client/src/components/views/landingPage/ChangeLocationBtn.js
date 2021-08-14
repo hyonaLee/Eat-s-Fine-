@@ -1,19 +1,19 @@
 import React from 'react';
-import { Route,Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-function RecomendBtn() {
+function ChangeLocationBtn() {
     return (
         <BtnDiv>
-            <Link to="/recomend">
-            <RecomendBtnStyle>
-              메뉴더보기
-            </RecomendBtnStyle></Link>
+            <Link to="/changelocation">
+            <ChangeLocationBtnStyle>
+              위치변경
+            </ChangeLocationBtnStyle></Link>
         </BtnDiv>
     );
 }
 
-const RecomendBtnStyle = styled.button`
+const ChangeLocationBtnStyle = styled.button`
 
   font-size: 20px;
   font-weight: nomal;
@@ -29,4 +29,4 @@ const BtnDiv = styled.div`
   top: 600px;
 
 `
-export default RecomendBtn;
+export default ChangeLocationBtn;

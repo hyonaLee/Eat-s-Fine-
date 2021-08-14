@@ -1,6 +1,8 @@
 import React, { useRef, useEffect, useState } from "react";
 import { useApplicationContext } from "../../../contexts/weatherAndMap_context";
 import { useMapContext } from "../../../contexts/map_context";
+import styled from 'styled-components';
+
 
 function MapContainer() {
   const container = useRef(null); //지도를 담을 영역의 DOM 레퍼런스
@@ -53,6 +55,9 @@ function MapContainer() {
                 result[0].road_address.address_name +
                 "</div>"
               : "<div>지번 주소 : " + result[0].address.address_name + "</div>";
+
+            setMyLocation(result[0].address.address_name);
+
             // 마커를 클릭한 위치에 표시합니다
             marker.setPosition(locPosition);
             marker.setMap(map);
@@ -217,7 +222,7 @@ function MapContainer() {
         });
 
       marker.setMap(map); // 지도 위에 마커를 표출합니다
-      markers.push(marker); // 배열에 생성된 마g커를 추가합니다
+      markers.push(marker); // 배열에 생성된 마커를 추가합니다
 
       return marker;
     }
@@ -281,9 +286,9 @@ function MapContainer() {
 
   return (
     <>
-      <div
+      <MapDiv
         className="map"
-        style={{ width: "500px", height: "500px" }}
+        style={{ width: "800px", height: "500px" }}
         ref={container}
       />
       <div>{locationSearch}</div>
@@ -294,4 +299,10 @@ function MapContainer() {
   );
 }
 
+const MapDiv = styled.div`
+  position: relative;
+  top: 120px;
+  width: 800px;
+  height: 500px;
+`
 export default MapContainer;

@@ -19,6 +19,7 @@ function MyLocation() {
       setMyLocation(result[0].address.address_name);
     }
   });
+  
   return <div></div>;
 }
 

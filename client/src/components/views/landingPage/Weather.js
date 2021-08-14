@@ -5,7 +5,7 @@ import { useApplicationContext } from "../../../contexts/weatherAndMap_context";
 function Weather() {
   const [text, setText] = useState("현재위치");
   const [weatherData, setWeatherData] = useState([]);
-  const { locationSearch, longitude, latitude, latlngValue } =
+  const { locationSearch, longitude, latitude, latlngValue, sky, setSky } =
     useApplicationContext();
 
   let latData = latitude;
@@ -34,26 +34,25 @@ function Weather() {
   }, [latData, lonData, locationSearch]);
 
   let tmp = "";
-  let sky = "";
+
 
   if (weatherData.length !== 0) {
     tmp = weatherData[0].wea_val;
-    sky = weatherData[5].wea_val;
 
-    if (weatherData[5].wea_val === "1") sky = "맑음";
-    else if (weatherData[5].wea_val === "3") sky = "구름많음";
-    else sky = "흐림";
+    if (weatherData[5].wea_val === "1") setSky("맑음");
+      else if (weatherData[5].wea_val === "3") setSky("구름많음");
+      else setSky("흐림");
+
+   if (weatherData[6].wea_val === "0") console.log("맑음");
+    else if(weatherData[6].wea_val === "3") console.log("눈");
+    else console.log("비");
   }
 
   return (
     <div>
-      <p>위도: {latData}</p>
-      <p>경도: {lonData}</p>
-      <p>
-        {text} 날씨정보, 온도 : {tmp}, 기상상태 : {sky}
-      </p>
+     weather
     </div>
   );
-}
+};
 
 export default Weather;
