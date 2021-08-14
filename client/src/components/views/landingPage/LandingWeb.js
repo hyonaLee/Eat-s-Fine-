@@ -23,11 +23,11 @@ function Landing(props) {
     <>
       <ApplicationContextProvider>
         <MainDivStyle>
+          <SearchBox />
           <Cloud />
           <InfoToday />
           <HashTag />
           <RecomendBtn />
-          <SearchBox />
           <CurrentLocation />
           <MyLocation />
         </MainDivStyle>
@@ -36,7 +36,6 @@ function Landing(props) {
           <MapStoreList />
           <MapContainer />
         </MapContextProvider>
-     
       </ApplicationContextProvider>
     </>
   );
