@@ -5,10 +5,13 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const HeaderDiv = styled.div`
-// display:block;
+  display: block;
+  display: flex;
+  justify-content: space-between;
+  height: 50px;
 `;
 
-const HeaderStyle = styled.h1`
+const HeaderStyle = styled.h2`
 margin: 20px;
 float: left;
 color: white;
@@ -20,9 +23,9 @@ float: right;
 color: white;
 `;
 
-const LogStyle = styled.h1`
+const LogStyle = styled.h2`
 margin: 20px;
-float: left;
+float: right;
 color: white;
 font-weight: bolder;
 font-size: 20px;
@@ -35,7 +38,7 @@ const StyledHeaderLink = styled(Link)`
   color: white;
   font-size: 20px;
   text-decoration: none;
-  line-height: 80px;
+  line-height: 50px;
   padding-right: 10px;
 `;
 
@@ -54,19 +57,19 @@ function Header(props) {
   };
 
   return (
-      <HeaderDiv>
+      <>
         {user.userData && !user.userData.isAuth ? (
-          <div>
+          <HeaderDiv>
             <Link to="/"><HeaderStyle>Eat's Fine!</HeaderStyle></Link>
             <LogDiv>
               <Link to="/login"><LogStyle>로그인</LogStyle></Link>
               <Link to="/register"><LogStyle>회원가입</LogStyle></Link>
             </LogDiv>
-          </div>
+          </HeaderDiv>
         ) : (
           <StyledHeaderLink onClick={logoutHandler}>로그아웃</StyledHeaderLink>
         )}
-      </HeaderDiv>
+      </>
   );
 }
 

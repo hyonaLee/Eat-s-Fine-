@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useApplicationContext } from "../../../contexts/weatherAndMap_context";
+import styled from 'styled-components';
+import { Route,Link } from 'react-router-dom';
+
+
 
 function SearchBox() {
   const [text, setText] = useState("");
@@ -32,34 +36,16 @@ function SearchBox() {
   }
 
   return (
-    <div>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <input
+    <InputDiv>
+      {/* <input
         type="text"
         placeholder="내위치에서 메뉴 입력"
         onChange={onchangeText}
         value={text}
-      />
-      <input type="button" onClick={onclickMenu} value="검색" />
-      <br></br>
+      /> */}
+      {/* <Link to="/map"> */}
+      {/* <input type="button" onClick={onclickMenu} value="검색" /> */}
+      {/* </Link> */}
       <input
         type="text"
         placeholder="다른지역 입력"
@@ -67,8 +53,15 @@ function SearchBox() {
         value={location}
       />
       <input type="button" onClick={onclickLocation} value="검색" />
-    </div>
+    </InputDiv>
   );
 }
+
+
+const InputDiv = styled.div`
+  position: relative;
+  top: 400px;
+
+`
 
 export default SearchBox;

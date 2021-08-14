@@ -1,15 +1,12 @@
 import React from "react";
-import { Link, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import Auth from "../hoc/auth";
+import Header from "./views/common/Header.js";
+import Footer from "./views/common/Footer.js";
 import Landing from "./views/landingPage/LandingWeb.js";
 import Login from "./views/loginPage/Login.js";
 import Register from "./views/registerPage/Register.js";
-import Header from "./views/common/Header.js";
-import Footer from "./views/common/Footer.js";
-
 import MapContainer from './views/kakaoMap/MapContainer';
-import HashTag from './views/landingPage/HashTag';
-
 import ChangeLocation from "./views/changeLocation/ChangeLocation";
 
 
@@ -21,7 +18,6 @@ function App() {
         <Route exact path="/" component={Auth(Landing, null)} />
         <Route exact path="/login" component={Auth(Login, false)} />
         <Route exact path="/register" component={Auth(Register, false)} />
-        <Route exact path="/recomend" component={HashTag} />
         <Route exact path="/map" component={MapContainer} />
         <Route exact path="/changelocation" component={Auth(ChangeLocation, false)}/>
       </Switch>

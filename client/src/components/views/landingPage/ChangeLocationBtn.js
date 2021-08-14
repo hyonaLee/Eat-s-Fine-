@@ -14,19 +14,18 @@ function ChangeLocationBtn() {
 }
 
 const ChangeLocationBtnStyle = styled.button`
-
-  font-size: 20px;
-  font-weight: nomal;
+  font-size: 10px;
   color: white;
   background-color: #a5a0a0;
-  padding:10px;
+  padding:5px;
   border-radius: 8px;
-  height: 50px;
+  height: 20px;
+  width: 65px;
 `;
 
 const BtnDiv = styled.div`
   position: relative;
-  top: 600px;
+  top: 470px;
 
 `
 export default ChangeLocationBtn;

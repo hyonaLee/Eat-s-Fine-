@@ -5,7 +5,7 @@ import { ApplicationContextProvider } from '../../../contexts/weatherAndMap_cont
 import { loginUser } from '../../../_actions/user_actions';
 import MapContainer from '../kakaoMap/MapContainer';
 import MapStoreList from '../kakaoMap/MapStoreList';
-import SearchBox from '../landingPage/SearchBox';
+import SearchBox from '../landingPage/SearchBoxLocation';
 import Weather from '../landingPage/Weather';
 
 function Login(props) {
