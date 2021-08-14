@@ -2,14 +2,18 @@ import React from 'react';
 import styled from "styled-components";
 
 const FooterDiv = styled.div`
-  position: absolute;
-  bottom: 0;
+  background-color: black;
+  display: block;
+  display: flex;
+  justify-content: flex-start;
+  color: white;
+  height: 50px;
 `;
 
 function Footer() {
   return (
     <FooterDiv>
-      <h1>Footer입니다.</h1>
+      <h2>Footer입니다.</h2>
     </FooterDiv>
   )
 }

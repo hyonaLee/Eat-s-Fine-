@@ -1,20 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useApplicationContext } from "../../../contexts/weatherAndMap_context";
-import Weather from './Weather';
 
 
 
 function InfoToday() {
   const { sky } =useApplicationContext();
-console.log("21123",sky)
+console.log("하늘상태",sky)
     return (
-      <div>
         <InfoDiv>
-            <InfoH1>오늘의 날씨는 <span>{sky}</span>이에요.</InfoH1>
-            <InfoH1>오늘같은날엔 이 음식 어때요?</InfoH1>
+            <InfoH2>오늘의 날씨는 {sky}이에요.</InfoH2>
+            <InfoH2>오늘같은날엔 이 음식 어때요?</InfoH2>
         </InfoDiv>
-        </div>
     );
 }
 
@@ -23,10 +20,10 @@ const InfoDiv = styled.div`
   position: relative;
   top: 350px;
 `
-const InfoH1 = styled.h1`
+const InfoH2 = styled.h2`
   font-size: 25px;
   color: white;
-  line-height: 50px;
+  line-height: 20px;
 `;
 
 export default InfoToday;

@@ -27,6 +27,7 @@ app.use("/api/weathers", require("./routes/weather"));
 app.use("/api/users", require("./routes/users"));
 
 
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });

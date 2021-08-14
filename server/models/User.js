@@ -21,6 +21,18 @@ const userSchema = mongoose.Schema({
     type: String,
     maxlength: 50
   },
+
+  //------------찜하기---------------
+  keep: {
+    type: Array,
+    default: []
+  },
+  history: {
+    type: Array,
+    default: []
+  },
+  //------------찜하기---------------
+  
   role:{ // 관리자 또는 유저 타입, 기본(디폴트)은 0 
     type: Number,
     default: 0

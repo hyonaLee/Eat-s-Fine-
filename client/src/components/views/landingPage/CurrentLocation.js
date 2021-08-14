@@ -24,7 +24,7 @@ const LocationH1 = styled.h3`
 `;
 const LocationDiv = styled.div`
   position: relative;
-  top: 350px;
+  top: 450px;
   `;
 
 export default CurrentLocation;

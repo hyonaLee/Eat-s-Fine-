@@ -3,6 +3,7 @@ import {
   LOGOUT_USER,
   AUTH_USER,
   REGISTER_USER,
+  ADD_KEEP,
 } from "../_actions/types";
 
 //state에 초기값에 {} 비어있는 오브젝트
@@ -17,6 +18,11 @@ export default function (state = {}, action) {
       return { ...state };
     case REGISTER_USER:
       return { ...state, register: action.payload };
+    case ADD_KEEP:
+      return { ...state, userData: {
+        ...state.userData,
+        keep: action.payload
+      } };
     default:
       return state;
   }

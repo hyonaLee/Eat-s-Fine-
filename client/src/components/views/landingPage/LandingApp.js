@@ -6,15 +6,15 @@ import HashTag from "./HashTag";
 import InfoToday from "./InfoToday";
 import RecomendBtn from "./RecomendBtn";
 const MainDivStyle = styled.div`
-  background-color: #282c34;
-  margin: auto;
-  padding: 50px 20px;
-  width: 450px;
-  height: 800px;
-  border-radius: 40px;
+  // background-color: #282c34;
+  // margin: auto;
+  // padding: 50px 20px;
+  // width: 450px;
+  // height: 800px;
+  // border-radius: 40px;
 `;
 
-function Landing(props) {
+function LandingApp(props) {
   return (
     <MainDivStyle>
       <CurrentLocation />
@@ -26,4 +26,4 @@ function Landing(props) {
   );
 }
 
-export default Landing;
+export default LandingApp;

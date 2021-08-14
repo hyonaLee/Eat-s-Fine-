@@ -1,15 +1,14 @@
-import axios from 'axios';
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { registerUser } from '../../../_actions/user_actions';
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { registerUser } from "../../../_actions/user_actions";
 
 function Register(props) {
   const dispatch = useDispatch();
 
-  const [Email, setEmail] = useState('');
-  const [Name, setName] = useState('');
-  const [Password, setPassword] = useState('');
-  const [PasswordConfirm, setPasswordConfirm] = useState('');
+  const [Email, setEmail] = useState("");
+  const [Name, setName] = useState("");
+  const [Password, setPassword] = useState("");
+  const [PasswordConfirm, setPasswordConfirm] = useState("");
 
   const onEmailHandler = (e) => setEmail(e.currentTarget.value);
   const onNameHandler = (e) => setName(e.currentTarget.value);
@@ -21,7 +20,7 @@ function Register(props) {
     e.preventDefault(); //login버튼 클릭했을때 페이지가 refresh 되는것을 막음
 
     if (Password !== PasswordConfirm) {
-      return alert('비밀번호와 비밀번호 확인은 같아야 합니다.');
+      return alert("비밀번호와 비밀번호 확인은 같아야 합니다.");
     }
 
     let data = {
@@ -30,16 +29,14 @@ function Register(props) {
       name: Name,
     };
 
-    //axios.post('/api/users/register', body)
-
     dispatch(registerUser(data)) //dispatch로 액션을 요청(user_action.js의 loginUser() 함수 호출)
       .then((response) => {
         //reducer 리턴 후 분기
         if (response.payload.success) {
-          alert('회원가입 성공')
-          props.history.push('/login');
+          alert("회원가입 성공");
+          props.history.push("/login");
         } else {
-          alert('회원가입 실패');
+          alert("회원가입 실패");
         }
       });
   };
@@ -47,15 +44,15 @@ function Register(props) {
   return (
     <div
       style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: '100%,',
-        height: '50vh',
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        width: "100%,",
+        height: "50vh",
       }}
     >
       <form
-        style={{ display: 'flex', flexDirection: 'column' }}
+        style={{ display: "flex", flexDirection: "column" }}
         onSubmit={onSubmitHandler}
       >
         <lable>Email</lable>

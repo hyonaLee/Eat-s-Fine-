@@ -4,6 +4,7 @@ import {
   LOGOUT_USER,
   AUTH_USER,
   REGISTER_USER,
+  ADD_KEEP
 } from "./types";
 
 //dispatch요청으로 loginUser() 함수를 액션
@@ -24,7 +25,7 @@ export function loginUser(dataToSubmit) {
 
 export function logoutUser() {
   const request = axios
-    .get("./api/users/logout")
+    .post("./api/users/logout")
     .then((response) => response.data);
 
   return {
@@ -54,5 +55,17 @@ export function registerUser(dataToSubmit) {
     payload: request,
   };
 }
+
+export function addKeep(storeInfo){
+  const request = axios
+    .post("./api/users/addKeep",storeInfo)
+    .then((response) => response.data);
+
+  return {
+    type: ADD_KEEP,
+    payload: request,
+  };
+}
+
 
 
