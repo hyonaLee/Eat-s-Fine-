@@ -4,6 +4,8 @@ import {
   AUTH_USER,
   REGISTER_USER,
   ADD_KEEP,
+  GET_KEEP_ITEMS,
+  DELETE_KEEP,
 } from "../_actions/types";
 
 //state에 초기값에 {} 비어있는 오브젝트
@@ -19,10 +21,25 @@ export default function (state = {}, action) {
     case REGISTER_USER:
       return { ...state, register: action.payload };
     case ADD_KEEP:
-      return { ...state, userData: {
-        ...state.userData,
-        keep: action.payload
-      } };
+      return {
+        ...state,
+        userData: {
+          ...state.userData,
+          keep: action.payload,
+        },
+      };
+    case GET_KEEP_ITEMS:
+      return { ...state };
+
+    case DELETE_KEEP:
+      return {
+        ...state,
+        userData: {
+          ...state.userData,
+          keep: action.payload,
+        },
+      };
+
     default:
       return state;
   }

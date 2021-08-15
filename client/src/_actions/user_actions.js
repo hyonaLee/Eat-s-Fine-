@@ -4,7 +4,9 @@ import {
   LOGOUT_USER,
   AUTH_USER,
   REGISTER_USER,
-  ADD_KEEP
+  ADD_KEEP,
+  GET_KEEP_ITEMS,
+  DELETE_KEEP,
 } from "./types";
 
 //dispatch요청으로 loginUser() 함수를 액션
@@ -56,9 +58,9 @@ export function registerUser(dataToSubmit) {
   };
 }
 
-export function addKeep(storeInfo){
+export function addKeep(storeInfo) {
   const request = axios
-    .post("./api/users/addKeep",storeInfo)
+    .post("./api/users/addKeep", storeInfo)
     .then((response) => response.data);
 
   return {
@@ -67,5 +69,32 @@ export function addKeep(storeInfo){
   };
 }
 
+// export function getKeepItems(keepItems, userKeep){
+//   console.log("111",keepItems)
+//   console.log("2222",userKeep)
+//   const request = axios
+//     .get("./api/keep/id?id={keepItems}&type=array")
+//     .then((response) => {
+//       console.log("12321415",response)
+//       console.log("11232",response.data)
 
+//     });
 
+//   return {
+//     type: GET_KEEP_ITEMS,
+//     payload: request,
+//   };
+// }
+
+export function deleteKeep(keepInfo) {
+  const request = axios
+    .post("./api/users/deleteKeep", keepInfo)
+    .then((response) => {
+
+    });
+
+  return {
+    type: DELETE_KEEP,
+    payload: request,
+  };
+}

@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import Auth from "../hoc/auth";
 import Header from "./views/common/Header.js";
 import Footer from "./views/common/Footer.js";
@@ -20,6 +20,7 @@ function App() {
       <ApplicationContextProvider>
         <MapContextProvider>
           <Switch>
+            {/* <Redirect exact from="/" to="/" /> */}
             <Route exact path="/" component={Auth(Landing, null)} />
             <Route exact path="/login" component={Auth(Login, false)} />
             <Route exact path="/register" component={Auth(Register, false)} />

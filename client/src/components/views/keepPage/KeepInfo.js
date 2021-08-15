@@ -1,32 +1,27 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { addKeep } from "../../../_actions/user_actions";
+import { deleteKeep } from "../../../_actions/user_actions";
 
-function StoreInfo({ list }) {
+function KeepInfo({ list }) {
   const dispatch = useDispatch();
   const [data, setData] = useState(null);
 
   useEffect(() => {
     if (data !== null) {
       console.log("123", data);
-      dispatch(addKeep(data));
+      dispatch(deleteKeep(data));
     }
+    // KeepInfo();
   }, [data]);
 
-  //필요한정보를 카트필드에 넣어줌
-
+  function listDelete(index) {
+    list.splice(index, 1);
+  }
   return (
     <div>
       <ul>
         {list.map((item, index) => (
-          <li
-            style={{
-              border: "1px solid black",
-              cursor: "pointer",
-              color: "black",
-            }}
-            key={item.index}
-          >
+          <li style={{ border: "1px solid black" }}>
             <div
               onClick={() =>
                 window.open(`http://place.map.kakao.com/${item.id}`, "_blank")
@@ -42,9 +37,10 @@ function StoreInfo({ list }) {
               <button
                 onClick={() => {
                   setData(item);
+                  listDelete(index);
                 }}
               >
-                찜하기
+                삭제
               </button>
             </div>
           </li>
@@ -54,4 +50,4 @@ function StoreInfo({ list }) {
   );
 }
 
-export default StoreInfo;
+export default KeepInfo;

@@ -25,6 +25,7 @@ mongoose.connect(config.mongoURI, {
   
 app.use("/api/weathers", require("./routes/weather"));
 app.use("/api/users", require("./routes/users"));
+app.use("/api/keep", require("./routes/keep"));
 
 
 

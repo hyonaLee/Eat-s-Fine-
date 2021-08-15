@@ -71,7 +71,7 @@ function Header() {
           <Link to="/register">
             <LogStyle onClick={logoutHandler}>로그아웃</LogStyle>
           </Link>
-          <Link to="/user/keep">
+          <Link to="/keep">
             <LogStyle>찜 목록</LogStyle>
           </Link>
         </LogDiv>

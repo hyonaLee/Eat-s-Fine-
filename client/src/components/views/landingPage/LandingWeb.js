@@ -3,7 +3,6 @@ import styled from "styled-components";
 import InfoToday from "./InfoToday";
 import RecomendBtn from "./RecomendBtn";
 import Rainy from "./WeaterIMG/Rainy";
-import { ApplicationContextProvider } from "../../../contexts/weatherAndMap_context";
 import CurrentLocation from "./CurrentLocation";
 import MyLocation from "../kakaoMap/MyLocation";
 import Weather from "./Weather";
