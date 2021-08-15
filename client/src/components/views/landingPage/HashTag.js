@@ -1,15 +1,24 @@
-import React from 'react';
+import React, { useState,useEffect } from 'react';
 import styled from 'styled-components';
+import { useApplicationContext } from "../../../contexts/weatherAndMap_context";
 
 function HashTag() {
+  const { sky } =useApplicationContext();
+    const CurrentWeatherData = {sky};
+    const [todayMenu, setTodayMenu] = useState("#");
+
+    useEffect(() => {
+    if (CurrentWeatherData.sky === "맑음") setTodayMenu("#치킨");
+    else if (CurrentWeatherData.sky === "비") setTodayMenu("#파전");
+    else if (CurrentWeatherData.sky === "소나기") setTodayMenu("#닭볶음탕");
+    else if (CurrentWeatherData.sky === "눈") setTodayMenu("#수제비");
+    else setTodayMenu("#삼겹살");
+    }, [{sky}]);
     
     return (
             <HashDiv>
                 <HashH2>
-                    <span>#햄버거 </span>
-                    <sapn>#치킨 </sapn>
-                    <span>#족발 </span>
-                    <span>#삼겹살 </span>
+                    <span>{todayMenu}</span>
                 </HashH2>
             </HashDiv>
     );
