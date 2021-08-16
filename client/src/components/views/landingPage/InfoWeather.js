@@ -6,7 +6,7 @@ import Snow from "./WeaterIMG/Snow";
 import Sun from "./WeaterIMG/Sun";
 import Thunder from "./WeaterIMG/Thunder";
 
-function InfoWeather(props) {
+function InfoWeather() {
   const { sky, setSky } = useApplicationContext();
   const CurrentWeatherData = { sky };
   const [todayWeat, setTodayWeat] = useState(<Cloud />);

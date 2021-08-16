@@ -3,7 +3,6 @@ import axios from "axios";
 import { useApplicationContext } from "../../../contexts/weatherAndMap_context";
 
 function Weather() {
-  const [text, setText] = useState("현재위치");
   const [weatherData, setWeatherData] = useState([]);
   const { locationSearch, longitude, latitude, latlngValue, sky, setSky } =
     useApplicationContext();

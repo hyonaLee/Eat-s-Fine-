@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { useApplicationContext } from "../../../contexts/weatherAndMap_context";
-import styled from 'styled-components';
-import { Route,Link } from 'react-router-dom';
-
-
+import styled from "styled-components";
+import { Route, Link } from "react-router-dom";
 
 function SearchBoxMenu() {
   const [text, setText] = useState("");
@@ -12,13 +10,7 @@ function SearchBoxMenu() {
 
   function onchangeText(e) {
     setText(e.target.value);
-    console.log("1", e.target.value);
   }
-
-  // function onchangeText2(e) {
-  //   setLocation(e.target.value);
-  //   console.log("2", e.target.value);
-  // }
 
   function onclickMenu() {
     if (text === "") {
@@ -27,13 +19,6 @@ function SearchBoxMenu() {
       setLocationSearch(myLocation + text + "맛집");
     }
   }
-  // function onclickLocation() {
-  //   if (text === "") {
-  //     setLocationSearch(location);
-  //   } else {
-  //     setLocationSearch(location + "맛집");
-  //   }
-  // }
 
   return (
     <InputDiv>
@@ -44,18 +29,15 @@ function SearchBoxMenu() {
         value={text}
       />
       <Link to="/searchResult">
-      <input type="button" onClick={onclickMenu} value="검색" />
+        <input type="button" onClick={onclickMenu} value="검색" />
       </Link>
-     
     </InputDiv>
   );
 }
 
-
 const InputDiv = styled.div`
   position: relative;
   top: 450px;
-
-`
+`;
 
 export default SearchBoxMenu;

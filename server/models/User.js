@@ -27,7 +27,7 @@ const userSchema = mongoose.Schema({
     type: Array,
     default: []
   },
-  history: {
+  comments: {
     type: Array,
     default: []
   },

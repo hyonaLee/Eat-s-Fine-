@@ -4,8 +4,6 @@ import { useApplicationContext } from "../../../contexts/weatherAndMap_context";
 
 function InfoToday() {
   const { sky } = useApplicationContext();
-  console.log("하늘상태", sky);
-
   return (
     <InfoDiv>
       <InfoH2>오늘의 날씨는 {sky}이에요.</InfoH2>

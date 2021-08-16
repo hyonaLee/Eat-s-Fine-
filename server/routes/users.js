@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const { auth } = require("../middleware/auth");
-const { Keep } = require("../models/Keep");
 const { User } = require("../models/User");
 
 //auth라는 미들웨어 : 요청(get)받았을 때 콜백함수 하기전에 중간에서 실행
@@ -18,7 +17,7 @@ router.get("/auth", auth, (req, res) => {
     role: req.user.role,
     image: req.user.image,
     keep: req.user.keep,
-    history: req.user.history,
+    comments: req.user.comment,
   });
 });
 
@@ -133,6 +132,27 @@ router.post("/deleteKeep", auth, (req, res) => {
               },
             },
           },
+          { new: true },
+          (err, userInfo) => {
+            if (err) return res.status(200).json({ success: false, err });
+            res.status(200).send(userInfo.keep);
+          }
+        );
+      }
+    });
+  });
+});
+
+//찜한거 개별 코멘트달기
+router.post("/addComment", auth, (req, res) => {
+  User.findOne({ _id: req.user._id }, (err, userInfo) => {
+    userInfo.keep.forEach((item) => {
+      console.log("가져온정보", req.body);
+      if (item.id === req.body.storeid) {
+        console.log("선택된 킵정보", item.id);
+        User.findOneAndUpdate(
+          { _id: req.user._id,  "keep.id": req.body.storeid },
+          { $push: { "keep.$.comment": req.body.content } },
           { new: true },
           (err, userInfo) => {
             if (err) return res.status(200).json({ success: false, err });

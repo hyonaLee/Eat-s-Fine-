@@ -1,22 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { deleteKeep } from "../../../_actions/user_actions";
+import Comment from "./Comment";
 
 function KeepInfo({ list }) {
   const dispatch = useDispatch();
   const [data, setData] = useState(null);
+  let a = 1;
+  // const [comments, setCommments] = useState("");
 
   useEffect(() => {
     if (data !== null) {
-      console.log("123", data);
       dispatch(deleteKeep(data));
     }
-    // KeepInfo();
   }, [data]);
 
   function listDelete(index) {
     list.splice(index, 1);
   }
+
   return (
     <div>
       <ul>
@@ -27,11 +29,12 @@ function KeepInfo({ list }) {
                 window.open(`http://place.map.kakao.com/${item.id}`, "_blank")
               }
             >
-              <span>{index + 1} </span>
+              <span>{index + 1}.  </span>
               <span>주소: {item.address_name}</span>
               <span>도로명주소: {item.road_address_name}</span>
               <span>가게명: {item.place_name}</span>
               <span>전화번호: {item.phone}</span>
+              <div>코멘트: {item.comment}</div>
             </div>
             <div>
               <button
@@ -42,6 +45,7 @@ function KeepInfo({ list }) {
               >
                 삭제
               </button>
+              <Comment index={index} />
             </div>
           </li>
         ))}

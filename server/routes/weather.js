@@ -1,5 +1,5 @@
 const express = require("express");
-const weatherData = require("./weatherData");
+const weatherData = require("../api/weatherAPI.js");
 const router = express.Router();
 
 router.use(express.urlencoded({ extended: true }));

@@ -8,12 +8,10 @@ function StoreInfo({ list }) {
 
   useEffect(() => {
     if (data !== null) {
-      console.log("123", data);
+      console.log("찜한 정보", data);
       dispatch(addKeep(data));
     }
   }, [data]);
-
-  //필요한정보를 카트필드에 넣어줌
 
   return (
     <div>

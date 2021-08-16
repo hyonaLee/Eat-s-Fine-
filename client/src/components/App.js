@@ -20,7 +20,6 @@ function App() {
       <ApplicationContextProvider>
         <MapContextProvider>
           <Switch>
-            {/* <Redirect exact from="/" to="/" /> */}
             <Route exact path="/" component={Auth(Landing, null)} />
             <Route exact path="/login" component={Auth(Login, false)} />
             <Route exact path="/register" component={Auth(Register, false)} />

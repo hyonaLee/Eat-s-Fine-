@@ -1,9 +1,8 @@
 import React, { useRef, useEffect, useState } from "react";
 import { useApplicationContext } from "../../../contexts/weatherAndMap_context";
 import { useMapContext } from "../../../contexts/map_context";
-import styled from 'styled-components';
-
-
+import styled from "styled-components";
+import { useHistory } from "react-router-dom";
 function MapContainer() {
   const container = useRef(null); //지도를 담을 영역의 DOM 레퍼런스
   const {
@@ -16,11 +15,17 @@ function MapContainer() {
     setMyLocation,
   } = useApplicationContext();
   const { setMapSearchData } = useMapContext();
-
+  const history = useHistory();
   navigator.geolocation.getCurrentPosition((position) => {
     setLatitude(position.coords.latitude);
     setLongitude(position.coords.longitude);
   });
+
+  //-----0816 새로고침시 처음화면으로 이동
+  if (locationSearch === "") {
+    history.push("/");
+  }
+  //------------------------------------
 
   useEffect(() => {
     let markers = [];
@@ -28,7 +33,6 @@ function MapContainer() {
       center: new window.kakao.maps.LatLng(latitude, longitude), //지도의 중심좌표.
       level: 3, //지도의 레벨(확대, 축소 정도)
     };
-    console.log("맵 재랜더링");
 
     const map = new window.kakao.maps.Map(container.current, options); //지도 생성 및 객체 리턴
     const ps = new window.kakao.maps.services.Places(map);
@@ -107,7 +111,6 @@ function MapContainer() {
         displayPlaces(data);
         setMapSearchData(data);
         // 페이지 번호를 표출합니다
-        displayPagination(pagination);
       }
     }
 
@@ -161,7 +164,7 @@ function MapContainer() {
       }
 
       // 검색결과 항목들을 검색결과 목록 Elemnet에 추가합니다
-      listEl.appendChild(fragment);
+      // listEl.appendChild(fragment);
       // menuEl.scrollTop = 0;
 
       // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
@@ -227,37 +230,6 @@ function MapContainer() {
       return marker;
     }
 
-    // 검색결과 목록 하단에 페이지번호를 표시는 함수입니다
-    function displayPagination(pagination) {
-      let paginationEl = document.getElementById("pagination"),
-        fragment = document.createDocumentFragment(),
-        i;
-
-      //     // 기존에 추가된 페이지번호를 삭제합니다
-      while (paginationEl.hasChildNodes()) {
-        paginationEl.removeChild(paginationEl.lastChild);
-      }
-
-      for (i = 1; i <= pagination.last; i++) {
-        var el = document.createElement("a");
-        el.href = "#";
-        el.innerHTML = i;
-
-        if (i === pagination.current) {
-          el.className = "on";
-        } else {
-          el.onclick = (function (i) {
-            return function () {
-              pagination.gotoPage(i);
-            };
-          })(i);
-        }
-
-        fragment.appendChild(el);
-      }
-      // paginationEl.appendChild(fragment); //1~3페이지
-    }
-
     // 검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
     // 인포윈도우에 장소명을 표시합니다
     function displayInfowindow(marker, title) {
@@ -268,11 +240,7 @@ function MapContainer() {
     }
 
     // 검색결과 목록의 자식 Element를 제거하는 함수입니다
-    function removeAllChildNods(el) {
-      while (el.hasChildNodes()) {
-        el.removeChild(el.lastChild);
-      }
-    }
+    function removeAllChildNods(el) {}
 
     // 지도 위에 표시되고 있는 마커를 모두 제거합니다
     function removeMarker() {
@@ -304,5 +272,5 @@ const MapDiv = styled.div`
   top: 120px;
   width: 800px;
   height: 500px;
-`
+`;
 export default MapContainer;

@@ -15,7 +15,6 @@ function MyLocation() {
   }
   searchDetailAddrFromCoords(locPosition, function (result, status) {
     if (status === window.kakao.maps.services.Status.OK) {
-      console.log("내위치312314", result[0].address.address_name);
       setMyLocation(result[0].address.address_name);
     }
   });

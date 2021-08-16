@@ -5,8 +5,8 @@ import {
   AUTH_USER,
   REGISTER_USER,
   ADD_KEEP,
-  GET_KEEP_ITEMS,
   DELETE_KEEP,
+  ADD_COMMENT,
 } from "./types";
 
 //dispatch요청으로 loginUser() 함수를 액션
@@ -69,23 +69,6 @@ export function addKeep(storeInfo) {
   };
 }
 
-// export function getKeepItems(keepItems, userKeep){
-//   console.log("111",keepItems)
-//   console.log("2222",userKeep)
-//   const request = axios
-//     .get("./api/keep/id?id={keepItems}&type=array")
-//     .then((response) => {
-//       console.log("12321415",response)
-//       console.log("11232",response.data)
-
-//     });
-
-//   return {
-//     type: GET_KEEP_ITEMS,
-//     payload: request,
-//   };
-// }
-
 export function deleteKeep(keepInfo) {
   const request = axios
     .post("./api/users/deleteKeep", keepInfo)
@@ -98,3 +81,15 @@ export function deleteKeep(keepInfo) {
     payload: request,
   };
 }
+
+export function addComment(data) {
+  const request = axios
+    .post("./api/users/addComment", data)
+    .then((response) => response.data);
+
+  return {
+    type: ADD_COMMENT,
+    payload: request,
+  };
+}
+

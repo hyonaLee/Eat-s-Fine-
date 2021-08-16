@@ -1,24 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useMapContext } from "../../../contexts/map_context";
 import StoreInfo from "./StoreInfo";
 
 function MapStoreList() {
-
   const { mapSearchData } = useMapContext();
-  const [list, setList] = useState([]);
-
-  useEffect(() => {
-    if (mapSearchData.length !== 0) {
-      setList(mapSearchData);
-      console.log("리스트추출", mapSearchData);
-    }
-  }, [mapSearchData]);
+  console.log("첨부터", mapSearchData);
 
   return (
     <div>
-      <StoreInfo list={list} />
+      <StoreInfo list={mapSearchData} />
     </div>
   );
 }
-
 export default MapStoreList;
