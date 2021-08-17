@@ -68,6 +68,46 @@ const CurrentWeatherData = { sky };
             menuname: "보쌈",
             weather: ["추움","흐림","비","눈","맑음"]
         },
+        {
+            id: 13,
+            menuname: "스테이크",
+            weather: ["추움","흐림","비","눈","맑음"]
+        },
+        {
+            id: 14,
+            menuname: "파스타",
+            weather: ["추움","흐림","비","눈","맑음"]
+        },
+        {
+            id: 15,
+            menuname: "막창",
+            weather: ["추움","흐림","비","눈","맑음"]
+        },
+        {
+            id: 16,
+            menuname: "메밀소바",
+            weather: ["비","맑음"]
+        },
+        {
+            id: 17,
+            menuname: "초밥",
+            weather: ["추움","흐림","눈","맑음"]
+        },
+        {
+            id: 18,
+            menuname: "된장찌개",
+            weather: ["추움","흐림","눈","맑음"]
+        },
+        {
+            id: 19,
+            menuname: "김치찌개",
+            weather: ["추움","흐림","눈","맑음"]
+        },
+        {
+            id: 20,
+            menuname: "소고기",
+            weather: ["추움","흐림","눈","맑음"]
+        },
     ]);
 
     const result = menus.map((menu,id) =>
