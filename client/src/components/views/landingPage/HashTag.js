@@ -3,17 +3,23 @@ import styled from "styled-components";
 import { useApplicationContext } from "../../../contexts/weatherAndMap_context";
 
 function HashTag() {
-const { sky, setSky, currentMenu, setCurrentMenu, listNum, setListNum } = useApplicationContext();
-  const CurrentWeatherData = { sky };
+  const { sky, setSky, currentMenu, setCurrentMenu, listNum, setListNum } =
+    useApplicationContext();
+
+  for (let index = currentMenu.length - 1; index > 0; index--) {
+    const randomPosition = Math.floor(Math.random() * (index + 1)); 
+    const temp = currentMenu[index];
+    currentMenu[index] = currentMenu[randomPosition];
+    currentMenu[randomPosition] = temp;
+  }
+  let Menuslice = currentMenu.slice(0, 4);
+
   return (
     <HashDiv>
       <HashH2>
-      
-        <span>#{currentMenu[listNum[0]]} </span>
-        <span>#{currentMenu[listNum[1]]} </span>
-        <span>#{currentMenu[listNum[2]]} </span>
-        <span>#{currentMenu[listNum[3]]} </span>
-
+        {Menuslice.map((item, index) => (
+          <span>#{item} </span>
+        ))}
       </HashH2>
     </HashDiv>
   );
