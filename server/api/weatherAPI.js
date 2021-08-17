@@ -18,7 +18,7 @@ const weatherData = (lat, lon, callback) => {
   console.log("격자변환y", rs.y);
   let api_url = `${API_STEM}?serviceKey=${API_KEY}&numOfRows=10&pageNo=1&base_date=${today}&base_time=1100&nx=${rs.x}&ny=${rs.y}`;
   console.log(api_url);
-
+ 
   request(
     {
       url: api_url,

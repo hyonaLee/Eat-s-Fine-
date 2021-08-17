@@ -14,7 +14,7 @@ function MapContainer() {
     setLongitude,
     setMyLocation,
   } = useApplicationContext();
-  const { setMapSearchData } = useMapContext();
+  const { setMapSearchData, setListExist } = useMapContext();
   const history = useHistory();
   navigator.geolocation.getCurrentPosition((position) => {
     setLatitude(position.coords.latitude);
@@ -59,7 +59,7 @@ function MapContainer() {
                 result[0].road_address.address_name +
                 "</div>"
               : "<div>지번 주소 : " + result[0].address.address_name + "</div>";
-
+            // console.logg("주소자르기",result[0].address.address_name);
             setMyLocation(result[0].address.address_name);
 
             // 마커를 클릭한 위치에 표시합니다
@@ -109,8 +109,9 @@ function MapContainer() {
         // 정상적으로 검색이 완료됐으면
         // 검색 목록과 마커를 표출합니다
         displayPlaces(data);
+
+        setListExist(true);
         setMapSearchData(data);
-        // 페이지 번호를 표출합니다
       }
     }
 

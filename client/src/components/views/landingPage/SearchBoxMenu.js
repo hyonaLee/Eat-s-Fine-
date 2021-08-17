@@ -7,6 +7,8 @@ function SearchBoxMenu() {
   const [text, setText] = useState("");
   // const [location, setLocation] = useState("");
   const { setLocationSearch, myLocation } = useApplicationContext();
+  const myLocationLast = myLocation.lastIndexOf(" ");
+  const myLocationName = myLocation.substring(myLocationLast, 0);
 
   function onchangeText(e) {
     setText(e.target.value);
@@ -16,7 +18,7 @@ function SearchBoxMenu() {
     if (text === "") {
       setLocationSearch(text);
     } else {
-      setLocationSearch(myLocation + text + "맛집");
+      setLocationSearch(myLocationName + text + "맛집");
     }
   }
 

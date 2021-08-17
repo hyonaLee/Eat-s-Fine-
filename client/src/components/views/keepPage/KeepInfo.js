@@ -28,7 +28,6 @@ function KeepInfo({ list }) {
               }
             >
               <span>{index + 1}.  </span>
-              <span>가게아이디: {item.id}</span>
               <span>주소: {item.address_name}</span>
               <span>도로명주소: {item.road_address_name}</span>
               <span>가게명: {item.place_name}</span>
