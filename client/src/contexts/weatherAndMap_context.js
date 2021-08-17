@@ -10,7 +10,8 @@ export function ApplicationContextProvider({ children }) {
   const [latlngValue, setLatlngValue] = useState({});
   const [myLocation, setMyLocation] = useState("");
   const [sky, setSky] = useState("");
-  
+  const [currentMenu, setCurrentMenu] = useState([])
+  const [listNum, setListNum] = useState([0,1,2,3])
 
   const value = {
     locationSearch,
@@ -24,7 +25,11 @@ export function ApplicationContextProvider({ children }) {
     setMyLocation,
     myLocation,
     sky,
-    setSky
+    setSky,
+    currentMenu,
+    setCurrentMenu,
+    listNum,
+    setListNum
   };
 
   return <Context.Provider value={value}>{children}</Context.Provider>;

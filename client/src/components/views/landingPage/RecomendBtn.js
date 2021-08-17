@@ -1,10 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useApplicationContext } from "../../../contexts/weatherAndMap_context";
 
 function RecomendBtn() {
+const { listNum, setListNum } = useApplicationContext();
+
+function clickMore() {
+  setListNum(
+    listNum.map(index => index+4)
+  )
+}
     return (
         <BtnDiv>
-            <RecomendBtnStyle>
+            <RecomendBtnStyle onClick={clickMore}>
               메뉴더보기
             </RecomendBtnStyle>
         </BtnDiv>

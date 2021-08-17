@@ -45,7 +45,7 @@ function KeepInfo({ list }) {
               >
                 삭제
               </button>
-              <Comment index={index} />
+              <Comment id={item.id} />
             </div>
           </li>
         ))}
