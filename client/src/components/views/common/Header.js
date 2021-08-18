@@ -32,8 +32,8 @@ const LogStyle = styled.h2`
 `;
 
 function Header() {
-  
   const user = useSelector((state) => state.user);
+
   const logoutHandler = () => {
     axios.get("/api/users/logout").then((response) => {
       console.log(response.data);
@@ -44,7 +44,6 @@ function Header() {
       }
     });
   };
-
   if (user.userData && !user.userData.isAuth) {
     return (
       <HeaderDiv>
@@ -68,7 +67,7 @@ function Header() {
           <HeaderStyle>Eat's Fine!</HeaderStyle>
         </Link>
         <LogDiv>
-          <Link to="/register">
+          <Link to="/">
             <LogStyle onClick={logoutHandler}>로그아웃</LogStyle>
           </Link>
           <Link to="/keep">

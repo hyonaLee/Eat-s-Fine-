@@ -11,6 +11,8 @@ router.get("/auth", auth, (req, res) => {
     _id: req.user._id,
     isAdmin: req.user.role === 0 ? false : true, //0 일반, 1 관리자
     isAuth: true,
+
+    userid: req.user.userid,
     email: req.user.email,
     name: req.user.name,
     lastname: req.user.lastname,
@@ -22,24 +24,43 @@ router.get("/auth", auth, (req, res) => {
 });
 
 router.post("/register", (req, res) => {
-  const user = new User(req.body); //req.body로 json형식으로 파싱
+  console.log("클라이언트에서 서버로 받아온 값", req.body);
 
-  user.save((err, rslt) => {
-    if (err) {
-      return res.json({ success: false, err });
-    } else {
-      return res.status(200).json({ success: true });
+  User.findOne({ userid: req.body.userid }, (err, userinfo) => {
+    if (userinfo) {
+      console.log("같은아이디 있음");
+      return res.json({
+        registerSuccess: false,
+        message: "이미 동일한 유저아이디가 존재합니다..",
+      });
     }
+    User.findOne({ email: req.body.email }, (err, userinfo) => {
+      if (userinfo) {
+        console.log("같은이메일 있음", userinfo);
+        return res.json({
+          registerSuccess: false,
+          message: "이미 동일한 이메일이 존재합니다..",
+        });
+      }
+      const user = new User(req.body); //req.body로 json형식으로 파싱
+      user.save((err, rslt) => {
+        if (err) {
+          return res.json({ success: false, err });
+        } else {
+          return res.status(200).json({ success: true });
+        }
+      });
+    });
   });
 });
 
 router.post("/login", (req, res) => {
-  //요청(입력)한 이메일이 디비에 있는지 찾음
-  User.findOne({ email: req.body.email }, (err, user) => {
+  //요청(입력)한 아이디가 디비에 있는지 찾음
+  User.findOne({ userid: req.body.userid }, (err, user) => {
     if (!user) {
       return res.json({
         loginSuccess: false,
-        message: "입력한 이메일에 해당하는 유저가 존재하지 않음",
+        message: "입력한 아이디에 해당하는 유저가 존재하지 않음",
       });
     }
     //요청한 이메일이 디비에 있다면 요청한 비밀번호가 맞는 비밀번호인지 확인
@@ -151,7 +172,7 @@ router.post("/addComment", auth, (req, res) => {
       if (item.id === req.body.storeid) {
         console.log("선택된 킵정보", item.id);
         User.findOneAndUpdate(
-          { _id: req.user._id,  "keep.id": req.body.storeid },
+          { _id: req.user._id, "keep.id": req.body.storeid },
           { $push: { "keep.$.comment": req.body.content } },
           { new: true },
           (err, userInfo) => {

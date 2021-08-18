@@ -13,7 +13,7 @@ import ChangeLocation from "./views/changeLocation/ChangeLocation";
 import { MapContextProvider } from "../contexts/map_context";
 import { ApplicationContextProvider } from "../contexts/weatherAndMap_context";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import "../App.css"
+import "../App.css";
 function App() {
   return (
     <div>
