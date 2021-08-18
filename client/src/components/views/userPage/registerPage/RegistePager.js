@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { registerUser } from "../../../_actions/user_actions";
+import { registerUser } from "../../../../_actions/user_actions";
 
 function Register(props) {
   const dispatch = useDispatch();
@@ -60,19 +60,19 @@ function Register(props) {
         height: "80vh",
       }}
     >
-      <div class="tile">
-        <div class="tile-header">
-          <span class="text">Register</span>
+      <div className="tile">
+        <div className="tile-header">
+          <span className="text">Register</span>
         </div>
-        <div class="tile-body">
+        <div className="tile-body">
           <form id="form" onSubmit={onSubmitHandler}>
-            <label class="form-input">
+            <label className="form-input">
               {Id.length > 3 ? (
-                <i class="material-icons" style={{ color: "#07beb8" }}>
+                <i className="material-icons" style={{ color: "#07beb8" }}>
                   person_add
                 </i>
               ) : (
-                <i class="material-icons">person_add</i>
+                <i className="material-icons">person_add</i>
               )}
               <input
                 type="text"
@@ -81,17 +81,17 @@ function Register(props) {
                 onChange={onIdHandler}
                 required
               />
-              <span class="label">ID</span>
-              <span class="underline"></span>
+              <span className="label">ID</span>
+              <span className="underline"></span>
             </label>
 
-            <label class="form-input">
+            <label className="form-input">
               {Name.length > 0 ? (
-                <i class="material-icons" style={{ color: "#07beb8" }}>
+                <i className="material-icons" style={{ color: "#07beb8" }}>
                   sentiment_very_satisfied
                 </i>
               ) : (
-                <i class="material-icons">sentiment_neutral</i>
+                <i className="material-icons">sentiment_neutral</i>
               )}
 
               <input
@@ -101,17 +101,17 @@ function Register(props) {
                 onChange={onNameHandler}
                 required
               />
-              <span class="label">Name</span>
-              <span class="underline"></span>
+              <span className="label">Name</span>
+              <span className="underline"></span>
             </label>
 
-            <label class="form-input">
+            <label className="form-input">
               {Password.length > 3 ? (
-                <i class="material-icons" style={{ color: "#07beb8" }}>
+                <i className="material-icons" style={{ color: "#07beb8" }}>
                   lock
                 </i>
               ) : (
-                <i class="material-icons">lock</i>
+                <i className="material-icons">lock</i>
               )}
 
               <input
@@ -120,17 +120,17 @@ function Register(props) {
                 onChange={onPasswordHandler}
                 required
               />
-              <span class="label">Password</span>
-              <span class="underline"></span>
+              <span className="label">Password</span>
+              <span className="underline"></span>
             </label>
 
-            <label class="form-input">
+            <label className="form-input">
               {Password === PasswordConfirm && Password.length > 3 ? (
-                <i class="material-icons" style={{ color: "#07beb8" }}>
+                <i className="material-icons" style={{ color: "#07beb8" }}>
                   check
                 </i>
               ) : (
-                <i class="material-icons">check</i>
+                <i className="material-icons">check</i>
               )}
               <input
                 type="password"
@@ -139,29 +139,29 @@ function Register(props) {
                 required
               />
               {Password !== PasswordConfirm ? (
-                <span class="label" style={{ color: "red" }}>
+                <span className="label" style={{ color: "red" }}>
                   Password Confirm
                 </span>
               ) : (
-                <span class="label">Password Confirm</span>
+                <span className="label">Password Confirm</span>
               )}
               {Password !== PasswordConfirm ? (
                 <span
-                  class="underline"
+                  className="underline"
                   style={{ backgroundColor: "red" }}
                 ></span>
               ) : (
-                <span class="underline"></span>
+                <span className="underline"></span>
               )}
             </label>
 
-            <label class="form-input">
+            <label className="form-input">
               {exptext.test(Email) === true ? (
-                <i class="material-icons" style={{ color: "#07beb8" }}>
+                <i className="material-icons" style={{ color: "#07beb8" }}>
                   email
                 </i>
               ) : (
-                <i class="material-icons">email</i>
+                <i className="material-icons">email</i>
               )}
 
               <input
@@ -171,14 +171,14 @@ function Register(props) {
                 onChange={onEmailHandler}
                 required
               />
-              <span class="label">Email</span>
-              <span class="underline"></span>
+              <span className="label">Email</span>
+              <span className="underline"></span>
             </label>
 
-            <div class="submit-container clearfix">
+            <div className="submit-container clearfix">
               <button
                 type="submit"
-                class="btn btn-irenic float-right"
+                className="btn btn-irenic float-right"
                 style={{ border: "none", width: "90px" }}
               >
                 회원가입

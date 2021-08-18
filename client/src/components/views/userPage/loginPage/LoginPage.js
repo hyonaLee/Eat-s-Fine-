@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { MapContextProvider } from "../../../contexts/map_context";
-import { ApplicationContextProvider } from "../../../contexts/weatherAndMap_context";
-import { loginUser } from "../../../_actions/user_actions";
-import MapContainer from "../kakaoMap/MapContainer";
-import MapStoreList from "../kakaoMap/MapStoreList";
-import SearchBox from "../landingPage/SearchBoxLocation";
-import Weather from "../landingPage/Weather";
+import { Link } from "react-router-dom";
+import { MapContextProvider } from "../../../../contexts/map_context";
+import { ApplicationContextProvider } from "../../../../contexts/weatherAndMap_context";
+import { loginUser } from "../../../../_actions/user_actions";
+import MapContainer from "../../kakaoMap/MapContainer";
+import MapStoreList from "../../kakaoMap/MapStoreList";
+import SearchBox from "../../landingPage/SearchBoxLocation";
+import Weather from "../../landingPage/Weather";
 import "./LoginPage.scss";
 function Login(props) {
   const dispatch = useDispatch();
@@ -45,19 +46,19 @@ function Login(props) {
         height: "70vh",
       }}
     >
-      <div class="tile">
-        <div class="tile-header">
-          <span class="text">Login</span>
+      <div className="tile">
+        <div className="tile-header">
+          <span className="text">Login</span>
         </div>
-        <div class="tile-body">
+        <div className="tile-body">
           <form id="form" onSubmit={onSubmitHandler}>
-            <label class="form-input">
+            <label className="form-input">
               {Id.length > 3 ? (
-                <i class="material-icons" style={{ color: "#07beb8" }}>
+                <i className="material-icons" style={{ color: "#07beb8" }}>
                   person
                 </i>
               ) : (
-                <i class="material-icons">person</i>
+                <i className="material-icons">person</i>
               )}
               <input
                 type="text"
@@ -65,34 +66,40 @@ function Login(props) {
                 onChange={onIdHandler}
                 required
               />
-              <span class="label" value={Id}>
+              <span className="label" value={Id}>
                 ID
               </span>
-              <span class="underline"></span>
+              <span className="underline"></span>
             </label>
 
-            <label class="form-input">
+            <label className="form-input">
               {Password.length > 3 ? (
-                <i class="material-icons" style={{ color: "#07beb8" }}>
+                <i className="material-icons" style={{ color: "#07beb8" }}>
                   lock
                 </i>
               ) : (
-                <i class="material-icons">lock</i>
+                <i className="material-icons">lock</i>
               )}
               <input type="password" onChange={onPasswordHandler} required />
-              <span class="label" value={Password}>
+              <span className="label" value={Password}>
                 Password
               </span>
-              <div class="underline"></div>
+              <div className="underline"></div>
             </label>
-            <div class="submit-container clearfix">
+
+            <div className="submit-container clearfix">
               <button
                 type="submit"
-                class="btn btn-irenic float-right"
+                className="btn btn-irenic float-right"
                 style={{ border: "none", width: "90px" }}
               >
                 로그인
               </button>
+              <Link to="/register">
+                <span className="registerHover" style={{ fontSize: "12px" }}>
+                  아직 회원이 아닌가요?
+                </span>
+              </Link>
             </div>
           </form>
         </div>

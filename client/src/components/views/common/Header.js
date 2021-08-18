@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -33,6 +33,7 @@ const LogStyle = styled.h2`
 
 function Header() {
   const user = useSelector((state) => state.user);
+  const [name, setName] = useState("");
 
   const logoutHandler = () => {
     axios.get("/api/users/logout").then((response) => {
@@ -44,19 +45,23 @@ function Header() {
       }
     });
   };
-  if (user.userData && !user.userData.isAuth) {
+
+  if (user.userData && user.userData.isAuth) {
+    // setName(`${user.userData.name}님 안녕하세요.`);
     return (
       <HeaderDiv>
         <Link to="/">
           <HeaderStyle>Eat's Fine!</HeaderStyle>
         </Link>
+
         <LogDiv>
-          <Link to="/login">
-            <LogStyle>로그인</LogStyle>
+          <Link to="/">
+            <LogStyle onClick={logoutHandler}>로그아웃</LogStyle>
           </Link>
-          <Link to="/register">
-            <LogStyle>회원가입</LogStyle>
+          <Link to="/keep">
+            <LogStyle>찜 목록</LogStyle>
           </Link>
+          <LogStyle>{user.userData.name}님 안녕하세요.</LogStyle>
         </LogDiv>
       </HeaderDiv>
     );
@@ -67,11 +72,8 @@ function Header() {
           <HeaderStyle>Eat's Fine!</HeaderStyle>
         </Link>
         <LogDiv>
-          <Link to="/">
-            <LogStyle onClick={logoutHandler}>로그아웃</LogStyle>
-          </Link>
-          <Link to="/keep">
-            <LogStyle>찜 목록</LogStyle>
+          <Link to="/login">
+            <LogStyle>로그인</LogStyle>
           </Link>
         </LogDiv>
       </HeaderDiv>

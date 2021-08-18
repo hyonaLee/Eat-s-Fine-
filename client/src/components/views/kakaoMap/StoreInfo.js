@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addKeep } from "../../../_actions/user_actions";
 import styled from "styled-components";
 
 function StoreInfo({ list }) {
+  const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const [data, setData] = useState(null);
 
@@ -28,20 +29,31 @@ function StoreInfo({ list }) {
               }
             >
               <div>
-              <span><b>{index + 1}. </b></span>
-              <span><strong>{item.place_name}</strong></span><br/>
-              <span>{item.road_address_name}</span><br/>
-              <span> ({item.address_name})</span><br/>
-              <span>☎ {item.phone}</span>
+                <span>
+                  <b>{index + 1}. </b>
+                </span>
+                <span>
+                  <strong>{item.place_name}</strong>
+                </span>
+                <br />
+                <span>{item.road_address_name}</span>
+                <br />
+                <span> ({item.address_name})</span>
+                <br />
+                <span>☎ {item.phone}</span>
               </div>
-              <LikeBtn
-                onClick={() => {
-                  setData(item);
-                }}
-              >
-                찜하기
-              </LikeBtn>
-              </ListDiv>
+              {user.userData.isAuth ? (
+                <LikeBtn
+                  onClick={() => {
+                    setData(item);
+                  }}
+                >
+                  찜하기
+                </LikeBtn>
+              ) : (
+                <div></div>
+              )}
+            </ListDiv>
           </ResultListLi>
         ))}
       </ResultListUl>
@@ -56,36 +68,36 @@ const ResultListDiv = styled.div`
   margin-top: 30px;
   background-color: #e0e0e0;
   overflow: scroll;
-`
+`;
 const HeadDiv = styled.div`
   background-color: #bdbdbd;
   height: 60px;
   padding: 10px;
   padding-left: 20px;
-`
+`;
 const HeadH3 = styled.h3`
   color: black;
-`
+`;
 const ResultListUl = styled.ul`
- list-style: none;
- margin: 0px;
- padding: 0;
- `
- const ResultListLi = styled.li`
+  list-style: none;
+  margin: 0px;
+  padding: 0;
+`;
+const ResultListLi = styled.li`
   cursor: pointer;
   border: 1px solid gray;
   color: black;
   padding: 8px;
-  :hover{
+  :hover {
     box-shadow: 0px 0px 10px gray;
   }
- `
+`;
 const ListDiv = styled.div`
-display: flex;
-justify-content: space-between;
-`
+  display: flex;
+  justify-content: space-between;
+`;
 const LikeBtn = styled.button`
- height: 20px;
- `
+  height: 20px;
+`;
 
 export default StoreInfo;

@@ -4,9 +4,9 @@ import "./Weather.scss";
 function Rainy() {
     return (
         <>
-          <div class="icon rainy">
-            <div class="cloud"></div>
-            <div class="rain"></div>
+          <div className="icon rainy">
+            <div className="cloud"></div>
+            <div className="rain"></div>
           </div>
         </>
     );

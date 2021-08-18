@@ -4,11 +4,11 @@ import "./Weather.scss";
 function Snow() {
     return (
         <>
-        <div class="icon flurries">
-          <div class="cloud"></div>
-          <div class="snow">
-            <div class="flake"></div>
-            <div class="flake"></div>
+        <div className="icon flurries">
+          <div className="cloud"></div>
+          <div className="snow">
+            <div className="flake"></div>
+            <div className="flake"></div>
           </div>
         </div>
         </>
