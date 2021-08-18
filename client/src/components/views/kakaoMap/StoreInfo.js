@@ -54,11 +54,11 @@ const ResultListDiv = styled.div`
   height: 900px;
   line-height: 23px;
   margin-top: 30px;
-  background-color: #bdbdbd;
+  background-color: #e0e0e0;
   overflow: scroll;
 `
 const HeadDiv = styled.div`
-  background-color: #8d8d8d;
+  background-color: #bdbdbd;
   height: 60px;
   padding: 10px;
   padding-left: 20px;

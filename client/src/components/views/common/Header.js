@@ -3,24 +3,13 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import Logo from "./Logo";
 
 const HeaderDiv = styled.div`
   display: block;
   display: flex;
   justify-content: space-between;
   height: 50px;
-`;
-
-const HeaderStyle = styled.h2`
-  margin: 20px;
-  float: left;
-  color: white;
-  font-weight: bolder;
-`;
-
-const LogDiv = styled.div`
-  float: right;
-  color: white;
 `;
 
 const LogStyle = styled.h2`
@@ -49,32 +38,32 @@ function Header() {
     return (
       <HeaderDiv>
         <Link to="/">
-          <HeaderStyle>Eat's Fine!</HeaderStyle>
+          <Logo />
         </Link>
-        <LogDiv>
+        <div>
           <Link to="/login">
             <LogStyle>로그인</LogStyle>
           </Link>
           <Link to="/register">
             <LogStyle>회원가입</LogStyle>
           </Link>
-        </LogDiv>
+        </div>
       </HeaderDiv>
     );
   } else {
     return (
       <HeaderDiv>
         <Link to="/">
-          <HeaderStyle>Eat's Fine!</HeaderStyle>
+          <Logo />
         </Link>
-        <LogDiv>
+        <div>
           <Link to="/register">
             <LogStyle onClick={logoutHandler}>로그아웃</LogStyle>
           </Link>
           <Link to="/keep">
             <LogStyle>찜 목록</LogStyle>
           </Link>
-        </LogDiv>
+        </div>
       </HeaderDiv>
     );
   }
