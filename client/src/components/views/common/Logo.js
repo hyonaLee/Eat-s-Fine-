@@ -3,6 +3,7 @@ import React from 'react';
 
 
 const LogoH1 = styled.h1`
+  margin: 0;
   color: white;
 `;
 

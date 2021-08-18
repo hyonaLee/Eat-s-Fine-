@@ -38,12 +38,11 @@ function Weather() {
     tmp = weatherData[0].wea_val;
 
     if (weatherData[5].wea_val === "1") setSky("맑음");
-    else if (weatherData[5].wea_val === "3") setSky("구름많음");
+    else if (weatherData[6].wea_val === "3") setSky("눈");
+    else if (weatherData[6].wea_val === "4") setSky("소나기");
+    else if (weatherData[6].wea_val === "1") setSky("비");
+    else if (weatherData[6].wea_val === "2") setSky("비");
     else setSky("흐림");
-
-    if (weatherData[6].wea_val === "0") console.log("맑음");
-    else if (weatherData[6].wea_val === "3") console.log("눈");
-    else console.log("비");
   }
 
   return <></>;

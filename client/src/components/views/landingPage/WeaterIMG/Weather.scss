@@ -1,7 +1,8 @@
-
 html *,
 html *:before,
-html *:after { box-sizing: inherit; }
+html *:after {
+  box-sizing: inherit;
+}
 
 body {
   background-color: #a5a0a0;
@@ -13,6 +14,9 @@ body {
   top: 200px;
   font-size: 1.8em; /* control icon size here */
   color: #a5a0a0;
+}
+a {
+  text-decoration: none;
 }
 
 .cloud {
@@ -26,15 +30,12 @@ body {
   margin: -1.84375em;
   background: currentColor;
   border-radius: 50%;
-  box-shadow:
-    -2.1875em 0.6875em 0 -0.6875em,
-    2.0625em 0.9375em 0 -0.9375em,
-    0 0 0 0.375em #fff,
-    -2.1875em 0.6875em 0 -0.3125em #fff,
+  box-shadow: -2.1875em 0.6875em 0 -0.6875em, 2.0625em 0.9375em 0 -0.9375em,
+    0 0 0 0.375em #fff, -2.1875em 0.6875em 0 -0.3125em #fff,
     2.0625em 0.9375em 0 -0.5625em #fff;
 }
 .cloud:after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: -0.5em;
@@ -47,17 +48,16 @@ body {
 .cloud:nth-child(2) {
   z-index: 0;
   background: #fff;
-  box-shadow:
-    -2.1875em 0.6875em 0 -0.6875em #fff,
-    2.0625em 0.9375em 0 -0.9375em #fff,
-    0 0 0 0.375em #fff,
-    -2.1875em 0.6875em 0 -0.3125em #fff,
-    2.0625em 0.9375em 0 -0.5625em #fff;
+  box-shadow: -2.1875em 0.6875em 0 -0.6875em #fff,
+    2.0625em 0.9375em 0 -0.9375em #fff, 0 0 0 0.375em #fff,
+    -2.1875em 0.6875em 0 -0.3125em #fff, 2.0625em 0.9375em 0 -0.5625em #fff;
   opacity: 0.3;
   transform: scale(0.8) translate(6em, -3em);
   animation: cloud 4s linear infinite;
 }
-.cloud:nth-child(2):after { background: #fff; }
+.cloud:nth-child(2):after {
+  background: #fff;
+}
 
 .sun {
   position: absolute;
@@ -85,7 +85,7 @@ body {
 }
 .rays:before,
 .rays:after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0em;
   left: 0em;
@@ -119,7 +119,7 @@ body {
 }
 
 .rain:after {
-  content: '';
+  content: "";
   position: absolute;
   z-index: 2;
   top: 50%;
@@ -129,10 +129,9 @@ body {
   margin: -1em 0 0 -0.25em;
   background: #0cf;
   border-radius: 100% 0 60% 50% / 60% 0 100% 50%;
-  box-shadow:
-    0.625em 0.875em 0 -0.125em rgba(255,255,255,0.2),
-    -0.875em 1.125em 0 -0.125em rgba(255,255,255,0.2),
-    -1.375em -0.125em 0 rgba(255,255,255,0.2);
+  box-shadow: 0.625em 0.875em 0 -0.125em rgba(255, 255, 255, 0.2),
+    -0.875em 1.125em 0 -0.125em rgba(255, 255, 255, 0.2),
+    -1.375em -0.125em 0 rgba(255, 255, 255, 0.2);
   transform: rotate(-28deg);
   animation: rain 3s linear infinite;
 }
@@ -156,7 +155,7 @@ body {
 }
 .bolt:before,
 .bolt:after {
-  content: '';
+  content: "";
   position: absolute;
   z-index: 2;
   top: 50%;
@@ -193,7 +192,7 @@ body {
 
 .flake:before,
 .flake:after {
-  content: '\2744';
+  content: "\2744";
   position: absolute;
   top: 50%;
   left: 50%;
@@ -222,16 +221,21 @@ body {
   animation: spin 16s linear infinite reverse;
 }
 
-
-/* Animations */ 
+/* Animations */
 
 @keyframes spin {
-  100% { transform: rotate(360deg); }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes cloud {
-  0% { opacity: 0; }
-  50% { opacity: 0.3; }
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.3;
+  }
   100% {
     opacity: 0;
     transform: scale(0.5) translate(-200%, -3em);
@@ -241,28 +245,24 @@ body {
 @keyframes rain {
   0% {
     background: #0cf;
-    box-shadow:
-      0.625em 0.875em 0 -0.125em rgba(255,255,255,0.2),
-      -0.875em 1.125em 0 -0.125em rgba(255,255,255,0.2),
+    box-shadow: 0.625em 0.875em 0 -0.125em rgba(255, 255, 255, 0.2),
+      -0.875em 1.125em 0 -0.125em rgba(255, 255, 255, 0.2),
       -1.375em -0.125em 0 #0cf;
   }
   25% {
-    box-shadow:
-      0.625em 0.875em 0 -0.125em rgba(255,255,255,0.2),
+    box-shadow: 0.625em 0.875em 0 -0.125em rgba(255, 255, 255, 0.2),
       -0.875em 1.125em 0 -0.125em #0cf,
-      -1.375em -0.125em 0 rgba(255,255,255,0.2);
+      -1.375em -0.125em 0 rgba(255, 255, 255, 0.2);
   }
   50% {
-    background: rgba(255,255,255,0.3);
-    box-shadow:
-      0.625em 0.875em 0 -0.125em #0cf,
-      -0.875em 1.125em 0 -0.125em rgba(255,255,255,0.2),
-      -1.375em -0.125em 0 rgba(255,255,255,0.2);
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0.625em 0.875em 0 -0.125em #0cf,
+      -0.875em 1.125em 0 -0.125em rgba(255, 255, 255, 0.2),
+      -1.375em -0.125em 0 rgba(255, 255, 255, 0.2);
   }
   100% {
-    box-shadow:
-      0.625em 0.875em 0 -0.125em rgba(255,255,255,0.2),
-      -0.875em 1.125em 0 -0.125em rgba(255,255,255,0.2),
+    box-shadow: 0.625em 0.875em 0 -0.125em rgba(255, 255, 255, 0.2),
+      -0.875em 1.125em 0 -0.125em rgba(255, 255, 255, 0.2),
       -1.375em -0.125em 0 #0cf;
   }
 }

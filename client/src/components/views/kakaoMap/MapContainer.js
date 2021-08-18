@@ -257,10 +257,9 @@ function MapContainer() {
     <>
       <MapDiv
         className="map"
-        style={{ width: "800px", height: "500px" }}
         ref={container}
       />
-      <div>{locationSearch}</div>
+      {/* <div>{locationSearch}</div> */}
 
       <ul id="placesList"></ul>
       <div id="pagination"></div>
@@ -269,9 +268,7 @@ function MapContainer() {
 }
 
 const MapDiv = styled.div`
-  position: relative;
-  top: 120px;
-  width: 800px;
-  height: 500px;
+  width: 100%;
+  height: 100%;
 `;
 export default MapContainer;
