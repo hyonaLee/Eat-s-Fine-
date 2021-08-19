@@ -1,14 +1,13 @@
-import axios from "axios";
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addComment } from "../../../_actions/user_actions";
-import SingleComment from "./SingleComment";
+
+
 function Comment({ id }) {
   const user = useSelector((state) => state.user);
   const [text, setText] = useState("");
   const dispatch = useDispatch();
-  
+
   const onchangeText = (e) => {
     setText(e.target.value);
   };

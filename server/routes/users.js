@@ -185,4 +185,66 @@ router.post("/addComment", auth, (req, res) => {
   });
 });
 
+
+//0819작업
+router.post("/changeEmail", auth, (req, res) => {
+  User.findOne({ _id: req.user._id }, (err, userInfo) => {
+    userInfo.keep.forEach((item) => {
+      console.log("가져온정보", req.body);
+      if (item.id === req.body.storeid) {
+        console.log("선택된 킵정보", item.id);
+        // User.findOneAndUpdate(
+        //   { _id: req.user._id, "keep.id": req.body.storeid },
+        //   { $push: { "keep.$.comment": req.body.content } },
+        //   { new: true },
+        //   (err, userInfo) => {
+        //     if (err) return res.status(200).json({ success: false, err });
+        //     res.status(200).send(userInfo.keep);
+        //   }
+        // );
+      }
+    });
+  });
+});
+
+// router.post("/addComment", auth, (req, res) => {
+//   User.findOne({ _id: req.user._id }, (err, userInfo) => {
+//     userInfo.keep.forEach((item) => {
+//       console.log("가져온정보", req.body);
+//       if (item.id === req.body.storeid) {
+//         console.log("선택된 킵정보", item.id);
+//         User.findOneAndUpdate(
+//           { _id: req.user._id, "keep.id": req.body.storeid },
+//           { $push: { "keep.$.comment": req.body.content } },
+//           { new: true },
+//           (err, userInfo) => {
+//             if (err) return res.status(200).json({ success: false, err });
+//             res.status(200).send(userInfo.keep);
+//           }
+//         );
+//       }
+//     });
+//   });
+// });
+
+// router.post("/addComment", auth, (req, res) => {
+//   User.findOne({ _id: req.user._id }, (err, userInfo) => {
+//     userInfo.keep.forEach((item) => {
+//       console.log("가져온정보", req.body);
+//       if (item.id === req.body.storeid) {
+//         console.log("선택된 킵정보", item.id);
+//         User.findOneAndUpdate(
+//           { _id: req.user._id, "keep.id": req.body.storeid },
+//           { $push: { "keep.$.comment": req.body.content } },
+//           { new: true },
+//           (err, userInfo) => {
+//             if (err) return res.status(200).json({ success: false, err });
+//             res.status(200).send(userInfo.keep);
+//           }
+//         );
+//       }
+//     });
+//   });
+// });
+
 module.exports = router;

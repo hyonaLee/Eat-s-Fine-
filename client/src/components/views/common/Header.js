@@ -3,6 +3,20 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import List from "@material-ui/core/List";
+import { makeStyles } from "@material-ui/core/styles";
+import { Button, Divider, ListItem } from "@material-ui/core";
+import Drawer from "@material-ui/core/Drawer";
+import clsx from "clsx";
+import "./Header.scss"
+const useStyles = makeStyles({
+  list: {
+    width: 250,
+  },
+  fullList: {
+    width: "auto",
+  },
+});
 
 const HeaderDiv = styled.div`
   display: block;
@@ -31,9 +45,38 @@ const LogStyle = styled.h2`
   font-size: 20px;
 `;
 
+const StyledLi = styled.div`
+  font-size: 20px;
+`;
+const StyledLiLogOut = styled.div`
+  margin: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  height: 50px;
+  border-radius: 5px;
+  background-color: #07beb8;
+  text-align: center;
+  font-size: 22px;
+  font-weight: bolder;
+  color: white;
+`;
+
 function Header() {
   const user = useSelector((state) => state.user);
-  const [name, setName] = useState("");
+  const classes = useStyles();
+  const [state, setState] = React.useState({
+    right: false,
+  });
+
+  const toggleDrawer = (anchor, open) => (event) => {
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return;
+    }
+    setState({ ...state, [anchor]: open });
+  };
 
   const logoutHandler = () => {
     axios.get("/api/users/logout").then((response) => {
@@ -46,6 +89,32 @@ function Header() {
     });
   };
 
+  const list = (anchor) => (
+    <div
+      className={clsx(classes.list, {
+        [classes.fullList]: anchor === "top" || anchor === "bottom",
+      })}
+      role="presentation"
+      onClick={toggleDrawer(anchor, false)}
+      onKeyDown={toggleDrawer(anchor, false)}
+    >
+      <List>{user.userData.name}님 안녕하세요.</List>
+      <Divider />
+      <List>
+        <Link to="/mypage">
+          <StyledLi>내정보</StyledLi>
+        </Link>
+        <Link to="/keep">
+          <StyledLi>찜 목록</StyledLi>
+        </Link>
+        <Link to="/">
+          <StyledLiLogOut onClick={logoutHandler} className="logout"
+          >로그아웃</StyledLiLogOut>
+        </Link>
+      </List>
+    </div>
+  );
+
   if (user.userData && user.userData.isAuth) {
     // setName(`${user.userData.name}님 안녕하세요.`);
     return (
@@ -53,15 +122,15 @@ function Header() {
         <Link to="/">
           <HeaderStyle>Eat's Fine!</HeaderStyle>
         </Link>
-
+        <Drawer
+          anchor={"right"}
+          open={state["right"]}
+          onClose={toggleDrawer("right", false)}
+        >
+          {list("right")}
+        </Drawer>
         <LogDiv>
-          <Link to="/">
-            <LogStyle onClick={logoutHandler}>로그아웃</LogStyle>
-          </Link>
-          <Link to="/keep">
-            <LogStyle>찜 목록</LogStyle>
-          </Link>
-          <LogStyle>{user.userData.name}님 안녕하세요.</LogStyle>
+          <LogStyle onClick={toggleDrawer("right", true)}>햄버거</LogStyle>
         </LogDiv>
       </HeaderDiv>
     );

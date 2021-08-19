@@ -14,6 +14,7 @@ import { MapContextProvider } from "../contexts/map_context";
 import { ApplicationContextProvider } from "../contexts/weatherAndMap_context";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import "../App.css";
+import MyPage from "./views/userPage/MyPage";
 function App() {
   return (
     <div>
@@ -59,6 +60,11 @@ function App() {
                           exact
                           path="/searchResult"
                           component={Auth(SearchResultPage, null)}
+                        />
+                        <Route
+                          exact
+                          path="/mypage"
+                          component={Auth(MyPage, true)}
                         />
                       </Switch>
                     </section>
