@@ -9,13 +9,10 @@ import { Button, Divider, ListItem } from "@material-ui/core";
 import Drawer from "@material-ui/core/Drawer";
 import clsx from "clsx";
 import "./Header.scss"
+import Logo from './Logo';
+
 const useStyles = makeStyles({
-  list: {
-    width: 250,
-  },
-  fullList: {
-    width: "auto",
-  },
+
 });
 
 const HeaderDiv = styled.div`
@@ -41,22 +38,31 @@ const LogStyle = styled.h2`
   margin: 20px;
   float: right;
   color: white;
-  font-weight: bolder;
   font-size: 20px;
 `;
 
-const StyledLi = styled.div`
+const HelloH2 = styled.h2`
+  margin: 20px;
+  color: gray;
   font-size: 20px;
+  text-align: center;
+`;
+
+const StyledLi = styled.div`
+  width: 300px;
+  font-size: 20px;
+  margin-top: 10px;
+  text-align: center;
+  color: gray;
 `;
 const StyledLiLogOut = styled.div`
   margin: 20px;
-  padding-top: 10px;
-  padding-bottom: 10px;
   height: 50px;
   border-radius: 5px;
   background-color: #07beb8;
   text-align: center;
-  font-size: 22px;
+  padding-top: 20px;
+  font-size: 20px;
   font-weight: bolder;
   color: white;
 `;
@@ -98,14 +104,14 @@ function Header() {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <List>{user.userData.name}님 안녕하세요.</List>
+      <HelloH2> {user.userData.name}님 안녕하세요.</HelloH2>
       <Divider />
       <List>
         <Link to="/mypage">
-          <StyledLi>내정보</StyledLi>
+          <StyledLi><i className="material-icons">account_circle</i> 내정보</StyledLi>
         </Link>
         <Link to="/keep">
-          <StyledLi>찜 목록</StyledLi>
+          <StyledLi><i className="material-icons">favorite</i> 찜목록</StyledLi>
         </Link>
         <Link to="/">
           <StyledLiLogOut onClick={logoutHandler} className="logout"
@@ -120,7 +126,7 @@ function Header() {
     return (
       <HeaderDiv>
         <Link to="/">
-          <HeaderStyle>Eat's Fine!</HeaderStyle>
+          <Logo/>
         </Link>
         <Drawer
           anchor={"right"}
@@ -130,7 +136,7 @@ function Header() {
           {list("right")}
         </Drawer>
         <LogDiv>
-          <LogStyle onClick={toggleDrawer("right", true)}>햄버거</LogStyle>
+          <LogStyle onClick={toggleDrawer("right", true)}><i className="material-icons">menu</i></LogStyle>
         </LogDiv>
       </HeaderDiv>
     );
@@ -138,7 +144,7 @@ function Header() {
     return (
       <HeaderDiv>
         <Link to="/">
-          <HeaderStyle>Eat's Fine!</HeaderStyle>
+        <Logo/>
         </Link>
         <LogDiv>
           <Link to="/login">

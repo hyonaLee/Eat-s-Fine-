@@ -14,9 +14,10 @@ function CurrentLocation() {
 
 const LocationH1 = styled.h3`
   font-size: 15px;
-  color: gray;
+  color: white;
 `;
 const LocationDiv = styled.div`
+  display: inline-block;
   position: relative;
   top: 420px;
 `;

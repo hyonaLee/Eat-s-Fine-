@@ -66,7 +66,7 @@ padding: 5px;
 const ResultListDiv = styled.div`
   display: block;
   width: 400px;
-  height: 900px;
+  height: 830px;
   line-height: 23px;
   margin-top: 30px;
   background-color: #e0e0e0;

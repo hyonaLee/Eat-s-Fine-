@@ -19,7 +19,7 @@ function HashTag() {
   let Menuslice = currentMenu.slice(0, 4);
 function click (e) {
   console.log(e.currentTarget.innerHTML);
-  setLocationSearch(myLocationName+e.currentTarget.innerHTML+"맛집");
+  setLocationSearch(myLocationName+e.currentTarget.innerHTML);
   
 }
   return (
@@ -36,6 +36,7 @@ function click (e) {
 }
 
 const HashDiv = styled.div`
+  display: block;
   position: relative;
   top: 350px;
 `;

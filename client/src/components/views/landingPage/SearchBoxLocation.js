@@ -3,7 +3,7 @@ import { useApplicationContext } from "../../../contexts/weatherAndMap_context";
 import styled from "styled-components";
 import { Route, Link } from "react-router-dom";
 
-function SearchBoxMenu() {
+function SearchBoxLocation() {
   const [text, setText] = useState("");
   // const [location, setLocation] = useState("");
   const { setLocationSearch, myLocation } = useApplicationContext();
@@ -45,4 +45,4 @@ const InputDiv = styled.div`
   top: 400px;
 `;
 
-export default SearchBoxMenu;
+export default SearchBoxLocation;

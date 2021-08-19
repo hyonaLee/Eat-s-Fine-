@@ -16,7 +16,7 @@ function SearchBoxMenu() {
 
   function onclickMenu() {
     if (text === "") {
-      setLocationSearch(text);
+      setLocationSearch(`${myLocationName}맛집`);
     } else {
       setLocationSearch(myLocationName + text + "맛집");
     }

@@ -6,25 +6,28 @@ function ChangeLocationBtn() {
   return (
     <BtnDiv>
       <Link to="/changelocation">
-        <ChangeLocationBtnStyle>위치변경</ChangeLocationBtnStyle>
+        <i className="material-icons">my_location</i>
       </Link>
     </BtnDiv>
   );
 }
 
-const ChangeLocationBtnStyle = styled.button`
-  font-size: 10px;
-  line-height: 8px;
-  color: white;
-  background-color: #a5a0a0;
-  padding: 5px;
-  border-radius: 8px;
-  height: 20px;
-  width: 65px;
-`;
+// const ChangeLocationBtnStyle = styled.button`
+//   font-size: 10px;
+//   line-height: 8px;
+//   color: white;
+//   background-color: #a5a0a0;
+//   padding: 5px;
+//   border-radius: 8px;
+//   height: 20px;
+//   width: 65px;
+  
+// `;
 
 const BtnDiv = styled.div`
+  display: inline-block;
   position: relative;
-  top: 430px;
+  top: 385px;
+  left: -110px;
 `;
 export default ChangeLocationBtn;

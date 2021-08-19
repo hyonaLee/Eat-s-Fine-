@@ -13,6 +13,7 @@ function InfoToday() {
 }
 
 const InfoDiv = styled.div`
+  display: block;
   position: relative;
   top: 310px;
 `;

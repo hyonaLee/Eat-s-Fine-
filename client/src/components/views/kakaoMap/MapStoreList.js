@@ -27,7 +27,7 @@ const ResultDiv = styled.div`
 `
 const MapDiv = styled.div`
   width: 100%;
-  height: 900px;
+  height: 830px;
   margin: 0;
   margin-top: 30px;
 `
