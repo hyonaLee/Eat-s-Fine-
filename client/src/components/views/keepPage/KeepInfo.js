@@ -33,6 +33,7 @@ function KeepInfo({ list }) {
                       <span>{item.road_address_name}</span><br />
                       <span> ({item.address_name})</span><br />
                       <span>☎ {item.phone}</span>
+                      <span>코멘트: {item.comment}</span>
                       </div>
                       <Comment id={item.id} />
                   </ResultDiv>
