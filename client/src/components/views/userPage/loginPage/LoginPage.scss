@@ -15,13 +15,10 @@ $colors: (
   @return map-get($colors, $key);
 }
 
-* {
-  box-sizing: border-box;
-}
+// * {
+//   box-sizing: border-box;
+// }
 
-html {
-  font-size: 14px;
-}
 
 // body {
 //   background: linear-gradient(to bottom, color("tranquil"), color("ice"));
@@ -370,7 +367,10 @@ html {
   }
 }
 
-.registerHover:hover {
+.registerHover{
   color:  #07beb8;
+}
+.registerHover:hover {
+  font-weight: bold;
   cursor: pointer;
 }
