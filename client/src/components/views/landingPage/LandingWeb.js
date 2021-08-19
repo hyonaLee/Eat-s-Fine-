@@ -13,9 +13,6 @@ import InfoWeather from "./InfoWeather";
 import MenuList from "./MenuList";
 
 const MainDivStyle = styled.div`
-  background-color: #a5a0a0;
-  height: 100vh;
-  margin: auto;
   text-align: center;
 `;
 function LandingWeb() {

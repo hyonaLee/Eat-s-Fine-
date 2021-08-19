@@ -14,7 +14,7 @@ function InfoToday() {
 
 const InfoDiv = styled.div`
   position: relative;
-  top: 350px;
+  top: 310px;
 `;
 const InfoH2 = styled.h2`
   font-size: 25px;

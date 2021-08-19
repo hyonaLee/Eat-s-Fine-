@@ -26,13 +26,6 @@ function SearchBoxMenu() {
       setLocationSearch(myLocation + text + "맛집");
     }
   }
-  // function onclickLocation() {
-  //   if (text === "") {
-  //     setLocationSearch(location);
-  //   } else {
-  //     setLocationSearch(location + "맛집");
-  //   }
-  // }
 
   return (
     <InputDiv>
@@ -42,16 +35,14 @@ function SearchBoxMenu() {
         onChange={onchangeText}
         value={text}
       />
-      {/* <Link to="/map"> */}
       <input type="button" onClick={onclickMenu} value="검색" />
-      {/* </Link> */}
     </InputDiv>
   );
 }
 
 const InputDiv = styled.div`
   position: relative;
-  top: 450px;
+  top: 400px;
 `;
 
 export default SearchBoxMenu;

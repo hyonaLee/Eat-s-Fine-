@@ -13,13 +13,12 @@ function CurrentLocation() {
 }
 
 const LocationH1 = styled.h3`
-  font-size: 20px;
-  font-weight: border;
-  color: white;
+  font-size: 15px;
+  color: gray;
 `;
 const LocationDiv = styled.div`
   position: relative;
-  top: 450px;
+  top: 420px;
 `;
 
 export default CurrentLocation;

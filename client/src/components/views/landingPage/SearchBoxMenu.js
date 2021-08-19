@@ -26,7 +26,7 @@ function SearchBoxMenu() {
     <InputDiv>
       <input
         type="text"
-        placeholder="내위치에서 메뉴 입력"
+        placeholder="원하는 메뉴가 있나요?"
         onChange={onchangeText}
         value={text}
       />
@@ -39,7 +39,7 @@ function SearchBoxMenu() {
 
 const InputDiv = styled.div`
   position: relative;
-  top: 450px;
+  top: 400px;
 `;
 
 export default SearchBoxMenu;

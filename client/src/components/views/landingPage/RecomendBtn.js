@@ -19,6 +19,7 @@ function RecomendBtn() {
 
 const RecomendBtnStyle = styled.button`
   font-size: 10px;
+  line-height: 8px;
   color: white;
   background-color: #a5a0a0;
   padding: 5px;
@@ -29,6 +30,6 @@ const RecomendBtnStyle = styled.button`
 
 const BtnDiv = styled.div`
   position: relative;
-  top: 400px;
+  top: 370px;
 `;
 export default RecomendBtn;

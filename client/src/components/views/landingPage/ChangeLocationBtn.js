@@ -14,6 +14,7 @@ function ChangeLocationBtn() {
 
 const ChangeLocationBtnStyle = styled.button`
   font-size: 10px;
+  line-height: 8px;
   color: white;
   background-color: #a5a0a0;
   padding: 5px;
@@ -24,6 +25,6 @@ const ChangeLocationBtnStyle = styled.button`
 
 const BtnDiv = styled.div`
   position: relative;
-  top: 470px;
+  top: 430px;
 `;
 export default ChangeLocationBtn;
