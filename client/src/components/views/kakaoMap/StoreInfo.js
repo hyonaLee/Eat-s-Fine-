@@ -11,6 +11,7 @@ function StoreInfo({ list }) {
   useEffect(() => {
     if (data !== null) {
       console.log("찜한 정보", data);
+      
       dispatch(addKeep(data));
     }
   }, [data]);
@@ -23,12 +24,10 @@ function StoreInfo({ list }) {
       <ResultListUl>
         {list.map((item, index) => (
           <ResultListLi key={item.index}>
-            <ListDiv
-              onClick={() =>
+            <ListDiv>
+              <ClickDiv onClick={() =>
                 window.open(`http://place.map.kakao.com/${item.id}`, "_blank")
-              }
-            >
-              <div>
+              }>
                 <span>
                   <b>{index + 1}. </b>
                 </span>
@@ -41,11 +40,12 @@ function StoreInfo({ list }) {
                 <span> ({item.address_name})</span>
                 <br />
                 <span>☎ {item.phone}</span>
-              </div>
+              </ClickDiv>
               {user.userData.isAuth ? (
                 <LikeBtn
                   onClick={() => {
                     setData(item);
+                    alert("찜하기 완료")
                   }}
                 >
                   찜하기
@@ -60,6 +60,9 @@ function StoreInfo({ list }) {
     </ResultListDiv>
   );
 }
+const ClickDiv = styled.div`
+padding: 5px;
+`;
 const ResultListDiv = styled.div`
   display: block;
   width: 400px;
@@ -98,6 +101,7 @@ const ListDiv = styled.div`
 `;
 const LikeBtn = styled.button`
   height: 20px;
+  line-height: 5px;
 `;
 
 export default StoreInfo;
