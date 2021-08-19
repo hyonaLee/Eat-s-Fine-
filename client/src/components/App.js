@@ -75,7 +75,7 @@ function App() {
           ></Route>
         </MapContextProvider>
       </ApplicationContextProvider>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }

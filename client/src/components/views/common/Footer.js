@@ -2,18 +2,19 @@ import React from 'react';
 import styled from "styled-components";
 
 const FooterDiv = styled.div`
-  background-color: black;
   display: block;
-  display: flex;
-  justify-content: flex-start;
-  color: white;
-  height: 50px;
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: gray;
+  height: 40px;
 `;
 
 function Footer() {
   return (
     <FooterDiv>
-      <h2>Footer입니다.</h2>
+      <p>Copyright ©2021</p>
     </FooterDiv>
   )
 }
