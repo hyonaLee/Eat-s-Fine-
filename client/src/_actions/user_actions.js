@@ -9,7 +9,7 @@ import {
   ADD_COMMENT,
   CHANGE_EMAIL,
   CHANGE_PASSWORD,
-  DELETE_USER
+  DELETE_USER,
 } from "./types";
 
 //dispatch요청으로 loginUser() 함수를 액션
@@ -75,9 +75,7 @@ export function addKeep(storeInfo) {
 export function deleteKeep(keepInfo) {
   const request = axios
     .post("./api/users/deleteKeep", keepInfo)
-    .then((response) => {
-
-    });
+    .then((response) => {});
 
   return {
     type: DELETE_KEEP,
@@ -103,7 +101,7 @@ export function changeEmail(data) {
     .then((response) => response.data);
 
   return {
-    type: ADD_COMMENT,
+    type: CHANGE_EMAIL,
     payload: request,
   };
 }
@@ -114,7 +112,7 @@ export function changePassword(data) {
     .then((response) => response.data);
 
   return {
-    type: ADD_COMMENT,
+    type: CHANGE_PASSWORD,
     payload: request,
   };
 }
@@ -125,9 +123,7 @@ export function deleteUser(data) {
     .then((response) => response.data);
 
   return {
-    type: ADD_COMMENT,
+    type: DELETE_USER,
     payload: request,
   };
 }
-
-

@@ -6,6 +6,9 @@ import {
   ADD_KEEP,
   DELETE_KEEP,
   ADD_COMMENT,
+  CHANGE_EMAIL,
+  CHANGE_PASSWORD,
+  DELETE_USER,
 } from "../_actions/types";
 
 //state에 초기값에 {} 비어있는 오브젝트
@@ -46,7 +49,28 @@ export default function (state = {}, action) {
           keep: action.payload,
         },
       };
+    case CHANGE_EMAIL:
+      return {
+        ...state,
+        userData: {
+          ...state.userData,
+        },
+      };
+    case CHANGE_PASSWORD:
+      return {
+        ...state,
+        userData: {
+          ...state.userData,
+        },
+      };
 
+    case DELETE_USER:
+      return {
+        ...state,
+        userData: {
+          ...state.userData,
+        },
+      };
     default:
       return state;
   }

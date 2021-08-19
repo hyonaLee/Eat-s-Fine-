@@ -3,6 +3,9 @@ const router = express.Router();
 const { auth } = require("../middleware/auth");
 const { User } = require("../models/User");
 
+const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
 //auth라는 미들웨어 : 요청(get)받았을 때 콜백함수 하기전에 중간에서 실행
 router.get("/auth", auth, (req, res) => {
   //미들웨어를 통과하면 이하 작업을 실행(Authentication이 true)
@@ -185,66 +188,66 @@ router.post("/addComment", auth, (req, res) => {
   });
 });
 
-
 //0819작업
 router.post("/changeEmail", auth, (req, res) => {
-  User.findOne({ _id: req.user._id }, (err, userInfo) => {
-    userInfo.keep.forEach((item) => {
-      console.log("가져온정보", req.body);
-      if (item.id === req.body.storeid) {
-        console.log("선택된 킵정보", item.id);
-        // User.findOneAndUpdate(
-        //   { _id: req.user._id, "keep.id": req.body.storeid },
-        //   { $push: { "keep.$.comment": req.body.content } },
-        //   { new: true },
-        //   (err, userInfo) => {
-        //     if (err) return res.status(200).json({ success: false, err });
-        //     res.status(200).send(userInfo.keep);
-        //   }
-        // );
+  User.findOneAndUpdate(
+    { _id: req.user._id },
+    { $set: { email: req.body.email } },
+    { new: true }, // 이거 써줘야 바로바로 수정된거 반영됨
+    (err, userInfo) => {
+      if (err) return res.json({ Success: false, err });
+      else {
+        console.log("유저인포", userInfo);
+        console.log("유저인포이메일", userInfo.email);
+        return res.status(200).send(userInfo);
       }
-    });
-  });
+    }
+  );
 });
 
-// router.post("/addComment", auth, (req, res) => {
-//   User.findOne({ _id: req.user._id }, (err, userInfo) => {
-//     userInfo.keep.forEach((item) => {
-//       console.log("가져온정보", req.body);
-//       if (item.id === req.body.storeid) {
-//         console.log("선택된 킵정보", item.id);
-//         User.findOneAndUpdate(
-//           { _id: req.user._id, "keep.id": req.body.storeid },
-//           { $push: { "keep.$.comment": req.body.content } },
-//           { new: true },
-//           (err, userInfo) => {
-//             if (err) return res.status(200).json({ success: false, err });
-//             res.status(200).send(userInfo.keep);
-//           }
-//         );
-//       }
-//     });
-//   });
-// });
+router.post("/changePassword", auth, (req, res) => {
+  if (req.body.password) {
+    bcrypt.genSalt(10, function (err, salt) {
+      if (err) return res.json({ Success: false, err });
+      bcrypt.hash(req.body.password, salt, function (err, hash) {
+        if (err) return res.json({ Success: false, err });
+        req.body.password = hash;
+        console.log("변경됨", req.body.password);
+        User.findOneAndUpdate(
+          { _id: req.user._id },
+          { $set: { password: req.body.password } },
+          { new: true }, // 이거 써줘야 바로바로 수정된거 반영됨
+          (err, userInfo) => {
+            if (err) return res.json({ Success: false, err });
+            else {
+              console.log("유저인포패스워드", userInfo.password);
+              return res.status(200).send(userInfo);
+            }
+          }
+        );
+      });
+    });
+  }
+});
 
-// router.post("/addComment", auth, (req, res) => {
-//   User.findOne({ _id: req.user._id }, (err, userInfo) => {
-//     userInfo.keep.forEach((item) => {
-//       console.log("가져온정보", req.body);
-//       if (item.id === req.body.storeid) {
-//         console.log("선택된 킵정보", item.id);
-//         User.findOneAndUpdate(
-//           { _id: req.user._id, "keep.id": req.body.storeid },
-//           { $push: { "keep.$.comment": req.body.content } },
-//           { new: true },
-//           (err, userInfo) => {
-//             if (err) return res.status(200).json({ success: false, err });
-//             res.status(200).send(userInfo.keep);
-//           }
-//         );
-//       }
-//     });
-//   });
-// });
+router.post("/deleteUser", auth, (req, res) => {
+  req.user.comparePassword(req.body.password, (err, isMatch) => {
+    if (!isMatch) {
+      console.log("비번틀림");
+      return res.json({
+        deleteSuccess: false,
+        message: "비밀번호가 틀렸습니다.",
+      });
+    } else {
+      User.deleteOne({ _id: req.user._id }, (err, userInfo) => {
+        if (err) return res.json({ deleteSuccess: false, err });
+        else {
+          console.log("삭제완료");
+          return res.status(200).send({ deleteSuccess: true });
+        }
+      });
+    }
+  });
+});
 
 module.exports = router;

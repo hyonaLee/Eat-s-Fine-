@@ -23,7 +23,7 @@ function KeepPage() {
 
   return (
     <div>
-     <KeepInfo list={list} />
+      <KeepInfo list={list} />
     </div>
   );
 }
