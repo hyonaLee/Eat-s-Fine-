@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
-import {
-  changePassword,
-  deleteUser,
-} from "../../../_actions/user_actions";
+import { changePassword } from "../../../_actions/user_actions";
 
 function Password() {
   const user = useSelector((state) => state.user);
@@ -13,6 +9,7 @@ function Password() {
   const [stateChg, setStateChg] = useState(false);
   const [currentPW, setCurrentPW] = useState("");
   const [newPW, setNewPW] = useState("");
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     if (user.userData !== undefined) {
@@ -20,32 +17,53 @@ function Password() {
     }
   }, [user]);
 
+  const openTextarea = () => {
+    setText("");
+    setOpen(true);
+  };
+
+  const closeTextarea = () => {
+    setOpen(false);
+  };
+
   const onchangeText = (e) => {
     setText(e.target.value);
   };
 
   const submit = () => {
-    setStateChg(true);
-    const data = {
-      password: text,
-    };
-    dispatch(changePassword(data)).then((response) => {
-      console.log("응답결과", response.payload.Success);
-      console.log("받은 비밀번호 결과", response.payload.password);
-      setNewPW(response.payload.password);
-    });
+    if (text.length < 4) {
+      alert("비밀번호는 4자리 이상만들어주세요.");
+    } else {
+      setStateChg(true);
+      const data = {
+        password: text,
+      };
+      dispatch(changePassword(data)).then((response) => {
+        console.log("응답결과", response.payload.Success);
+        console.log("받은 비밀번호 결과", response.payload.password);
+        setNewPW(response.payload.password);
+        alert("비밀번호 변경 완료");
+        setOpen(false);
+      });
+    }
   };
 
   return (
     <div>
-      {!stateChg ? currentPW : newPW}
-      <textarea
-        style={{ width: "400px", borderRadius: " 5px" }}
-        onChange={onchangeText}
-        value={text}
-        placeholder="비밀번호 변경"
-      />
-      <button onClick={submit}>비밀번호변경</button>
+      {!open ? (
+        <button onClick={openTextarea}>비밀번호 변경</button>
+      ) : (
+        <div>
+          <textarea
+            style={{ width: "400px", borderRadius: " 5px" }}
+            onChange={onchangeText}
+            value={text}
+            placeholder="비밀번호 변경"
+          />
+          <button onClick={submit}>변경</button>
+          <button onClick={closeTextarea}>취소</button>
+        </div>
+      )}
     </div>
   );
 }

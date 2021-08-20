@@ -3,27 +3,30 @@ import { useDispatch, useSelector } from "react-redux";
 import Email from "./Email";
 import Password from "./Password";
 import DeleteUser from "./DeleteUser";
+import styled from "styled-components";
+const StyledDiv = styled.div`
+  text-align: center;
+  margin-top: 150px;
+`;
 
 function MyPage() {
   const user = useSelector((state) => state.user);
-  const [currentId, setCurrentId] = useState("");
-  const [currentName, setCurrentName] = useState("");
+  const [currentInfo, setCurrentInfo] = useState("");
 
   useEffect(() => {
     if (user.userData !== undefined) {
-      setCurrentId(user.userData.userid);
-      setCurrentName(user.userData.name);
+      setCurrentInfo(user.userData);
     }
   }, [user]);
 
   return (
-    <div>
-      <p>아이디: {currentId}</p>
-      <p>이름: {currentName}</p>
+    <StyledDiv>
+      <p>아이디: {currentInfo.userid}</p>
+      <p>이름: {currentInfo.name}</p>
       <Email />
       <Password />
       <DeleteUser />
-    </div>
+    </StyledDiv>
   );
 }
 
