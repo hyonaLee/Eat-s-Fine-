@@ -6,16 +6,19 @@ import DeleteUser from "./DeleteUser";
 
 function MyPage() {
   const user = useSelector((state) => state.user);
+  const [currentId, setCurrentId] = useState("");
   const [currentName, setCurrentName] = useState("");
 
   useEffect(() => {
     if (user.userData !== undefined) {
+      setCurrentId(user.userData.userid);
       setCurrentName(user.userData.name);
     }
   }, [user]);
 
   return (
     <div>
+      <p>아이디: {currentId}</p>
       <p>이름: {currentName}</p>
       <Email />
       <Password />

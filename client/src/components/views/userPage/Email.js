@@ -34,6 +34,7 @@ function Email() {
   return (
     <div>
       이메일:{!stateChg ? currentEmail : newEmail}
+      <br />
       <textarea
         style={{ width: "400px", borderRadius: " 5px" }}
         onChange={onchangeText}
