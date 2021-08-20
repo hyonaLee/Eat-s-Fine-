@@ -6,43 +6,37 @@ import { Route, Link } from "react-router-dom";
 function SearchBoxLocation() {
   const [text, setText] = useState("");
   // const [location, setLocation] = useState("");
-  const { setLocationSearch, myLocation } = useApplicationContext();
+  const { setLocationSearch, myLocation, setLocation, locationSearch } = useApplicationContext();
 
   function onchangeText(e) {
     setText(e.target.value);
-    console.log("1", e.target.value);
+    console.log("inputValue", e.target.value);
   }
 
-  // function onchangeText2(e) {
-  //   setLocation(e.target.value);
-  //   console.log("2", e.target.value);
-  // }
+  function onclickBtn() {
+    setLocationSearch(text);
+    console.log("setlocation", locationSearch);
 
-  function onclickMenu() {
-    console.log("12345", text);
-    if (text === "") {
-      setLocationSearch(text);
-    } else {
-      setLocationSearch(myLocation + text + "맛집");
-    }
   }
 
   return (
     <InputDiv>
       <input
         type="text"
-        placeholder="내위치에서 메뉴 입력"
+        placeholder="위치 입력"
         onChange={onchangeText}
         value={text}
       />
-      <input type="button" onClick={onclickMenu} value="검색" />
+      <Link to="/changelocation">
+      <input type="button" onClick={onclickBtn} value="검색" />
+      </Link>
     </InputDiv>
   );
 }
 
 const InputDiv = styled.div`
   position: relative;
-  top: 400px;
+  top: 600px;
 `;
 
 export default SearchBoxLocation;
