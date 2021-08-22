@@ -36,6 +36,9 @@ const MapDiv = styled.div`
   height: 830px;
   margin: 0;
   margin-top: 30px;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export default MapStoreList;

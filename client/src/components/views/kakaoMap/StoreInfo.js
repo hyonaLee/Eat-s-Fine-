@@ -71,12 +71,21 @@ const ResultListDiv = styled.div`
   margin-top: 30px;
   background-color: #e0e0e0;
   overflow: scroll;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    height: 100%;
+  }
 `;
 const HeadDiv = styled.div`
   background-color: #bdbdbd;
   height: 60px;
   padding: 10px;
   padding-left: 20px;
+  @media screen and (max-width: 768px) {
+    height: 40px;
+    padding: 5px;
+    font-size: 10px;
+  }
 `;
 const HeadH3 = styled.h3`
   color: black;
@@ -94,6 +103,11 @@ const ResultListLi = styled.li`
   :hover {
     box-shadow: 0px 0px 10px gray;
   }
+  @media screen and (max-width: 768px) {
+    padding: 3px;
+    font-size: 0.7em;
+    line-height: 15px;
+  }
 `;
 const ListDiv = styled.div`
   display: flex;
@@ -102,6 +116,9 @@ const ListDiv = styled.div`
 const LikeBtn = styled.button`
   height: 20px;
   line-height: 5px;
+  @media screen and (max-width: 768px) {
+    
+  }
 `;
 
 export default StoreInfo;
