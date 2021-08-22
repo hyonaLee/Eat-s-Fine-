@@ -16,7 +16,7 @@ const weatherData = (lat, lon, callback) => {
   let rs = dfs_xy_conv("toXY", lat, lon);
   console.log("격자변환x", rs.x);
   console.log("격자변환y", rs.y);
-  let api_url = `${API_STEM}?serviceKey=${API_KEY}&numOfRows=10&pageNo=1&base_date=${today}&base_time=1100&nx=${rs.x}&ny=${rs.y}`;
+  let api_url = `${API_STEM}?serviceKey=${API_KEY}&numOfRows=10&pageNo=1&base_date=20210821&base_time=1100&nx=${rs.x}&ny=${rs.y}`;
   console.log(api_url);
  
   request(

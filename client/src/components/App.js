@@ -24,7 +24,6 @@ function App() {
         <MapContextProvider>
           <Route
             render={({ location }) => {
-              console.log("로케이션", location);
               return (
                 <TransitionGroup className="transition-group">
                   <CSSTransition
@@ -35,6 +34,7 @@ function App() {
                     <section className="route-section">
                       <Switch location={location}>
                         <Route exact path="/" component={Auth(Landing, null)} />
+                        
                         <Route
                           exact
                           path="/login"

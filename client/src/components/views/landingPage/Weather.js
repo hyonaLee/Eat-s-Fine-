@@ -4,7 +4,7 @@ import { useApplicationContext } from "../../../contexts/weatherAndMap_context";
 
 function Weather() {
   const [weatherData, setWeatherData] = useState([]);
-  const { locationSearch, longitude, latitude, latlngValue, sky, setSky } =
+  const { locationSearch, longitude, latitude, latlngValue, setSky } =
     useApplicationContext();
 
   let latData = latitude;
