@@ -16,11 +16,17 @@ const InfoDiv = styled.div`
   display: block;
   position: relative;
   top: 310px;
+  @media screen and (max-width: 768px) {
+    top: 170px;
+   }
 `;
 const InfoH2 = styled.h2`
   font-size: 25px;
   color: white;
   line-height: 20px;
+  @media screen and (max-width: 768px) {
+    font-size: 15px;
+   }
 `;  
 
 export default InfoToday;

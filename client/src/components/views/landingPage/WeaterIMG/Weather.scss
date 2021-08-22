@@ -285,3 +285,10 @@ a {
     opacity: 0.2;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .icon { 
+    top: 80px;
+    font-size: 0.7em;
+   }
+}

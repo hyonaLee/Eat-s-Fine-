@@ -53,6 +53,9 @@ function SearchBoxMenu() {
 const InputDiv = styled.div`
   position: relative;
   top: 400px;
+  @media screen and (max-width: 768px) {
+    top: 180px;
+   }
 `;
 
 export default SearchBoxMenu;

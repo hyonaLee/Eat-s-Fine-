@@ -19,7 +19,10 @@ const HeaderDiv = styled.div`
   display: block;
   display: flex;
   justify-content: space-between;
-  height: 50px;
+  height: 40px;
+  @media screen and (max-width: 768px) {
+    height: 20px;
+   }
 `;
 
 const HeaderStyle = styled.h2`
@@ -35,10 +38,15 @@ const LogDiv = styled.div`
 `;
 
 const LogStyle = styled.h2`
-  margin: 20px;
+  margin: 15px;
   float: right;
   color: white;
-  font-size: 20px;
+  font-size: 20px;  
+  @media screen and (max-width: 768px) {
+    font-size: 1.0em;
+    margin: 5px;
+   }
+
 `;
 
 const HelloH2 = styled.h2`

@@ -39,11 +39,17 @@ const HashDiv = styled.div`
   display: block;
   position: relative;
   top: 350px;
+  @media screen and (max-width: 768px) {
+    top: 170px;
+   }
 `;
 const HashH2 = styled.h2`
   font-size: 25px;
   color: white;
   line-height: 50px;
+  @media screen and (max-width: 768px) {
+    font-size: 16px;
+   }
 `;
 
 export default HashTag;

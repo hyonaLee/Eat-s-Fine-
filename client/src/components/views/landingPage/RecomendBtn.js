@@ -26,10 +26,18 @@ const RecomendBtnStyle = styled.button`
   border-radius: 8px;
   height: 20px;
   width: 65px;
+  @media screen and (max-width: 768px) {
+    font-size: 7px;
+    height: 10px;
+    width: 50px;
+   }
 `;
 
 const BtnDiv = styled.div`
   position: relative;
   top: 370px;
+  @media screen and (max-width: 768px) {
+    top: 160px;
+   }
 `;
 export default RecomendBtn;

@@ -69,5 +69,9 @@ const BtnDiv = styled.div`
   display: inline-block;
   position: relative;
   top: 420px;
+  @media screen and (max-width: 768px) {
+    top: 170px;
+    font-size: 0.8em;
+   }
 `;
 export default ChangeLocationBtn;
