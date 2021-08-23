@@ -28,7 +28,7 @@ function InfoWeather() {
 const WeatherDiv = styled.div`
   height: 230px;
   @media screen and (max-width: 768px) {
-    height: 100px;
+    height: 130px;
    }
 `;
 

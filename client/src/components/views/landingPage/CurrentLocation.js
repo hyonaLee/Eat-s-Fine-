@@ -17,14 +17,12 @@ const LocationH1 = styled.h3`
   font-size: 15px;
   color: white;
   @media screen and (max-width: 768px) {
-    font-size: 10px;
+    font-size: 12px;
    }
 `;
 const LocationDiv = styled.div`
-
-
   @media screen and (max-width: 768px) {
-    /* top: 170px; */
+    margin-top: 10px;
    }
 `;
 

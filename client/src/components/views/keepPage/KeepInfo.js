@@ -74,7 +74,7 @@ const ResultListUl = styled.ul`
   width: 600px;
   margin: auto;
   @media screen and (max-width: 768px) {
-    width: 500px;
+    width: 300px;
 }
 `;
 

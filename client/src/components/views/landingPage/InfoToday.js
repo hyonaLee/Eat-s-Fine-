@@ -24,7 +24,7 @@ const InfoH2 = styled.h2`
   line-height: 50px;
   @media screen and (max-width: 768px) {
     font-size: 13px;
-    line-height: 20px
+    line-height: 25px
    }
 `;  
 

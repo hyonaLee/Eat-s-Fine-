@@ -29,23 +29,34 @@ function SearchBoxMenu() {
 
   return (
     <InputDiv>
-      <input
+      <InputText
         type="text"
-        placeholder="원하는 메뉴가 있나요?"
+        placeholder="원하는 메뉴가 있나요?" 
         onChange={onchangeText}
         value={text}
       />
       <Link to="/searchResult">
-        <input type="button" onClick={onclickMenu} value="검색" />
+      <i className="material-icons"  onClick={onclickMenu}>search</i>
       </Link>
     </InputDiv>
   );
 }
+const i = styled.i`
+color: black;
+position: absolute;
+left: 30px;
+`
+const InputText = styled.input`
+  width: 250px;
+  height: 40px;
+  border-radius: 20px;
+  padding-left: 10px;
+`
 
 const InputDiv = styled.div`
   margin-top: 35px;
   @media screen and (max-width: 768px) {
-    margin-top: 10px;
+    margin-top: 30px;
   }
 `;
 

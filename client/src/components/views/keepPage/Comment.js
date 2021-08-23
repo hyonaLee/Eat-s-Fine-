@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addComment } from "../../../_actions/user_actions";
+import styled from "styled-components";
 
 
 function Comment({ id }) {
@@ -27,8 +28,7 @@ function Comment({ id }) {
   return (
     <div>
       <form style={{ display: "flex" }} onSubmit>
-        <textarea
-          style={{ width: "400px", borderRadius: " 5px" }}
+        <ComentInput type="textarea"
           onChange={onchangeText}
           value={text}
           placeholder="기대평, 후기 등 코멘트 작성공간"
@@ -38,5 +38,13 @@ function Comment({ id }) {
     </div>
   );
 }
+
+const ComentInput = styled.input`
+  width: 400px;
+  border-radius: 5px;
+  @media screen and (max-width: 768px) {
+    width: 200px;
+  }
+  `
 
 export default Comment;
