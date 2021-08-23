@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import styled from "styled-components";
 import { useApplicationContext } from "../../../contexts/weatherAndMap_context";
 import Rainy from "./WeaterIMG/Rainy";
 import Cloud from "./WeaterIMG/Cloud";
@@ -19,7 +20,13 @@ function InfoWeather() {
     else setTodayWeat(<Cloud />);
   }, [setSky, sky]);
 
-  return <>{todayWeat}</>;
+  return <WeatherDiv>
+        {todayWeat}
+    </WeatherDiv>;
 }
+
+const WeatherDiv = styled.div`
+  display: block;
+`;
 
 export default InfoWeather;
