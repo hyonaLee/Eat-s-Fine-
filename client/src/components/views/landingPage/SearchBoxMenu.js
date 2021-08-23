@@ -43,11 +43,10 @@ function SearchBoxMenu() {
 }
 
 const InputDiv = styled.div`
-  position: relative;
-  top: 400px;
+  margin-top: 35px;
   @media screen and (max-width: 768px) {
-    top: 180px;
-   }
+    margin-top: 10px;
+  }
 `;
 
 export default SearchBoxMenu;

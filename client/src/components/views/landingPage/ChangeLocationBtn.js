@@ -32,6 +32,7 @@ function ChangeLocationBtn() {
     </BtnDiv>
       ) : (
     <InputDiv>
+    <SearchLocationDiv>
     <input
       type="text"
       placeholder="위치 입력"
@@ -40,6 +41,7 @@ function ChangeLocationBtn() {
     />
     <input type="button" onClick={onclickBtn} value="검색" />
     <input type="button" onClick={closeModal} value="위치변경" />
+    </SearchLocationDiv>
     <ChangeMap/>
    </InputDiv>
    
@@ -48,17 +50,34 @@ function ChangeLocationBtn() {
   );
 }
 
+const SearchLocationDiv = styled.div`
+  background-color: gray;
+   width: 100%;
+   height: 25px;
+   z-index: 10;
+   position: absolute;
+   top: 0px;
+   left: 50%;
+   transform: translateX(-50%);
+`;
 const BtnDiv = styled.div`
-  display: inline-block;
-  position: relative;
-  top: 410px;
-  font-size: 10px;
+  cursor: pointer;
   color: white;
+  font-size: 20px;
+  @media screen and (max-width: 768px) {
+    font-size: 10px;
+  }
 `;
 
 const InputDiv = styled.div`
-  position: relative;
-  top: 600px;
+  width: 500px;
+  height: 800px;
+  text-align: center;
+  z-index: 5;
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
 `;
 
 export default ChangeLocationBtn;

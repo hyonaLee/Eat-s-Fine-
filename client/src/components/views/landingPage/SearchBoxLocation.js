@@ -34,8 +34,8 @@ function SearchBoxLocation() {
 }
 
 const InputDiv = styled.div`
-  position: relative;
-  top: 600px;
+  /* position: relative;
+  top: 600px; */
 `;
 
 export default SearchBoxLocation;

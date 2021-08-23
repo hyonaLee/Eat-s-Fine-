@@ -21,11 +21,10 @@ const LocationH1 = styled.h3`
    }
 `;
 const LocationDiv = styled.div`
-  display: inline-block;
-  position: relative;
-  top: 420px;
+
+
   @media screen and (max-width: 768px) {
-    top: 170px;
+    /* top: 170px; */
    }
 `;
 

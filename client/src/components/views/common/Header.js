@@ -15,7 +15,6 @@ import MyPage from "../userPage/MyPage";
 const useStyles = makeStyles({});
 
 const HeaderDiv = styled.div`
-  display: block;
   display: flex;
   justify-content: space-between;
   height: 40px;
@@ -42,7 +41,7 @@ const LogStyle = styled.h2`
   color: white;
   font-size: 20px;
   @media screen and (max-width: 768px) {
-    font-size: 1em;
+    font-size: 0.8em;
     margin: 5px;
   }
 `;
