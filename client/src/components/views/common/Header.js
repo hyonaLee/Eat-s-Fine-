@@ -8,12 +8,11 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Button, Divider, ListItem } from "@material-ui/core";
 import Drawer from "@material-ui/core/Drawer";
 import clsx from "clsx";
-import "./Header.scss"
-import Logo from './Logo';
+import "./Header.scss";
+import Logo from "./Logo";
+import MyPage from "../userPage/MyPage";
 
-const useStyles = makeStyles({
-
-});
+const useStyles = makeStyles({});
 
 const HeaderDiv = styled.div`
   display: block;
@@ -22,7 +21,7 @@ const HeaderDiv = styled.div`
   height: 40px;
   @media screen and (max-width: 768px) {
     height: 20px;
-   }
+  }
 `;
 
 const HeaderStyle = styled.h2`
@@ -41,12 +40,11 @@ const LogStyle = styled.h2`
   margin: 15px;
   float: right;
   color: white;
-  font-size: 20px;  
+  font-size: 20px;
   @media screen and (max-width: 768px) {
-    font-size: 1.0em;
+    font-size: 1em;
     margin: 5px;
-   }
-
+  }
 `;
 
 const HelloH2 = styled.h2`
@@ -78,7 +76,8 @@ const StyledLiLogOut = styled.div`
 function Header() {
   const user = useSelector((state) => state.user);
   const classes = useStyles();
-  const [state, setState] = React.useState({
+  const [modal, setModal] = useState(false);
+  const [state, setState] = useState({
     right: false,
   });
 
@@ -103,29 +102,43 @@ function Header() {
     });
   };
 
+  const modalInfo = () => {
+    if (modal) {
+      setModal(false);
+    } else {
+      setModal(true);
+    }
+  };
+
   const list = (anchor) => (
     <div
       className={clsx(classes.list, {
         [classes.fullList]: anchor === "top" || anchor === "bottom",
       })}
       role="presentation"
-      onClick={toggleDrawer(anchor, false)}
+      // onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <HelloH2> {user.userData.name}님 안녕하세요.</HelloH2>
       <Divider />
-      <List>
-        <Link to="/mypage">
-          <StyledLi><i className="material-icons">account_circle</i> 내정보</StyledLi>
-        </Link>
-        <Link to="/keep">
-          <StyledLi><i className="material-icons">favorite</i> 찜목록</StyledLi>
-        </Link>
-        <Link to="/">
-          <StyledLiLogOut onClick={logoutHandler} className="logout"
-          >로그아웃</StyledLiLogOut>
-        </Link>
-      </List>
+
+      <div onClick={modalInfo} style={{ cursor: "pointer" }}>
+        <StyledLi>
+          <i className="material-icons">account_circle</i> 내정보
+        </StyledLi>
+        {modal ? <MyPage /> : <div></div>}
+      </div>
+
+      <Link to="/keep" onClick={toggleDrawer(anchor, false)}>
+        <StyledLi>
+          <i className="material-icons">favorite</i> 찜목록
+        </StyledLi>
+      </Link>
+      <Link to="/">
+        <StyledLiLogOut onClick={logoutHandler} className="logout">
+          로그아웃
+        </StyledLiLogOut>
+      </Link>
     </div>
   );
 
@@ -134,7 +147,7 @@ function Header() {
     return (
       <HeaderDiv>
         <Link to="/">
-          <Logo/>
+          <Logo />
         </Link>
         <Drawer
           anchor={"right"}
@@ -144,7 +157,9 @@ function Header() {
           {list("right")}
         </Drawer>
         <LogDiv>
-          <LogStyle onClick={toggleDrawer("right", true)}><i className="material-icons">menu</i></LogStyle>
+          <LogStyle onClick={toggleDrawer("right", true)}>
+            <i className="material-icons">menu</i>
+          </LogStyle>
         </LogDiv>
       </HeaderDiv>
     );
@@ -152,7 +167,7 @@ function Header() {
     return (
       <HeaderDiv>
         <Link to="/">
-        <Logo/>
+          <Logo />
         </Link>
         <LogDiv>
           <Link to="/login">

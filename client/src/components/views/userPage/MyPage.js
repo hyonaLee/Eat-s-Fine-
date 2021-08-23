@@ -6,7 +6,8 @@ import DeleteUser from "./DeleteUser";
 import styled from "styled-components";
 const StyledDiv = styled.div`
   text-align: center;
-  margin-top: 150px;
+  margin-top: 30px;
+  margin-bottom: 30px;
 `;
 
 function MyPage() {
