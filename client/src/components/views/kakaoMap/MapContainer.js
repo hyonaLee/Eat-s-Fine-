@@ -15,6 +15,7 @@ function MapContainer() {
     setMyLocation,
   } = useApplicationContext();
   const { setMapSearchData, setListExist } = useMapContext();
+
   const history = useHistory();
   navigator.geolocation.getCurrentPosition((position) => {
     setLatitude(position.coords.latitude);
@@ -100,6 +101,7 @@ function MapContainer() {
     // 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
     const infowindow = new window.kakao.maps.InfoWindow({ zIndex: 1 });
     ps.keywordSearch(locationSearch, placesSearchCB);
+
     // 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
     function placesSearchCB(data, status, pagination) {
       if (status === window.kakao.maps.services.Status.OK) {
@@ -109,9 +111,11 @@ function MapContainer() {
         // 정상적으로 검색이 완료됐으면
         // 검색 목록과 마커를 표출합니다
         displayPlaces(data);
-
-        setListExist(true);
-        setMapSearchData(data);
+        console.log("가나다라마바사", data)
+        if(data !== null){
+          setListExist(true);
+          setMapSearchData(data);
+        }
       }
     }
 

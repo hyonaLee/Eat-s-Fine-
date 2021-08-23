@@ -37,6 +37,7 @@ export function ApplicationContextProvider({ children }) {
     locationchangeControl,
     setLocationchangeControl
 
+
   };
 
   return <Context.Provider value={value}>{children}</Context.Provider>;
