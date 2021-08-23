@@ -3,8 +3,6 @@ import styled from "styled-components";
 import { useApplicationContext } from "../../../contexts/weatherAndMap_context";
 import ChangeMap from "../kakaoMap/ChangeMap";
 
-
-
 function ChangeLocationBtn() {
   const [open, setOpen] = useState(false);
   const [text, setText] = useState("");
@@ -55,6 +53,11 @@ const BtnDiv = styled.div`
   position: relative;
   top: 385px;
   left: -110px;
+`;
+
+const InputDiv = styled.div`
+  position: relative;
+  top: 600px;
 `;
 
 const InputDiv = styled.div`

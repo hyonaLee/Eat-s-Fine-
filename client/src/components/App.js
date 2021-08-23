@@ -45,6 +45,7 @@ function App() {
                           component={Auth(Register, false)}
                         />
                         <Route exact path="/map" component={MapContainer} />
+
                         <Route
                           exact
                           path="/keep"
@@ -69,7 +70,7 @@ function App() {
           ></Route>
         </MapContextProvider>
       </ApplicationContextProvider>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
