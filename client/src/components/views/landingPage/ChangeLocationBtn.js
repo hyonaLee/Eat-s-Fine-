@@ -28,7 +28,7 @@ function ChangeLocationBtn() {
     <>
      {!open ? (
     <BtnDiv>
-        <i className="material-icons" onClick={openModal}>my_location</i>위치변경
+        <i className="material-icons" onClick={openModal}>my_location</i>
     </BtnDiv>
       ) : (
     <InputDiv>
@@ -51,9 +51,8 @@ function ChangeLocationBtn() {
 const BtnDiv = styled.div`
   display: inline-block;
   position: relative;
-  top: 410px;
-  font-size: 10px;
-  color: white;
+  top: 385px;
+  left: -110px;
 `;
 
 const InputDiv = styled.div`

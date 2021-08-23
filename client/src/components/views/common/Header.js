@@ -82,12 +82,7 @@ function Header() {
   });
 
   const toggleDrawer = (anchor, open) => (event) => {
-    if (
-      event.type === "keydown" &&
-      (event.key === "Tab" || event.key === "Shift")
-    ) {
-      return;
-    }
+
     setState({ ...state, [anchor]: open });
   };
 
@@ -116,8 +111,6 @@ function Header() {
         [classes.fullList]: anchor === "top" || anchor === "bottom",
       })}
       role="presentation"
-      // onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
     >
       <HelloH2> {user.userData.name}님 안녕하세요.</HelloH2>
       <Divider />
@@ -126,8 +119,9 @@ function Header() {
         <StyledLi>
           <i className="material-icons">account_circle</i> 내정보
         </StyledLi>
-        {modal ? <MyPage /> : <div></div>}
       </div>
+
+      {modal ? <MyPage /> : <div></div>}
 
       <Link to="/keep" onClick={toggleDrawer(anchor, false)}>
         <StyledLi>

@@ -49,17 +49,18 @@ function Password() {
   };
 
   return (
-    <div>
+    <div style={{ paddingTop: "8px" }}>
       {!open ? (
         <button onClick={openTextarea}>비밀번호 변경</button>
       ) : (
-        <div>
+        <div style={{ textAlign: "right", paddingRight: "20px" }}>
           <textarea
-            style={{ width: "400px", borderRadius: " 5px" }}
+            style={{ width: "210px", borderRadius: " 5px" }}
             onChange={onchangeText}
             value={text}
             placeholder="비밀번호 변경"
           />
+          <br />
           <button onClick={submit}>변경</button>
           <button onClick={closeTextarea}>취소</button>
         </div>

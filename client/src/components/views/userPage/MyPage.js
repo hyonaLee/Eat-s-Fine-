@@ -6,10 +6,16 @@ import DeleteUser from "./DeleteUser";
 import styled from "styled-components";
 const StyledDiv = styled.div`
   text-align: center;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin: 20px;
+  padding-top: 5px;
+  padding-bottom: 30px;
+  border: 2px solid red;
+  border-radius: 6px;
 `;
-
+const StyledInfo = styled.div`
+  text-align: left;
+  padding-left: 20px;
+`;
 function MyPage() {
   const user = useSelector((state) => state.user);
   const [currentInfo, setCurrentInfo] = useState("");
@@ -22,11 +28,16 @@ function MyPage() {
 
   return (
     <StyledDiv>
-      <p>아이디: {currentInfo.userid}</p>
-      <p>이름: {currentInfo.name}</p>
-      <Email />
-      <Password />
-      <DeleteUser />
+      <StyledInfo>
+        <p>Id : {currentInfo.userid}</p>
+        <p>Name : {currentInfo.name}</p>
+        <div>
+          <Email />
+          <Password />
+        </div>
+        <br />
+        <DeleteUser />
+      </StyledInfo>
     </StyledDiv>
   );
 }

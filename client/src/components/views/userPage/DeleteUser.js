@@ -45,17 +45,18 @@ function DeleteUser() {
   };
 
   return (
-    <div>
+    <div style={{paddingTop:"5px",paddingRight:"20px", textAlign:"right"}}>
       {!open ? (
         <button onClick={openTextarea}>회원탈퇴</button>
       ) : (
         <div>
           <textarea
-            style={{ width: "400px", borderRadius: " 5px" }}
+            style={{ width: "210px", borderRadius: " 5px" }}
             onChange={onchangeText}
             value={text}
             placeholder="삭제하려면 비밀번호 입력"
           />
+          <br/>
           <button onClick={submit}>삭제</button>
           <button onClick={closeTextarea}>취소</button>
         </div>
