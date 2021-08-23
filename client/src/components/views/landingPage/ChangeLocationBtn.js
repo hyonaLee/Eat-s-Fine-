@@ -1,33 +1,64 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
 import styled from "styled-components";
+import { useApplicationContext } from "../../../contexts/weatherAndMap_context";
+import ChangeMap from "../kakaoMap/ChangeMap";
+
+
 
 function ChangeLocationBtn() {
+  const [open, setOpen] = useState(false);
+  const [text, setText] = useState("");
+  const { setLocationSearch, myLocation, setLocation, locationSearch,setLocationchangeControl } = useApplicationContext();
+  function onchangeText(e) {
+    setText(e.target.value);
+    console.log("inputValue", e.target.value);
+  }
+  
+  function onclickBtn() {
+    setLocationSearch(text);
+    console.log("setlocation", locationSearch);
+  }
+  
+  function openModal() {
+    setOpen(true);
+    setLocationchangeControl(false)
+  }
+  function closeModal() {
+    setOpen(false);
+  }
   return (
+    <>
+     {!open ? (
     <BtnDiv>
-      <Link to="/changelocation">
-        <i className="material-icons">my_location</i>
-      </Link>
+        <i className="material-icons" onClick={openModal}>my_location</i>
     </BtnDiv>
+      ) : (
+    <InputDiv>
+    <input
+      type="text"
+      placeholder="위치 입력"
+      onChange={onchangeText}
+      value={text}
+    />
+    <input type="button" onClick={onclickBtn} value="검색" />
+    <input type="button" onClick={closeModal} value="위치변경" />
+    <ChangeMap/>
+   </InputDiv>
+   
+      )}
+  </>
   );
 }
-
-// const ChangeLocationBtnStyle = styled.button`
-//   font-size: 10px;
-//   line-height: 8px;
-//   color: white;
-//   background-color: #a5a0a0;
-//   padding: 5px;
-//   border-radius: 8px;
-//   height: 20px;
-//   width: 65px;
-  
-// `;
 
 const BtnDiv = styled.div`
   display: inline-block;
   position: relative;
   top: 385px;
   left: -110px;
+`;
+
+const InputDiv = styled.div`
+  position: relative;
+  top: 600px;
 `;
 export default ChangeLocationBtn;

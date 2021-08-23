@@ -13,6 +13,7 @@ export function ApplicationContextProvider({ children }) {
   const [currentMenu, setCurrentMenu] = useState([])
   const [listNum, setListNum] = useState([0,1,2,3])
   const [ changeNum, setChangeNum] = useState([]);
+  const [ locationchangeControl, setLocationchangeControl] = useState(true);
 
   const value = {
     locationSearch,
@@ -32,7 +33,10 @@ export function ApplicationContextProvider({ children }) {
     listNum,
     setListNum,
     changeNum,
-    setChangeNum
+    setChangeNum,
+    locationchangeControl,
+    setLocationchangeControl
+
   };
 
   return <Context.Provider value={value}>{children}</Context.Provider>;

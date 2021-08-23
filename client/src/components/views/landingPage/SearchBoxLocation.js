@@ -14,6 +14,7 @@ function SearchBoxLocation() {
   }
 
   function onclickBtn() {
+    
     setLocationSearch(text);
     console.log("setlocation", locationSearch);
 
@@ -27,9 +28,7 @@ function SearchBoxLocation() {
         onChange={onchangeText}
         value={text}
       />
-      <Link to="/changelocation">
       <input type="button" onClick={onclickBtn} value="검색" />
-      </Link>
     </InputDiv>
   );
 }
