@@ -34,6 +34,7 @@ const HeaderStyle = styled.h2`
 const LogDiv = styled.div`
   float: right;
   color: white;
+  cursor: pointer;
 `;
 
 const LogStyle = styled.h2`
