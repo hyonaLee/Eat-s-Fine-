@@ -60,8 +60,4 @@ const InputDiv = styled.div`
   top: 600px;
 `;
 
-const InputDiv = styled.div`
-  position: relative;
-  top: 600px;
-`;
 export default ChangeLocationBtn;
