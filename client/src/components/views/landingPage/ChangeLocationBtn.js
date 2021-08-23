@@ -52,7 +52,7 @@ function ChangeLocationBtn() {
 
 const SearchLocationDiv = styled.div`
   background-color: gray;
-   width: 100%;
+   width: 280px;
    height: 25px;
    z-index: 10;
    position: absolute;
@@ -70,8 +70,7 @@ const BtnDiv = styled.div`
 `;
 
 const InputDiv = styled.div`
-  width: 500px;
-  height: 800px;
+  width: 100%;
   text-align: center;
   z-index: 5;
   position: absolute;

@@ -63,12 +63,19 @@ const AllHeartListDiv = styled.div`
   display: flex;
   justify-content: space-between;
   line-height: 22px;
+  @media screen and (max-width: 768px) {
+    font-size: 10px;
+    line-height: 12px;
+}
 `;
 
 const ResultListUl = styled.ul`
   list-style: none;
   width: 600px;
   margin: auto;
+  @media screen and (max-width: 768px) {
+    width: 500px;
+}
 `;
 
 const ResultListLi = styled.li`

@@ -18,6 +18,7 @@ const HeaderDiv = styled.div`
   display: flex;
   justify-content: space-between;
   height: 40px;
+  width: 100%;
   @media screen and (max-width: 768px) {
     height: 20px;
   }

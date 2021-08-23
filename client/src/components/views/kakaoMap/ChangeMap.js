@@ -287,11 +287,12 @@ function ChangeMap() {
       />
   );
 }
-const ChangeMapDiv = styled.div`
-  margin: auto;
-`;
+
 const MapDiv = styled.div`
-  width: 500px;
-  height: 650px;
+  width: 100%;
+  height: 90vh;
+  @media screen and (max-width: 768px) {
+
+    }
 `;
 export default ChangeMap;
