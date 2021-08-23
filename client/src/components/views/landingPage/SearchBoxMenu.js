@@ -6,7 +6,7 @@ import { Route, Link } from "react-router-dom";
 function SearchBoxMenu() {
   const [text, setText] = useState("");
   // const [location, setLocation] = useState("");
-  const { setLocationSearch, myLocation, myLocationChg, myNewLocation, setClearData} =
+  const { setLocationSearch, myLocation,} =
     useApplicationContext();
   const myLocationLast = myLocation.lastIndexOf(" ");
   const myLocationName = myLocation.substring(myLocationLast, 0);
@@ -16,24 +16,16 @@ function SearchBoxMenu() {
   }
 
   function onclickMenu() {
-    console.log("myLocationChg", myLocationChg);
-    console.log("myNewLocation", myNewLocation);
-    console.log("myLocationName", myLocationName);
-    setClearData(true)
-    if (!myLocationChg) {
+
+
       if (text === "") {
         setLocationSearch(myLocationName + "맛집");
       } else {
         setLocationSearch(myLocationName + text + "맛집");
       }
-    } else {
-      if (text === "") {
-        setLocationSearch(myNewLocation + "맛집");
-      } else {
-        setLocationSearch(myNewLocation + text + "맛집");
-      }
     }
-  }
+  
+
 
   return (
     <InputDiv>

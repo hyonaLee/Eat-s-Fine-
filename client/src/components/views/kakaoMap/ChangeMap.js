@@ -34,43 +34,43 @@ function ChangeMap() {
 
     const map = new window.kakao.maps.Map(container.current, options); //지도 생성 및 객체 리턴
     const ps = new window.kakao.maps.services.Places(map);
-    if (locationSearch === "") {
-      geolocation();
-    }
+    // if (locationSearch === "") {
+    //   geolocation();
+    // }
 
-    function geolocation() {
-      navigator.geolocation.getCurrentPosition(function (position) {
-        let locPosition = new window.kakao.maps.LatLng(latitude, longitude), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
-        message = '<span>현위치</span>'; // 인포윈도우에 표시될 내용입니다
+    // function geolocation() {
+    //   navigator.geolocation.getCurrentPosition(function (position) {
+    //     let locPosition = new window.kakao.maps.LatLng(latitude, longitude), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
+    //     message = '<span>현위치</span>'; // 인포윈도우에 표시될 내용입니다
 
-        // 마커와 인포윈도우를 표시합니다
-        displayMarker(locPosition,message);
+    //     // 마커와 인포윈도우를 표시합니다
+    //     displayMarker(locPosition,message);
 
-        searchDetailAddrFromCoords(locPosition, function (result, status) {
-          // 마커를 생성합니다
-          let marker = new window.kakao.maps.Marker({
-            map: map,
-          });
+    //     searchDetailAddrFromCoords(locPosition, function (result, status) {
+    //       // 마커를 생성합니다
+    //       let marker = new window.kakao.maps.Marker({
+    //         map: map,
+    //       });
 
-          if (status === window.kakao.maps.services.Status.OK) {
-            const detailAddr = !!result[0].road_address
-              ? "<div>도로명주소 : " +
-                result[0].road_address.address_name +
-                "</div>"
-              : "<div>지번 주소 : " + result[0].address.address_name + "</div>";
+    //       if (status === window.kakao.maps.services.Status.OK) {
+    //         const detailAddr = !!result[0].road_address
+    //           ? "<div>도로명주소 : " +
+    //             result[0].road_address.address_name +
+    //             "</div>"
+    //           : "<div>지번 주소 : " + result[0].address.address_name + "</div>";
           
-            setMyLocation(result[0].address.address_name);
-            // 마커를 클릭한 위치에 표시합니다
-            marker.setPosition(locPosition);
-            marker.setMap(map);
-            // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
-            infowindow.setContent(detailAddr);
-            infowindow.open(map, marker);
+    //         setMyLocation(result[0].address.address_name);
+    //         // 마커를 클릭한 위치에 표시합니다
+    //         marker.setPosition(locPosition);
+    //         marker.setMap(map);
+    //         // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
+    //         infowindow.setContent(detailAddr);
+    //         infowindow.open(map, marker);
             
-          }
-        });
-      });
-    }
+    //       }
+    //     });
+    //   });
+    // }
 
     // 지도에 마커와 인포윈도우를 표시하는 함수입니다
     function displayMarker(locPosition, message) {
@@ -128,8 +128,8 @@ function ChangeMap() {
               }); 
               if (status === window.kakao.maps.services.Status.OK) {
                   var detailAddr = !!result[0].road_address ?
-                   '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' 
-                   : '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
+              result[0].road_address.address_name 
+                   : result[0].address.address_name ;
 
                   var address = result[0].address.address_name
                   var content = '<div class="bAddr">' +
@@ -143,8 +143,9 @@ function ChangeMap() {
                   // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
                   infowindow.setContent(content);
                   infowindow.open(map, marker);
-                  console.log(detailAddr);
-                  setMyLocation(address);
+                  console.log(result[0].address.address_name);
+                  setMyLocation(result[0].address.address_name);
+                  console.log("마이로케이션",result[0].address.address_name)
                   // map.setBounds(detailAddr);
               }   
           });
@@ -276,13 +277,9 @@ function ChangeMap() {
       markers = [];
     }
     //-------------------------------------------------------------------------------------
-  }, [longitude, locationSearch]);
+  }, [ locationSearch]);
 
-  function onclickBtn() {
-    setMyLocation(myLocation);
-    
 
-  }
   return (
     <>
       <MapDiv
@@ -290,9 +287,6 @@ function ChangeMap() {
         ref={container}
       />
       <h3>{myLocation}</h3>
-      <Link to="/">
-      <input type="button" onClick={onclickBtn} value="위치변경" />
-      </Link>
     </>
   );
 }

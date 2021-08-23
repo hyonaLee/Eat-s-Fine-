@@ -9,7 +9,6 @@ import Register from "./views/userPage/registerPage/RegistePager.js";
 import KeepPage from "./views/keepPage/KeepPage.js";
 import SearchResultPage from "./views/searchResultPage/SearchResultPage";
 import MapContainer from "./views/kakaoMap/MapContainer";
-import ChangeLocation from "./views/changeLocation/ChangeLocation";
 import { MapContextProvider } from "../contexts/map_context";
 import { ApplicationContextProvider } from "../contexts/weatherAndMap_context";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
@@ -46,11 +45,6 @@ function App() {
                           component={Auth(Register, false)}
                         />
                         <Route exact path="/map" component={MapContainer} />
-                        <Route
-                          exact
-                          path="/changelocation"
-                          component={Auth(ChangeLocation, false)}
-                        />
                         <Route
                           exact
                           path="/keep"

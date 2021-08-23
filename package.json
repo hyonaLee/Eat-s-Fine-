@@ -1,7 +1,7 @@
 {
   "name": "react-project",
   "version": "1.0.0",
-  "description": "",
+  "description": "��#\u0000 \u0000b\u0000o\u0000i\u0000l\u0000e\u0000r\u0000-\u0000p\u0000l\u0000a\u0000t\u0000e\u0000-\u0000r\u0000e\u0000a\u0000c\u0000t\u0000\r\u0000 \u0000",
   "main": "index.js",
   "engines": {
     "node": "14.16.1",
@@ -31,7 +31,7 @@
     "jsonwebtoken": "^8.5.1",
     "mock-aws-s3": "^4.0.2",
     "mongoose": "^5.12.12",
-    "nodemon": "^2.0.7",
+    "nodemon": "^2.0.12",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-fade-in": "^2.0.1",
@@ -47,5 +47,14 @@
     "sass": "^1.38.0",
     "styled-component": "^2.8.0",
     "styled-components": "^4.4.1"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SEODONGWON77/Eat_s_fine.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SEODONGWON77/Eat_s_fine/issues"
+  },
+  "homepage": "https://github.com/SEODONGWON77/Eat_s_fine#readme"
 }

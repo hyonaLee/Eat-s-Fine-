@@ -5,19 +5,12 @@ import { useApplicationContext } from "../../../contexts/weatherAndMap_context";
 function CurrentLocation() {
   const { myLocation, myLocationChg, myNewLocation } = useApplicationContext();
 
-  if (!myLocationChg) {
+ 
     return (
       <LocationDiv>
         <LocationH1>{myLocation}</LocationH1>
       </LocationDiv>
     );
-  } else {
-    return (
-      <LocationDiv>
-        <LocationH1>{myNewLocation}</LocationH1>
-      </LocationDiv>
-    );
-  }
 }
 
 const LocationH1 = styled.h3`

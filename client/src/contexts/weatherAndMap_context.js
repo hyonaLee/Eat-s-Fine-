@@ -13,9 +13,7 @@ export function ApplicationContextProvider({ children }) {
   const [currentMenu, setCurrentMenu] = useState([]);
   const [listNum, setListNum] = useState([0, 1, 2, 3]);
   const [changeNum, setChangeNum] = useState([]);
-  const [myLocationChg, setMyLocationChg] = useState(false);
-  const [myNewLocation, setMyNewLocation] = useState("");
-  const [clearData, setClearData] = useState(false);
+  const [ locationchangeControl, setLocationchangeControl] = useState(true);
 
   const value = {
     locationSearch,
@@ -36,12 +34,8 @@ export function ApplicationContextProvider({ children }) {
     setListNum,
     changeNum,
     setChangeNum,
-    myLocationChg,
-    setMyLocationChg,
-    myNewLocation,
-    setMyNewLocation,
-    setClearData,
-    clearData,
+    locationchangeControl,
+    setLocationchangeControl
   };
 
   return <Context.Provider value={value}>{children}</Context.Provider>;

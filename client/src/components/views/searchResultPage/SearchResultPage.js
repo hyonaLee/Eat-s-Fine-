@@ -10,7 +10,6 @@ function SearchResultPage() {
     <div>{
       <MapStoreList />
       }
-      
     </div>
   );
 }

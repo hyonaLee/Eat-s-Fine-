@@ -11,7 +11,7 @@ function MapStoreList() {
   const { mapSearchData } = useMapContext();
   const { clearData } = useApplicationContext();
   const history = useHistory();
-  if (clearData) {
+
     return (
       <ResultDiv>
         <div>
@@ -22,9 +22,7 @@ function MapStoreList() {
         </MapDiv>
       </ResultDiv>
     );
-  } else {
-    return <SearchNoResult />;
-  }
+  
 }
 
 const ResultDiv = styled.div`
