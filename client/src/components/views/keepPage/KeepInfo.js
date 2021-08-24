@@ -54,45 +54,53 @@ function KeepInfo({ list }) {
 }
 
 const AllDiv = styled.div`
-
-
+  color: #545352;
 `
 const ResultDiv = styled.div`
-
+  color: #545352;
 `
 const AllHeartListDiv = styled.div`
   display: flex;
   justify-content: space-between;
-  line-height: 22px;
+  font-size: 20px;
+  line-height: 30px;
   @media screen and (max-width: 768px) {
     font-size: 13px;
-    line-height: 15px;
+    line-height: 20px;
 }
 `;
 
 const ResultListUl = styled.ul`
   list-style: none;
   padding: 0;
-  
 }
 `;
 
 const ResultListLi = styled.li`
-  
+  width: 700px;
+  margin: auto;
   cursor: pointer;
   border-top: 1px solid gray;
   border-bottom: 1px solid gray;
   color: black;
-  padding: 10px;
+  padding: 20px;
   @media screen and (max-width: 768px) {
+    width: 500px;
+  }
+  @media screen and (max-width: 500px) {
+    width: 250px;
+  }
 `;
 
 
 const HeadH3 = styled.h3`
+font-size: 25px;
 text-align: center;
+@media screen and (max-width: 768px) {
+  font-size: 18px;
+  }
 `;
 const delBtnDiv = styled.div`
-width: 30px;
 `;
 const delBtn = styled.button`
 `;

@@ -9,7 +9,7 @@ const StyledDiv = styled.div`
   margin: 20px;
   padding-top: 5px;
   padding-bottom: 30px;
-  border: 2px solid red;
+  border: 2px solid gray;
   border-radius: 6px;
 `;
 const StyledInfo = styled.div`
