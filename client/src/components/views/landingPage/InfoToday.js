@@ -6,26 +6,25 @@ function InfoToday() {
   const { sky } = useApplicationContext();
   return (
     <InfoDiv>
-      <InfoH2>오늘의 날씨는 {sky}이에요.</InfoH2>
-      <InfoH2>오늘같은날엔 이 음식 어때요?</InfoH2>
+      <InfoH2>오늘의 날씨는 {sky}이에요.<br/>오늘같은날엔 이 음식 어때요?</InfoH2>
     </InfoDiv>
   );
 }
 
 const InfoDiv = styled.div`
-  display: block;
-  position: relative;
-  top: 310px;
+  margin-top: 35px;
   @media screen and (max-width: 768px) {
-    top: 170px;
+    margin-top: 5px;
    }
 `;
 const InfoH2 = styled.h2`
+  margin: 0;
   font-size: 25px;
   color: white;
-  line-height: 20px;
+  line-height: 50px;
   @media screen and (max-width: 768px) {
-    font-size: 15px;
+    font-size: 20px;
+    line-height: 35px
    }
 `;  
 

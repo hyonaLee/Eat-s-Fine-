@@ -24,7 +24,7 @@ function SearchBoxLocation() {
     <InputDiv>
       <input
         type="text"
-        placeholder="위치 입력"
+        placeholder="위치 검색"
         onChange={onchangeText}
         value={text}
       />
@@ -34,8 +34,8 @@ function SearchBoxLocation() {
 }
 
 const InputDiv = styled.div`
-  position: relative;
-  top: 600px;
+  /* position: relative;
+  top: 600px; */
 `;
 
 export default SearchBoxLocation;

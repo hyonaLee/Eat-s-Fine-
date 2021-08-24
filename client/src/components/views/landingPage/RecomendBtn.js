@@ -18,26 +18,27 @@ function RecomendBtn() {
 }
 
 const RecomendBtnStyle = styled.button`
-  font-size: 10px;
-  line-height: 8px;
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 25px;
   color: white;
   background-color: #a5a0a0;
   padding: 5px;
-  border-radius: 8px;
-  height: 20px;
-  width: 65px;
+  border-radius: 5px;
+  height: 35px;
+  width: 125px;
   @media screen and (max-width: 768px) {
-    font-size: 7px;
-    height: 10px;
-    width: 50px;
+    height: 30px;
+    width: 100px;
+    font-size: 17px;
+    line-height: 20px;
    }
 `;
 
 const BtnDiv = styled.div`
-  position: relative;
-  top: 370px;
+margin-top: 5px;
   @media screen and (max-width: 768px) {
-    top: 160px;
+    margin-top: 3px;
    }
 `;
 export default RecomendBtn;

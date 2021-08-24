@@ -14,13 +14,16 @@ import MenuList from "./MenuList";
 
 const MainDivStyle = styled.div`
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  
 `;
 function LandingWeb() {
   return (
     <MainDivStyle>
       <InfoWeather />
-      <InfoToday />
       <Weather />
+      <InfoToday />
       <HashTag />
       <MenuList/>
       <RecomendBtn />

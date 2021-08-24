@@ -28,6 +28,9 @@ function MapStoreList() {
 const ResultDiv = styled.div`
   display: flex;
   justify-content: space-space-between;
+  @media screen and (max-width: 768px) {
+    display: block;
+  }
 `;
 const MapDiv = styled.div`
   width: 100%;

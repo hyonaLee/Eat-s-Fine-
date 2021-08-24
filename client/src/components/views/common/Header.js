@@ -15,13 +15,13 @@ import MyPage from "../userPage/MyPage";
 const useStyles = makeStyles({});
 
 const HeaderDiv = styled.div`
-  display: block;
   display: flex;
   justify-content: space-between;
   height: 40px;
-  @media screen and (max-width: 768px) {
+  width: 100%;
+  /* @media screen and (max-width: 768px) {
     height: 20px;
-  }
+  } */
 `;
 
 const HeaderStyle = styled.h2`
@@ -34,6 +34,7 @@ const HeaderStyle = styled.h2`
 const LogDiv = styled.div`
   float: right;
   color: white;
+  cursor: pointer;
 `;
 
 const LogStyle = styled.h2`
@@ -41,10 +42,10 @@ const LogStyle = styled.h2`
   float: right;
   color: white;
   font-size: 20px;
-  @media screen and (max-width: 768px) {
-    font-size: 1em;
+  /* @media screen and (max-width: 768px) {
+    font-size: 0.8em;
     margin: 5px;
-  }
+  } */
 `;
 
 const HelloH2 = styled.h2`
@@ -60,6 +61,9 @@ const StyledLi = styled.div`
   margin-top: 10px;
   text-align: center;
   color: gray;
+  @media screen and (max-width: 768px) {
+    width: 100vw;
+  }
 `;
 const StyledLiLogOut = styled.div`
   margin: 20px;
@@ -82,7 +86,6 @@ function Header() {
   });
 
   const toggleDrawer = (anchor, open) => (event) => {
-
     setState({ ...state, [anchor]: open });
   };
 
@@ -133,6 +136,9 @@ function Header() {
           로그아웃
         </StyledLiLogOut>
       </Link>
+      <StyledLiLogOut onClick={toggleDrawer(anchor, false)}>
+        닫기
+      </StyledLiLogOut>
     </div>
   );
 
@@ -152,7 +158,9 @@ function Header() {
         </Drawer>
         <LogDiv>
           <LogStyle onClick={toggleDrawer("right", true)}>
-            <i className="material-icons">menu</i>
+            <i className="material-icons" style={{ fontSize: "40px" }}>
+              menu
+            </i>
           </LogStyle>
         </LogDiv>
       </HeaderDiv>

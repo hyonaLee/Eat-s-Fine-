@@ -281,18 +281,18 @@ function ChangeMap() {
 
 
   return (
-    <>
       <MapDiv
         className="map"
         ref={container}
       />
-      <h3>{myLocation}</h3>
-    </>
   );
 }
 
 const MapDiv = styled.div`
-  width: 500px;
-  height: 500px;
+  width: 100%;
+  height: 90vh;
+  @media screen and (max-width: 768px) {
+
+    }
 `;
 export default ChangeMap;
