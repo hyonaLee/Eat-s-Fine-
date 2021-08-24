@@ -30,6 +30,9 @@ const RecomendBtnStyle = styled.button`
   font-weight: bold;
   border: 1px solid gray;
   margin-top: 30px;
+  :hover{
+    box-shadow: 1px 1px 2px 2px inset gray;
+  }
   @media screen and (max-width: 768px) {
     margin-top: 15px;
     height: 30px;

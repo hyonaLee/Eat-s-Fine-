@@ -69,7 +69,7 @@ function ChangeLocationBtn() {
             >
               search
             </i>
-            <br />
+            {/* <br /> */}
             <LocationChgInput
               type="button"
               onClick={closeModal}
@@ -84,10 +84,12 @@ function ChangeLocationBtn() {
 }
 const LocationInput = styled.input`
   width: 200px;
-  height: 20px;
-  margin-left: 24px;
+  height: 22px;
+  padding-left: 10px;
   padding-top: 2px;
   margin-bottom: 8px;
+  border: 1.5px solid gray;
+  margin-top: 5px;
 `;
 const LocationChgInput = styled.input`
   border-radius: 5px;
@@ -95,14 +97,14 @@ const LocationChgInput = styled.input`
   color: white;
 `;
 const SearchLocationDiv = styled.div`
-  background-color: #828282;
-  width: 280px;
-  height: auto;
+  background-color: #828282bf;
+  width: 320px;
+  height: 30px;
   padding-bottom: 10px;
-  border-radius: 0 0 8px 8px;
+  border-radius: 8px;
   z-index: 10;
   position: absolute;
-  top: 0px;
+  top: 5px;
   left: 50%;
   transform: translateX(-50%);
 `;

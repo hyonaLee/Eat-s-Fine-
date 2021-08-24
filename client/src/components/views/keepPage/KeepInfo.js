@@ -28,8 +28,8 @@ function KeepInfo({ list }) {
               <AllHeartListDiv>
                   <ResultDiv>
                     <div onClick={() => window.open(`http://place.map.kakao.com/${item.id}`, "_blank")} >
-                      <span><b>{index + 1}. </b></span>
-                      <span><strong>{item.place_name}</strong></span><br />
+                      <Span><b>{index + 1}. </b></Span>
+                      <Span><strong>{item.place_name}</strong></Span><br />
                       <span>{item.road_address_name}</span><br />
                       <span> ({item.address_name})</span><br />
                       <span>☎ {item.phone}</span><br />
@@ -77,12 +77,12 @@ const ResultListUl = styled.ul`
 `;
 
 const ResultListLi = styled.li`
+  font-weight: bold;
   width: 700px;
   margin: auto;
   cursor: pointer;
   border-top: 1px solid gray;
   border-bottom: 1px solid gray;
-  color: black;
   padding: 20px;
   @media screen and (max-width: 768px) {
     width: 500px;
@@ -101,9 +101,14 @@ text-align: center;
   }
 `;
 const delBtnDiv = styled.div`
+
 `;
 const delBtn = styled.button`
-`;
 
+`;
+const Span = styled.span`
+  font-size: 1.3em;
+  color: black;
+`;
 
 export default KeepInfo;
