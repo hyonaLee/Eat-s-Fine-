@@ -28,10 +28,10 @@ const InfoH2 = styled.h2`
   line-height: 50px;
   @media screen and (max-width: 768px) {
     font-size: 18px;
-    line-height: 35px
+    line-height: 30px
    }
    @media screen and (min-height: 650px) {
-    line-height: 35px
+    line-height: 40px
    }
 `;  
 

@@ -48,8 +48,6 @@ const HashP = styled.p`
     margin-top: 16px;
     font-size: 18px;
    }
-   @media screen and (min-height: 650px) {
-   }
 `;
 
 export default HashTag;
