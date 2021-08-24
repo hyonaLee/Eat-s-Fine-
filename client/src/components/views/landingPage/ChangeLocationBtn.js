@@ -34,7 +34,13 @@ function ChangeLocationBtn() {
     <>
       {!open ? (
         <BtnDiv onClick={openModal}>
-          <i className="material-icons">my_location</i>위치 변경
+          <i
+            className="material-icons"
+            style={{ position: "relative", top: "4px", fontSize:"19px"}}
+          >
+            my_location
+          </i>
+          <span style={{fontSize:"16px", fontWeight:"bold"}}> 위치 변경</span>
         </BtnDiv>
       ) : (
         <InputDiv>

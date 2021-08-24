@@ -12,25 +12,26 @@ function RecomendBtn() {
   }
   return (
     <BtnDiv>
-      <RecomendBtnStyle onClick={clickMore}>메뉴더보기</RecomendBtnStyle>
+      <RecomendBtnStyle onClick={clickMore}>메뉴 변경</RecomendBtnStyle>
     </BtnDiv>
   );
 }
 
 const RecomendBtnStyle = styled.button`
   cursor: pointer;
-  font-size: 20px;
+  font-size: 14px;
   line-height: 25px;
   color: white;
   background-color: #a5a0a0;
   padding: 5px;
   border-radius: 5px;
   height: 35px;
-  width: 125px;
+  width: 100px;
+  font-weight: bold;
   @media screen and (max-width: 768px) {
     height: 30px;
     width: 100px;
-    font-size: 17px;
+    font-size: 15px;
     line-height: 20px;
    }
 `;
