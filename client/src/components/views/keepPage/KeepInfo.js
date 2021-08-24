@@ -32,7 +32,7 @@ function KeepInfo({ list }) {
                       <span><strong>{item.place_name}</strong></span><br />
                       <span>{item.road_address_name}</span><br />
                       <span> ({item.address_name})</span><br />
-                      <span>☎ {item.phone}</span>
+                      <span>☎ {item.phone}</span><br />
                       <span>코멘트: {item.comment}</span>
                       </div>
                       <Comment id={item.id} />
@@ -65,8 +65,8 @@ const AllHeartListDiv = styled.div`
   justify-content: space-between;
   line-height: 22px;
   @media screen and (max-width: 768px) {
-    font-size: 10px;
-    line-height: 12px;
+    font-size: 13px;
+    line-height: 15px;
 }
 `;
 
@@ -78,15 +78,13 @@ const ResultListUl = styled.ul`
 `;
 
 const ResultListLi = styled.li`
+  
   cursor: pointer;
   border-top: 1px solid gray;
   border-bottom: 1px solid gray;
   color: black;
   padding: 10px;
-  margin: auto;
-  width: 500px;
   @media screen and (max-width: 768px) {
-    width: 260px;
 `;
 
 
