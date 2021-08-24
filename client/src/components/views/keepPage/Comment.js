@@ -44,7 +44,7 @@ const ComentInput = styled.input`
   width: 400px;
   border-radius: 5px;
   @media screen and (max-width: 768px) {
-    width: 200px;
+    width: 180px;
   }
   `
 

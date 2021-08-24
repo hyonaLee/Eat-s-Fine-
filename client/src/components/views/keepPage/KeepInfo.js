@@ -73,6 +73,7 @@ const AllHeartListDiv = styled.div`
 const ResultListUl = styled.ul`
   list-style: none;
   padding: 0;
+  
 }
 `;
 
@@ -93,6 +94,7 @@ const HeadH3 = styled.h3`
 text-align: center;
 `;
 const delBtnDiv = styled.div`
+width: 30px;
 `;
 const delBtn = styled.button`
 `;

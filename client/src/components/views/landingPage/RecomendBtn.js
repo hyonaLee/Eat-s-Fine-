@@ -31,7 +31,7 @@ const RecomendBtnStyle = styled.button`
   border: 1px solid gray;
   margin-top: 30px;
   @media screen and (max-width: 768px) {
-    margin-top: 20px;
+    margin-top: 15px;
     height: 30px;
     width: 100px;
     font-size: 15px;

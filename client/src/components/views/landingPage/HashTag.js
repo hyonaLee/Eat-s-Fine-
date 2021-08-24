@@ -26,7 +26,7 @@ function click (e) {
     <HashDiv>
       <Link to="/searchResult">
         {Menuslice.map((item, index) => (
-          <HashH2 onClick={click}>#{item} </HashH2>
+          <HashP onClick={click}>#{item} </HashP>
         ))}
         </Link>
     </HashDiv>
@@ -35,20 +35,20 @@ function click (e) {
 const HashDiv = styled.div`
 
 `;
-const HashH2 = styled.h2`
+const HashP = styled.p`
   display: inline;
-  font-size: 30px;
+  font-weight: bolder;
   color: white;
+  font-size: 30px;
   :hover{
     color: gray;
   }
 
   @media screen and (max-width: 768px) {
-    font-size: 20px;
     margin-top: 16px;
+    font-size: 18px;
    }
    @media screen and (min-height: 650px) {
-    font-size: 22px;
    }
 `;
 
