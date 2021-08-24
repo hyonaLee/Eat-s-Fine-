@@ -6,7 +6,7 @@ function InfoToday() {
   const { sky } = useApplicationContext();
   return (
     <InfoDiv>
-      <InfoH2>오늘의 날씨는 {sky}이에요.<br/>오늘같은날엔 이 음식 어때요?</InfoH2>
+      <InfoH2>오늘의 날씨는 {sky}에요.<br/>오늘같은날엔 이 음식 어때요?</InfoH2>
     </InfoDiv>
   );
 }
