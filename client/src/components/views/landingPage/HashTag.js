@@ -46,6 +46,9 @@ const HashH2 = styled.h2`
     font-size: 20px;
     margin-top: 16px;
    }
+   @media screen and (min-height: 650px) {
+    font-size: 22px;
+   }
 `;
 
 export default HashTag;

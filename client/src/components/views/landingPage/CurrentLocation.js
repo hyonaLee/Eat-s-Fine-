@@ -22,10 +22,9 @@ const LocationH1 = styled.h3`
 `;
 const LocationDiv = styled.div`
 
-
-  /* @media screen and (max-width: 768px) {
-    top: 170px;
-   } */
+@media screen and (min-height: 650px) {
+    margin-top: 15px;
+   }
 `;
 
 export default CurrentLocation;

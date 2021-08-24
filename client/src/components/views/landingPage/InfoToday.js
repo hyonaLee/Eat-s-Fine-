@@ -16,6 +16,9 @@ const InfoDiv = styled.div`
   @media screen and (max-width: 768px) {
     margin-top: 5px;
    }
+   @media screen and (min-height: 650px) {
+    margin-top: 65px;
+   }
 `;
 const InfoH2 = styled.h2`
   margin: 0;
@@ -25,6 +28,10 @@ const InfoH2 = styled.h2`
   @media screen and (max-width: 768px) {
     font-size: 20px;
     line-height: 35px
+   }
+   @media screen and (min-height: 650px) {
+    font-size: 22px;
+    line-height: 40px
    }
 `;  
 

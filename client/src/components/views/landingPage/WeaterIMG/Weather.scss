@@ -286,3 +286,10 @@ a {
     font-size: 1.1em;
    }
 }
+
+@media screen and (min-height: 660px) {
+  .icon {
+    top: 110px;
+    font-size: 1.4em;
+   }
+}

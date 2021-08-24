@@ -51,6 +51,7 @@ const InputText = styled.input`
   height: 40px;
   border-radius: 20px;
   padding-left: 10px;
+  border: 1px solid white;
 `
 
 const InputDiv = styled.div`
@@ -58,6 +59,9 @@ const InputDiv = styled.div`
   @media screen and (max-width: 768px) {
     margin-top: 28px;
   }
+  @media screen and (min-height: 650px) {
+    margin-top: 35px;
+   }
 `;
 
 export default SearchBoxMenu;

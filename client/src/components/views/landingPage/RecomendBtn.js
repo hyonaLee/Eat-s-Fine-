@@ -27,6 +27,7 @@ const RecomendBtnStyle = styled.button`
   border-radius: 5px;
   height: 35px;
   width: 125px;
+  border: 1px solid gray;
   @media screen and (max-width: 768px) {
     height: 30px;
     width: 100px;
@@ -39,6 +40,9 @@ const BtnDiv = styled.div`
 margin-top: 5px;
   @media screen and (max-width: 768px) {
     margin-top: 3px;
+   }
+   @media screen and (min-height: 650px) {
+    margin-top: 5px;
    }
 `;
 export default RecomendBtn;
