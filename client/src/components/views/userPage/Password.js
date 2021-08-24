@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { changePassword } from "../../../_actions/user_actions";
@@ -51,7 +52,7 @@ function Password() {
   return (
     <div style={{ paddingTop: "8px" }}>
       {!open ? (
-        <button onClick={openTextarea}>비밀번호 변경</button>
+        <StyledBtn onClick={openTextarea}>비밀번호 변경</StyledBtn>
       ) : (
         <div style={{ textAlign: "right", paddingRight: "20px" }}>
           <textarea
@@ -68,5 +69,18 @@ function Password() {
     </div>
   );
 }
+
+const StyledBtn = styled.button`
+  background-color: #07beb8;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  width: 100px;
+  height: 26px;
+  cursor: pointer;
+  :hover {
+    filter: brightness(90%);
+  }
+`;
 
 export default Password;
