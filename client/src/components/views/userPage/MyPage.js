@@ -29,7 +29,7 @@ function MyPage() {
   return (
     <StyledDiv>
       <StyledInfo>
-        <p>Id : {currentInfo.userid}</p>
+        <p>ID : {currentInfo.userid}</p>
         <p>Name : {currentInfo.name}</p>
         <div>
           <Email />
