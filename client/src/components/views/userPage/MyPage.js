@@ -8,9 +8,12 @@ const StyledDiv = styled.div`
   text-align: center;
   margin: 20px;
   padding-top: 5px;
-  padding-bottom: 30px;
-  border: 2px solid red;
+  padding-bottom: 20px;
+  border: 2px solid #07beb8;
   border-radius: 6px;
+  font-weight:bold;
+  color: gray;
+  }
 `;
 const StyledInfo = styled.div`
   text-align: left;

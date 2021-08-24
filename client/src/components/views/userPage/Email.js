@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { changeEmail } from "../../../_actions/user_actions";
+import styled from "styled-components";
+
 function Email() {
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
@@ -49,9 +51,9 @@ function Email() {
     <div className="tile-body">
       Email : {!stateChg ? currentEmail : newEmail}
       <br />
-      <div style={{paddingTop:"5px"}}>
+      <div style={{ paddingTop: "5px" }}>
         {!open ? (
-          <button onClick={openTextarea}>이메일 변경</button>
+          <StyledBtn onClick={openTextarea}>이메일 변경</StyledBtn>
         ) : (
           <div style={{ paddingTop: "8px" }}>
             <input
@@ -78,5 +80,18 @@ function Email() {
     </div>
   );
 }
+
+const StyledBtn = styled.button`
+  background-color: #07beb8;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  width: 100px;
+  height: 26px;
+  cursor: pointer;
+  :hover {
+    filter: brightness(90%);
+  }
+`;
 
 export default Email;

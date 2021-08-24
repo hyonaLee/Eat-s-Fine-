@@ -54,6 +54,9 @@ const StyledLi = styled.div`
   margin-top: 10px;
   text-align: center;
   color: gray;
+  :hover {
+    color: #07beb8;
+  }
   @media screen and (max-width: 768px) {
     width: 100vw;
   }
@@ -113,7 +116,13 @@ function Header() {
 
       <div onClick={modalInfo} style={{ cursor: "pointer" }}>
         <StyledLi>
-          <i className="material-icons">account_circle</i> 내정보
+          <i
+            className="material-icons"
+            style={{ position: "relative", top: "4px" }}
+          >
+            account_circle
+          </i>{" "}
+          <span style={{ fontWeight: "bolder" }}>내정보</span>
         </StyledLi>
       </div>
 
@@ -121,7 +130,13 @@ function Header() {
 
       <Link to="/keep" onClick={toggleDrawer(anchor, false)}>
         <StyledLi>
-          <i className="material-icons">favorite</i> 찜목록
+          <i
+            className="material-icons"
+            style={{ position: "relative", top: "4px" }}
+          >
+            favorite
+          </i>{" "}
+          <span style={{ fontWeight: "bolder" }}>찜목록</span>
         </StyledLi>
       </Link>
       <Link to="/">
@@ -129,7 +144,7 @@ function Header() {
           로그아웃
         </StyledLiLogOut>
       </Link>
-      <StyledLiLogOut onClick={toggleDrawer(anchor, false)}>
+      <StyledLiLogOut onClick={toggleDrawer(anchor, false)} className="logout">
         닫기
       </StyledLiLogOut>
     </div>

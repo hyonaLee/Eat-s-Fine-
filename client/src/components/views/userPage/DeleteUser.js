@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { deleteUser } from "../../../_actions/user_actions";
+import styled from "styled-components";
 
 function DeleteUser() {
   const user = useSelector((state) => state.user);
@@ -45,9 +46,11 @@ function DeleteUser() {
   };
 
   return (
-    <div style={{paddingTop:"5px",paddingRight:"20px", textAlign:"right"}}>
+    <div
+      style={{ paddingTop: "5px", paddingRight: "20px", textAlign: "right" }}
+    >
       {!open ? (
-        <button onClick={openTextarea}>회원탈퇴</button>
+        <StyledBtn onClick={openTextarea}>회원탈퇴</StyledBtn>
       ) : (
         <div>
           <textarea
@@ -56,7 +59,7 @@ function DeleteUser() {
             value={text}
             placeholder="삭제하려면 비밀번호 입력"
           />
-          <br/>
+          <br />
           <button onClick={submit}>삭제</button>
           <button onClick={closeTextarea}>취소</button>
         </div>
@@ -64,5 +67,18 @@ function DeleteUser() {
     </div>
   );
 }
+
+const StyledBtn = styled.button`
+  background-color: #07beb8;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  width: 70px;
+  height: 26px;
+  cursor: pointer;
+  :hover {
+    filter: brightness(90%);
+  }
+`;
 
 export default DeleteUser;
