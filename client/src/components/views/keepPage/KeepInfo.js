@@ -54,10 +54,11 @@ function KeepInfo({ list }) {
 }
 
 const AllDiv = styled.div`
-  padding-left: 5px;
+
+
 `
 const ResultDiv = styled.div`
-  padding-left: 5px;
+
 `
 const AllHeartListDiv = styled.div`
   display: flex;
@@ -71,10 +72,10 @@ const AllHeartListDiv = styled.div`
 
 const ResultListUl = styled.ul`
   list-style: none;
-  width: 600px;
   margin: auto;
+  width: 600px;
   @media screen and (max-width: 768px) {
-    width: 500px;
+    width: 260px;
 }
 `;
 
