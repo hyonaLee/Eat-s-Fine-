@@ -23,7 +23,7 @@ function ChangeMap() {
     setLongitude(position.coords.longitude);
   });
   const bounds = window.kakao.maps.LatLngBounds();
-  let address ;
+  let address;
 
   useEffect(() => {
     let markers = [];
@@ -58,7 +58,7 @@ function ChangeMap() {
     //             result[0].road_address.address_name +
     //             "</div>"
     //           : "<div>지번 주소 : " + result[0].address.address_name + "</div>";
-          
+
     //         setMyLocation(result[0].address.address_name);
     //         // 마커를 클릭한 위치에 표시합니다
     //         marker.setPosition(locPosition);
@@ -66,7 +66,7 @@ function ChangeMap() {
     //         // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
     //         infowindow.setContent(detailAddr);
     //         infowindow.open(map, marker);
-            
+
     //       }
     //     });
     //   });
@@ -111,46 +111,82 @@ function ChangeMap() {
         // 정상적으로 검색이 완료됐으면
         // 검색 목록과 마커를 표출합니다
         displayPlaces(data);
+
+
+        searchDetailAddrFromCoords(coords, function (result, status) {
+          console.log("coords",coords)
+          // 마커를 생성합니다
+          var marker = new window.kakao.maps.Marker({
+            map: map,
+          });
+          if (status === window.kakao.maps.services.Status.OK) {
+            var detailAddr = !!result[0].road_address
+              ? result[0].road_address.address_name
+              : result[0].address.address_name;
+  
+            var address = result[0].address.address_name;
+            var content = '<div class="bAddr">' + detailAddr + "</div>";
+  
+            // 마커를 클릭한 위치에 표시합니다
+            marker.setPosition(coords);
+            marker.setMap(map);
+
+              // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
+              infowindow.setContent(content);
+              infowindow.open(map, marker);
+              console.log(result[0].address.address_name);
+              setMyLocation(result[0].address.address_name);
+              console.log("마이로케이션2", result[0].address.address_name);
+              console.log("마커 찍음");
+              // map.setBounds(detailAddr);
+          }
+        });
+
+
       }
     }
 
     // 주소-좌표 변환 객체를 생성합니다
     const geocoder = new window.kakao.maps.services.Geocoder();
 
-    
-        // 지도를 클릭했을 때 클릭 위치 좌표에 대한 주소정보를 표시하도록 이벤트를 등록합니다
-        window.kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
-          searchDetailAddrFromCoords(mouseEvent.latLng, function(result, status) {
-              
-              // 마커를 생성합니다
-              var marker = new window.kakao.maps.Marker({
-              map: map
-              }); 
-              if (status === window.kakao.maps.services.Status.OK) {
-                  var detailAddr = !!result[0].road_address ?
-              result[0].road_address.address_name 
-                   : result[0].address.address_name ;
+      
+   ;
 
-                  var address = result[0].address.address_name
-                  var content = '<div class="bAddr">' +
-                                  detailAddr + 
-                              '</div>';
+    // 지도를 클릭했을 때 클릭 위치 좌표에 대한 주소정보를 표시하도록 이벤트를 등록합니다
+    window.kakao.maps.event.addListener(map, "click", function (mouseEvent) {
+      searchDetailAddrFromCoords(mouseEvent.latLng, function (result, status) {
+        // 마커를 생성합니다
+        var marker = new window.kakao.maps.Marker({
+          map: map,
+        });
+        if (status === window.kakao.maps.services.Status.OK) {
+          var detailAddr = !!result[0].road_address
+            ? result[0].road_address.address_name
+            : result[0].address.address_name;
 
-                  // 마커를 클릭한 위치에 표시합니다 
-                  marker.setPosition(mouseEvent.latLng);
-                  marker.setMap(map);
+          var address = result[0].address.address_name;
+          var content = '<div class="bAddr">' + detailAddr + "</div>";
 
-                  // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
-                  infowindow.setContent(content);
-                  infowindow.open(map, marker);
-                  console.log(result[0].address.address_name);
-                  setMyLocation(result[0].address.address_name);
-                  console.log("마이로케이션",result[0].address.address_name)
-                  // map.setBounds(detailAddr);
-              }   
-          });
+          // 마커를 클릭한 위치에 표시합니다
+          marker.setPosition(mouseEvent.latLng);
+          marker.setMap(map);
+          if (marker) {
+            // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
+            infowindow.setContent(content);
+            infowindow.open(map, marker);
+            console.log(result[0].address.address_name);
+            setMyLocation(result[0].address.address_name);
+            console.log("마이로케이션", result[0].address.address_name);
+            console.log("마커 찍음");
+            // map.setBounds(detailAddr);
+          } else {
+            console.log("마커안찍음");
+            console.log("마이로케이션2", result[0].address.address_name);
+          }
+        }
       });
-  
+    });
+    
 
     function searchDetailAddrFromCoords(coords, callback) {
       // 좌표로 법정동 상세 주소 정보를 요청합니다
@@ -162,7 +198,6 @@ function ChangeMap() {
       let fragment = document.createDocumentFragment(),
         bounds = new window.kakao.maps.LatLngBounds(),
         listStr = "";
-
 
       // 지도에 표시되고 있는 마커를 제거합니다
       removeMarker();
@@ -191,7 +226,6 @@ function ChangeMap() {
           window.kakao.maps.event.addListener(marker, "mouseout", function () {
             infowindow.close();
           });
-
         })(marker, places[i].place_name);
       }
 
@@ -267,8 +301,6 @@ function ChangeMap() {
       infowindow.open(map, marker);
     }
 
-
-
     // 지도 위에 표시되고 있는 마커를 모두 제거합니다
     function removeMarker() {
       for (let i = 0; i < markers.length; i++) {
@@ -277,22 +309,15 @@ function ChangeMap() {
       markers = [];
     }
     //-------------------------------------------------------------------------------------
-  }, [ locationSearch]);
+  }, [locationSearch]);
 
-
-  return (
-      <MapDiv
-        className="map"
-        ref={container}
-      />
-  );
+  return <MapDiv className="map" ref={container} />;
 }
 
 const MapDiv = styled.div`
   width: 100%;
   height: 90vh;
   @media screen and (max-width: 768px) {
-
-    }
+  }
 `;
 export default ChangeMap;
