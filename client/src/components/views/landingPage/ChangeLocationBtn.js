@@ -36,23 +36,45 @@ function ChangeLocationBtn() {
         <BtnDiv onClick={openModal}>
           <i
             className="material-icons"
-            style={{ position: "relative", top: "4px", fontSize:"19px"}}
+            style={{ position: "relative", top: "4px", fontSize: "19px" }}
           >
             my_location
           </i>
-          <span style={{fontSize:"16px", fontWeight:"bold"}}> 위치 변경</span>
+          <span style={{ fontSize: "16px", fontWeight: "bold" }}>
+            {" "}
+            위치 변경
+          </span>
         </BtnDiv>
       ) : (
         <InputDiv>
           <SearchLocationDiv>
-            <input
+            <LocationInput
               type="text"
               placeholder="위치 입력"
               onChange={onchangeText}
               value={text}
             />
-            <input type="button" onClick={onclickBtn} value="검색" />
-            <input type="button" onClick={closeModal} value="위치변경" />
+            <i
+              className="material-icons"
+              onClick={onclickBtn}
+              style={{
+                color: "#a5a0a0",
+                position: "relative",
+                right: "35px",
+                top: "7px",
+                fontSize: "22px",
+                fontWeight: "bold",
+                cursor: "pointer",
+              }}
+            >
+              search
+            </i>
+            <br />
+            <LocationChgInput
+              type="button"
+              onClick={closeModal}
+              value="위치변경"
+            />
           </SearchLocationDiv>
           <ChangeMap />
         </InputDiv>
@@ -60,11 +82,24 @@ function ChangeLocationBtn() {
     </>
   );
 }
-
+const LocationInput = styled.input`
+  width: 200px;
+  height: 20px;
+  margin-left: 24px;
+  padding-top: 2px;
+  margin-bottom: 8px;
+`;
+const LocationChgInput = styled.input`
+  border-radius: 5px;
+  background-color: #a6a6a6;
+  color: white;
+`;
 const SearchLocationDiv = styled.div`
-  background-color: gray;
+  background-color: #828282;
   width: 280px;
-  height: 25px;
+  height: auto;
+  padding-bottom: 10px;
+  border-radius: 0 0 8px 8px;
   z-index: 10;
   position: absolute;
   top: 0px;
