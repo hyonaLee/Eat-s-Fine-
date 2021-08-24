@@ -60,8 +60,22 @@ function DeleteUser() {
             placeholder="삭제하려면 비밀번호 입력"
           />
           <br />
-          <button onClick={submit}>삭제</button>
-          <button onClick={closeTextarea}>취소</button>
+          <i
+            className="material-icons done"
+            style={{ position: "relative", top: "4px", cursor: "pointer" }}
+            button
+            onClick={submit}
+          >
+            done
+          </i>
+          <i
+            className="material-icons cancel"
+            style={{ position: "relative", top: "4px", cursor: "pointer" }}
+            button
+            onClick={closeTextarea}
+          >
+            close
+          </i>
         </div>
       )}
     </div>
@@ -69,7 +83,7 @@ function DeleteUser() {
 }
 
 const StyledBtn = styled.button`
-  background-color: #07beb8;
+  background-color: #f03951;
   color: white;
   border: none;
   border-radius: 3px;

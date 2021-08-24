@@ -55,15 +55,30 @@ function Password() {
         <StyledBtn onClick={openTextarea}>비밀번호 변경</StyledBtn>
       ) : (
         <div style={{ textAlign: "right", paddingRight: "20px" }}>
-          <textarea
-            style={{ width: "210px", borderRadius: " 5px" }}
+          <input
+            type="text"
+            style={{ width: "210px", borderRadius: " 5px", height: "30px" }}
             onChange={onchangeText}
             value={text}
             placeholder="비밀번호 변경"
           />
           <br />
-          <button onClick={submit}>변경</button>
-          <button onClick={closeTextarea}>취소</button>
+          <i
+            className="material-icons done"
+            style={{ position: "relative", top: "4px", cursor: "pointer" }}
+            button
+            onClick={submit}
+          >
+            done
+          </i>
+          <i
+            className="material-icons cancel"
+            style={{ position: "relative", top: "4px", cursor: "pointer" }}
+            button
+            onClick={closeTextarea}
+          >
+            close
+          </i>
         </div>
       )}
     </div>

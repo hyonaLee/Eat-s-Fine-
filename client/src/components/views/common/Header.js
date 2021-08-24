@@ -121,7 +121,7 @@ function Header() {
             style={{ position: "relative", top: "4px" }}
           >
             account_circle
-          </i>{" "}
+          </i>
           <span style={{ fontWeight: "bolder" }}>내정보</span>
         </StyledLi>
       </div>
