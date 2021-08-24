@@ -40,6 +40,7 @@ function Comment({ id }) {
 }
 
 const ComentInput = styled.input`
+  font-size: 10px;
   width: 400px;
   border-radius: 5px;
   @media screen and (max-width: 768px) {

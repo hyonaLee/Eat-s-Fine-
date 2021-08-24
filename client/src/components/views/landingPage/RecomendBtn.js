@@ -11,9 +11,9 @@ function RecomendBtn() {
     setListNum(listNum.map((index) => index + 4));
   }
   return (
-    <BtnDiv>
+    <div>
       <RecomendBtnStyle onClick={clickMore}>메뉴 변경</RecomendBtnStyle>
-    </BtnDiv>
+    </div>
   );
 }
 
@@ -28,18 +28,18 @@ const RecomendBtnStyle = styled.button`
   height: 35px;
   width: 100px;
   font-weight: bold;
+  border: 1px solid gray;
+  margin-top: 30px;
   @media screen and (max-width: 768px) {
+    margin-top: 20px;
     height: 30px;
     width: 100px;
     font-size: 15px;
     line-height: 20px;
    }
-`;
-
-const BtnDiv = styled.div`
-margin-top: 5px;
-  @media screen and (max-width: 768px) {
-    margin-top: 3px;
+   @media screen and (min-height: 650px) {
+    margin-top: 15px;
    }
 `;
+
 export default RecomendBtn;

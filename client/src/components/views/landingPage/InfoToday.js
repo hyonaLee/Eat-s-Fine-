@@ -13,8 +13,12 @@ function InfoToday() {
 
 const InfoDiv = styled.div`
   margin-top: 35px;
+  margin-bottom: 10px;
   @media screen and (max-width: 768px) {
     margin-top: 5px;
+   }
+   @media screen and (min-height: 650px) {
+    margin-top: 65px;
    }
 `;
 const InfoH2 = styled.h2`
@@ -24,6 +28,9 @@ const InfoH2 = styled.h2`
   line-height: 50px;
   @media screen and (max-width: 768px) {
     font-size: 20px;
+    line-height: 35px
+   }
+   @media screen and (min-height: 650px) {
     line-height: 35px
    }
 `;  

@@ -24,27 +24,31 @@ function click (e) {
 }
   return (
     <HashDiv>
-      <HashH2>
       <Link to="/searchResult">
         {Menuslice.map((item, index) => (
-          <span onClick={click}>#{item} </span>
+          <HashH2 onClick={click}>#{item} </HashH2>
         ))}
         </Link>
-      </HashH2>
     </HashDiv>
   );
 }
-
 const HashDiv = styled.div`
 
 `;
 const HashH2 = styled.h2`
-  margin-top: 20px;
+  display: inline;
   font-size: 30px;
   color: white;
+  :hover{
+    color: gray;
+  }
+
   @media screen and (max-width: 768px) {
     font-size: 20px;
     margin-top: 16px;
+   }
+   @media screen and (min-height: 650px) {
+    font-size: 22px;
    }
 `;
 

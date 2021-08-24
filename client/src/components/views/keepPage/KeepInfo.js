@@ -72,10 +72,7 @@ const AllHeartListDiv = styled.div`
 
 const ResultListUl = styled.ul`
   list-style: none;
-  margin: auto;
-  width: 600px;
-  @media screen and (max-width: 768px) {
-    width: 260px;
+  padding: 0;
 }
 `;
 
@@ -85,6 +82,10 @@ const ResultListLi = styled.li`
   border-bottom: 1px solid gray;
   color: black;
   padding: 10px;
+  margin: auto;
+  width: 500px;
+  @media screen and (max-width: 768px) {
+    width: 260px;
 `;
 
 

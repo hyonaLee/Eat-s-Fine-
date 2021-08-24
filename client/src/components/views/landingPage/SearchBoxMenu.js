@@ -39,11 +39,11 @@ function SearchBoxMenu() {
   );
 }
 const InputText = styled.input`
-  width: 250px;
+  width: 200px;
   height: 34px;
   border-radius: 18px;
-  margin-left: 20px;
-  padding-left: 10px;
+  padding-left: 20px;
+  margin-left: 15px;
   border: 0;
 `;
 
@@ -54,6 +54,9 @@ const InputDiv = styled.div`
   @media screen and (max-width: 768px) {
     margin-top: 28px;
   }
+  @media screen and (min-height: 650px) {
+    margin-top: 35px;
+   }
 `;
 
 export default SearchBoxMenu;
