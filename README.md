@@ -11,6 +11,13 @@
 ## 개요.
 날씨에 따라 생각나는 음식을 추천해 주는 기능에 위치서비스를 더하여 현재 위치나 원하는 위치에 관한 맛집 정보를 얻을 수 있다.
 
+## 개발환경.
+* React
+* ContextAPI, React-Redux
+* Styled-component, Scss
+* Node.js, Express, MongoDB
+* AWS EC2
+
 ## 주요기능.
 * 회원가입 및 로그인 기능
 * bcrypt를 사용하여 비밀번호 해싱 암호화
