@@ -1,4 +1,5 @@
 ﻿# Eat's Fine!
+ Click [here](https://eatsfine.site)
  
  ## 기간.
  8월8일 - 8월24일
